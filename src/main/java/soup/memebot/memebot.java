@@ -13,7 +13,6 @@ import de.btobastian.javacord.*;
 
 import java.awt.*;
 import java.io.*;
-import java.lang.reflect.Array;
 import java.net.*;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -56,12 +55,13 @@ public class memebot {
         String password = "";
 
         try {
-            ArrayList<String> admin = getArrayListOfLines("admin.txt");
+            ArrayList<String> admin = getArrayListOfLines("admin.pass");
             token = admin.get(0);
             password = admin.get(1);
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("admin.txt not found, an admin.txt file should have two lines. The first should contain a token, and the second should contain the bot password.");
+            System.out.println("admin.pass not found, an admin.pass file should have two lines. " +
+                    "The first should contain a token, and the second should contain the bot password. It should be located in the resources folder.");
             System.exit(0);
         }
 
