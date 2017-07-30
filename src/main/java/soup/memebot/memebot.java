@@ -89,8 +89,8 @@ public class memebot {
             @Override
             public void onSuccess(final DiscordAPI api) {
                 System.out.println("Successful login");
-                final MessageReceiver receiver = api.getChannelById("189359733377990656");
-                receiver.sendMessage("Hello everyone! SoupBot v" + version + " here!");
+                final MessageReceiver receiver = api.getChannelById("189359733377990656"); //general in ddc
+                receiver.sendMessage("Hello everyone! SoupBot v" + version + " here!");   //that thing travis and nick dislike
                 api.setAutoReconnect(true);
 
                 Collection users = api.getUsers();
