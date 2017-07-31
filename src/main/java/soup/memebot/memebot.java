@@ -68,8 +68,8 @@ public class memebot {
         DiscordAPI api = Javacord.getApi(token, true);
         final int numOfCommands = 29;
         final int numOfSubCommands = 17;
-        final String version = "1.2.9.2";
-        final String complieDate = "7/26/17 04:06 EST";
+        final String version = "1.2.9.4";
+        final String complieDate = "7/31/17 01:04 EST";
         final String chatFilterVersion = "1.5";
         final boolean[] censor = {false};
         final long[] cooldown = {0};
@@ -229,7 +229,7 @@ public class memebot {
                                             message.reply(game1lives + " lives remaining.");
                                             message.reply(makeAsciiSpermEgg(game1lives) + "\n" +
                                                     "```\n" +
-                                                    arrayListAsString(game1GuessedWord) + "\n" +
+                                                    arrayListAsStringForHitlerman(game1GuessedWord) + "\n" +
                                                     "```");
                                         }
                                     }
@@ -251,7 +251,7 @@ public class memebot {
                                                 game1lives + " lives remaining.");
                                         message.reply(makeAsciiSpermEgg(game1lives) + "\n" +
                                                 "```\n" +
-                                                arrayListAsString(game1GuessedWord) + "\n" +
+                                                arrayListAsStringForHitlerman(game1GuessedWord) + "\n" +
                                                 "```");
                                     } else {
                                         message.reply("rip you died");
@@ -1434,6 +1434,11 @@ public class memebot {
 
                                         game1GuessedWord = arrayListFromArray(blanks.toCharArray());
                                         game1ActualWord = arrayListFromArray(game1Word.toCharArray());
+                                        ArrayList<Integer> spaces = indexesOfCharInArrayList(' ', game1ActualWord);
+
+                                        for (int spaceIndex : spaces) {
+                                            game1GuessedWord.set(spaceIndex, ' '); //makes the spaces not underscores
+                                        }
 
                                         message.reply("Stop Hitler from being born by guessing the word in this hangman-style game!\n" +
                                                 "Guess letters with \"$guess [letter]\"\n" +
@@ -1442,7 +1447,7 @@ public class memebot {
                                                 "The game begins now!\n" +
                                                 makeAsciiSpermEgg(game1lives) + "\n" +
                                                 "```\n" +
-                                                arrayListAsString(game1GuessedWord) + "\n" +
+                                                arrayListAsStringForHitlerman(game1GuessedWord) + "\n" +
                                                 "```");
                                         games[1] = true;
                                     } catch (Exception e) {
@@ -1799,7 +1804,7 @@ public class memebot {
         return returnString;
     }
 
-    public static String arrayListAsString(ArrayList<Character> arrayList) {
+    public static String arrayListAsStringForHitlerman(ArrayList<Character> arrayList) {
         String returnString = "";
         for (char c : arrayList) {
             returnString += c + " ";
