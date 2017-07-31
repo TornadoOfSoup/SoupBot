@@ -241,7 +241,7 @@ public class memebot {
                             } else if (message.getContent().startsWith("$guessword")) {
                                 String word = message.getContent().replace("$guessword ", "");
                                 if (word.equalsIgnoreCase(game1Word)) {
-                                    message.reply("Congratulations! You've stopped Hitler from being born and saved the Jews!\n" +
+                                    message.reply("Congratulations! You've stopped Hitler from being born and saved millions of lives!\n" +
                                             "The word was `" + game1Word + "`. You were victorious with " + game1lives + " lives remaining.\n");
                                     games[1] = false;
                                 } else {
@@ -1387,10 +1387,10 @@ public class memebot {
                                 return;
                             }
                             String[] parts = message.getContent().split(" ");
-                            if (parts.length > 2) {
+                            /*if (parts.length > 2) {                                          //this is probably unnecessary
                                 message.reply("Error: Command must have less than 3 parts.");
                                 return;
-                            }
+                            }*/
                             String game = message.getContent().replace("$game ", "");
 
                             String username = message.getAuthor().getName();
@@ -1413,10 +1413,16 @@ public class memebot {
                                     message.reply("User " + username + " has already started a number guessing game with Soupbot!\n" +
                                             "Please wait until this game is finished before trying to start another one.");
                                 }
-                            } else if (game.equalsIgnoreCase("hitlerman")) {
+                            } else if (game.startsWith("hitlerman")) {
                                 if (!games[1]) {
+                                    String wordList = "";
+                                    if (parts.length == 2) {
+                                        wordList = "default";
+                                    } else if (parts.length == 3) {
+                                        wordList = parts[2];
+                                    }
                                     try {
-                                        ArrayList<String> words = getArrayListOfLines("hangman/hangman_default.txt");
+                                        ArrayList<String> words = getArrayListOfLines("hangman/hangman_" + wordList + ".txt");
                                         Random rand = new Random();
                                         int index = rand.nextInt(words.size());
                                         game1Word = words.get(index).toLowerCase();
@@ -1429,7 +1435,7 @@ public class memebot {
                                         game1GuessedWord = arrayListFromArray(blanks.toCharArray());
                                         game1ActualWord = arrayListFromArray(game1Word.toCharArray());
 
-                                        message.reply("Stop Hitler from being born by guessing the word in this hangman style game!\n" +
+                                        message.reply("Stop Hitler from being born by guessing the word in this hangman-style game!\n" +
                                                 "Guess letters with \"$guess [letter]\"\n" +
                                                 "Try to guess the word with \"$guessword [word]\"\n" +
                                                 "You can quit the game with \"$quit\"" +
@@ -1441,9 +1447,13 @@ public class memebot {
                                         games[1] = true;
                                     } catch (Exception e) {
                                         e.printStackTrace();
+                                        message.reply("Something went wrong. The most likely problem is in the name of the word list. " +
+                                                "Currently, supported word lists include default, videogames, and ~~science~~.\n" +
+                                                "If only two parts have been supplied, the problem is something else.");
                                     }
+
                                 } else {
-                                    message.reply("There is already an active game of hangman. Please wait until it is finished.");
+                                    message.reply("There is already an active game of Hitlerman. Please wait until it is finished.");
                                 }
                             } else {
                                 message.reply("Error: The given game either doesn't exist or is spelled incorrectly.");
