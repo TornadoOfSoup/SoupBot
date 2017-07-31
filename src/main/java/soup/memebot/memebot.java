@@ -70,7 +70,7 @@ public class memebot {
         final int numOfCommands = 29;
         final int numOfSubCommands = 17;
         final String version = "1.2.9.5";
-        final String complieDate = "7/31/17 05:29 EST";
+        final String complieDate = "7/31/17 04:44 EST";
         final String chatFilterVersion = "1.5";
         final boolean[] censor = {false};
         final long[] cooldown = {0};
@@ -499,9 +499,6 @@ public class memebot {
                                     "   Make the $mode command work more.\n" +
                                     "   Add levels of restriction to restricted mode.\n" +
                                     "   Implement picture reformatter.\n" +
-                                    "   Add meme-making capabilities.\n" +
-                                    "   Add more hitlerman options.\n" +
-                                    "   Add an adventure game.\n" +
                                     "   ```");
                         } else if (message.getContent().equalsIgnoreCase("$hypixel")) {
 
