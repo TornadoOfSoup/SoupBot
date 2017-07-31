@@ -49,6 +49,7 @@ public class memebot {
     static int game1lives = 0;
     static ArrayList<Character> game1GuessedWord = new ArrayList<Character>();
     static ArrayList<Character> game1ActualWord = new ArrayList<Character>();
+    static ArrayList<String> game1HelpfulUsers = new ArrayList<String>();
 
     public static void main(String[] args) {
         String token = "";
@@ -68,8 +69,8 @@ public class memebot {
         DiscordAPI api = Javacord.getApi(token, true);
         final int numOfCommands = 29;
         final int numOfSubCommands = 17;
-        final String version = "1.2.9.4";
-        final String complieDate = "7/31/17 01:04 EST";
+        final String version = "1.2.9.5";
+        final String complieDate = "7/31/17 05:29 EST";
         final String chatFilterVersion = "1.5";
         final boolean[] censor = {false};
         final long[] cooldown = {0};
@@ -209,15 +210,21 @@ public class memebot {
                                         }
                                         if (indexes.size() == 1) {
                                             message.reply("There is 1 " + c + " in the word.");
+                                            if (!arrayListContainsIgnoreCase(game1HelpfulUsers, message.getAuthor().getName())) {
+                                                game1HelpfulUsers.add(message.getAuthor().getName());
+                                            }
                                         } else {
                                             message.reply("There are " + indexes.size() + " " + c + "'s in the word.");
+                                            if (!arrayListContainsIgnoreCase(game1HelpfulUsers, message.getAuthor().getName())) {
+                                                game1HelpfulUsers.add(message.getAuthor().getName());
+                                            }
                                         }
                                     } else {
                                         game1lives--;
                                         message.reply("There are no " + c + "'s in the word.");
                                     }
                                     if (indexesOfCharInArrayList('_', game1GuessedWord).size() == 0) {
-                                        message.reply("Congratulations! You've stopped Hitler from being born and saved the Jews!\n" +
+                                        message.reply("Congratulations to " + arrayListAsStringList(game1HelpfulUsers) + "! You've stopped Hitler from being born and saved millions of lives!\n" +
                                                 "The word was `" + game1Word + "`. You were victorious with " + game1lives + " lives remaining.\n");
                                         games[1] = false;
                                     } else {
@@ -229,7 +236,7 @@ public class memebot {
                                             message.reply(game1lives + " lives remaining.");
                                             message.reply(makeAsciiSpermEgg(game1lives) + "\n" +
                                                     "```\n" +
-                                                    arrayListAsStringForHitlerman(game1GuessedWord) + "\n" +
+                                                    arrayListAsStringForHitlermanGuess(game1GuessedWord) + "\n" +
                                                     "```");
                                         }
                                     }
@@ -241,7 +248,10 @@ public class memebot {
                             } else if (message.getContent().startsWith("$guessword")) {
                                 String word = message.getContent().replace("$guessword ", "");
                                 if (word.equalsIgnoreCase(game1Word)) {
-                                    message.reply("Congratulations! You've stopped Hitler from being born and saved millions of lives!\n" +
+                                    if (!arrayListContainsIgnoreCase(game1HelpfulUsers, message.getAuthor().getName())) {
+                                        game1HelpfulUsers.add(message.getAuthor().getName());
+                                    }
+                                    message.reply("Congratulations to " + arrayListAsStringList(game1HelpfulUsers) + "! You've stopped Hitler from being born and saved millions of lives!\n" +
                                             "The word was `" + game1Word + "`. You were victorious with " + game1lives + " lives remaining.\n");
                                     games[1] = false;
                                 } else {
@@ -251,7 +261,7 @@ public class memebot {
                                                 game1lives + " lives remaining.");
                                         message.reply(makeAsciiSpermEgg(game1lives) + "\n" +
                                                 "```\n" +
-                                                arrayListAsStringForHitlerman(game1GuessedWord) + "\n" +
+                                                arrayListAsStringForHitlermanGuess(game1GuessedWord) + "\n" +
                                                 "```");
                                     } else {
                                         message.reply("rip you died");
@@ -489,6 +499,9 @@ public class memebot {
                                     "   Make the $mode command work more.\n" +
                                     "   Add levels of restriction to restricted mode.\n" +
                                     "   Implement picture reformatter.\n" +
+                                    "   Add meme-making capabilities.\n" +
+                                    "   Add more hitlerman options.\n" +
+                                    "   Add an adventure game.\n" +
                                     "   ```");
                         } else if (message.getContent().equalsIgnoreCase("$hypixel")) {
 
@@ -1430,6 +1443,7 @@ public class memebot {
                                         System.out.println(game1Word);
                                         game1GuessedWord.clear();
                                         game1ActualWord.clear();
+                                        game1HelpfulUsers.clear();
                                         String blanks = multiplyString("_", game1Word.length());
 
                                         game1GuessedWord = arrayListFromArray(blanks.toCharArray());
@@ -1447,7 +1461,7 @@ public class memebot {
                                                 "The game begins now!\n" +
                                                 makeAsciiSpermEgg(game1lives) + "\n" +
                                                 "```\n" +
-                                                arrayListAsStringForHitlerman(game1GuessedWord) + "\n" +
+                                                arrayListAsStringForHitlermanGuess(game1GuessedWord) + "\n" +
                                                 "```");
                                         games[1] = true;
                                     } catch (Exception e) {
@@ -1804,10 +1818,31 @@ public class memebot {
         return returnString;
     }
 
-    public static String arrayListAsStringForHitlerman(ArrayList<Character> arrayList) {
+    public static String arrayListAsStringForHitlermanGuess(ArrayList<Character> arrayList) {
         String returnString = "";
         for (char c : arrayList) {
             returnString += c + " ";
+        }
+        return returnString;
+    }
+
+    public static String arrayListAsStringList(ArrayList<String> arrayList) {
+        String returnString = "";
+        int indexOfLastComma = 0;
+        int indexOfSecondLastComma = 0;
+
+        for (String string : arrayList) {
+            returnString += string + ", ";
+            indexOfSecondLastComma = indexOfLastComma;
+            indexOfLastComma = returnString.length() - 2;
+        }
+
+        returnString = returnString.substring(0, indexOfLastComma); //cut the string before the comma
+        if (arrayList.size() > 1 && arrayList.size() != 2) {
+            returnString = returnString.substring(0, indexOfSecondLastComma) + ", and" + returnString.substring(indexOfSecondLastComma + 1);
+        }
+        if (arrayList.size() == 2) {
+            returnString = returnString.substring(0, indexOfSecondLastComma) + " and" + returnString.substring(indexOfSecondLastComma + 1);
         }
         return returnString;
     }
