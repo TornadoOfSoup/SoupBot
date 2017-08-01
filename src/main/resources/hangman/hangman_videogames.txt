@@ -163,6 +163,7 @@ xbox three sixty
 xbox one
 griefer
 hacker
+camper
 aimbot
 grinding
 minigame
@@ -186,7 +187,7 @@ face mcshooty
 undertale
 harvest moon
 f zero
-pikmi
+pikmin
 earthbound
 mother
 pokemon mystery dungeon
