@@ -69,8 +69,8 @@ public class memebot {
         DiscordAPI api = Javacord.getApi(token, true);
         final int numOfCommands = 29;
         final int numOfSubCommands = 17;
-        final String version = "1.2.9.5";
-        final String complieDate = "7/31/17 04:44 EST";
+        final String version = "1.2.9.7";
+        final String complieDate = "7/31/17 21:57 EST";
         final String chatFilterVersion = "1.5";
         final boolean[] censor = {false};
         final long[] cooldown = {0};
@@ -231,6 +231,7 @@ public class memebot {
 
                                         if (game1lives == 0) {
                                             message.reply("rip you died");
+                                            message.reply("the word was `" + game1Word + "`");
                                             games[1] = false;
                                         } else {
                                             message.reply(game1lives + " lives remaining.");
@@ -265,6 +266,7 @@ public class memebot {
                                                 "```");
                                     } else {
                                         message.reply("rip you died");
+                                        message.reply("the word was `" + game1Word + "`");
                                         games[1] = false;
                                     }
                                 }
@@ -273,6 +275,12 @@ public class memebot {
                                 message.reply("Exiting game.");
                                 games[1] = false;
                                 return;
+                            } else if (message.getContent().equalsIgnoreCase("$resend")) { //resends sperm+egg and word
+                                message.reply(game1lives + " lives remaining.");
+                                message.reply(makeAsciiSpermEgg(game1lives) + "\n" +
+                                        "```\n" +
+                                        arrayListAsStringForHitlermanGuess(game1GuessedWord) + "\n" +
+                                        "```");
                             }
                         }
 
@@ -1454,7 +1462,8 @@ public class memebot {
                                         message.reply("Stop Hitler from being born by guessing the word in this hangman-style game!\n" +
                                                 "Guess letters with \"$guess [letter]\"\n" +
                                                 "Try to guess the word with \"$guessword [word]\"\n" +
-                                                "You can quit the game with \"$quit\"" +
+                                                "You can quit the game with \"$quit\"\n" +
+                                                "Use \"$resend\" to resend information if it doesn't send.\n" +
                                                 "The game begins now!\n" +
                                                 makeAsciiSpermEgg(game1lives) + "\n" +
                                                 "```\n" +
@@ -1772,9 +1781,9 @@ public class memebot {
     }
 
     public static ArrayList<String> getArrayListOfLines(String path) throws Exception {
-        File hangmanList = new File(ClassLoader.getSystemResource(path).getFile());
+        File file = new File(ClassLoader.getSystemResource(path).getFile());
         ArrayList<String> lines = new ArrayList<String>();
-        BufferedReader br = new BufferedReader(new FileReader(hangmanList));
+        BufferedReader br = new BufferedReader(new FileReader(file));
         String line;
         while ((line = br.readLine()) != null) {
             lines.add(line);
