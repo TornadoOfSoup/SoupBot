@@ -177,3 +177,26 @@ quicksave
 quest
 speedrun
 experience
+terraria
+stardew valley
+team fortress
+hearthstone
+borderlands
+face mcshooty
+undertale
+harvest moon
+f zero
+pikmi
+earthbound
+mother
+pokemon mystery dungeon
+pokemon rumble
+sheik
+dr mario
+luigi's mansion
+yoshi's island
+shovel knight
+rockband
+starbound
+meta knight
+king dedede
