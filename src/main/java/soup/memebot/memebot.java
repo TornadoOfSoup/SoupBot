@@ -69,8 +69,8 @@ public class memebot {
         DiscordAPI api = Javacord.getApi(token, true);
         final int numOfCommands = 29;
         final int numOfSubCommands = 17;
-        final String version = "1.2.9.7";
-        final String complieDate = "7/31/17 21:57 EST";
+        final String version = "1.2.9.8";
+        final String complieDate = "7/31/17 21:291 EST";
         final String chatFilterVersion = "1.5";
         final boolean[] censor = {false};
         final long[] cooldown = {0};
@@ -1473,7 +1473,7 @@ public class memebot {
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                         message.reply("Something went wrong. The most likely problem is in the name of the word list. " +
-                                                "Currently, supported word lists include default, videogames, and ~~science~~.\n" +
+                                                "Currently, supported word lists include default, videogames, and pokemon.\n" +
                                                 "If only two parts have been supplied, the problem is something else.");
                                     }
 
