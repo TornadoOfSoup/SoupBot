@@ -50,6 +50,7 @@ public class memebot {
     static ArrayList<Character> game1GuessedWord = new ArrayList<Character>();
     static ArrayList<Character> game1ActualWord = new ArrayList<Character>();
     static ArrayList<String> game1HelpfulUsers = new ArrayList<String>();
+    static ArrayList<Character> game1UnusedChars = new ArrayList<Character>();
 
     public static void main(String[] args) {
         String token = "";
@@ -69,8 +70,8 @@ public class memebot {
         DiscordAPI api = Javacord.getApi(token, true);
         final int numOfCommands = 29;
         final int numOfSubCommands = 17;
-        final String version = "1.2.9.10";
-        final String complieDate = "7/31/17 23:13 EST";
+        final String version = "1.2.9.11";
+        final String complieDate = "8/3/17 04:24 EST";
         final String chatFilterVersion = "1.5";
         final boolean[] censor = {false};
         final long[] cooldown = {0};
@@ -203,49 +204,53 @@ public class memebot {
                                 if (strChar.length() == 1) {
                                     char c = strChar.charAt(0);
                                     c = Character.toLowerCase(c);
-                                    ArrayList<Integer> indexes = indexesOfCharInArrayList(c, game1ActualWord);
-                                    if (indexes.size() > 0) {
-                                        for (int i : indexes) {
-                                            game1GuessedWord.set(i, game1ActualWord.get(i));
-                                        }
-                                        if (indexes.size() == 1) {
-                                            message.reply("There is 1 " + c + " in the word.");
-                                            if (!arrayListContainsIgnoreCase(game1HelpfulUsers, message.getAuthor().getName())) {
-                                                game1HelpfulUsers.add(message.getAuthor().getName());
+                                    if (game1UnusedChars.contains(c)) {
+                                        game1UnusedChars.remove(game1UnusedChars.indexOf(c));
+                                        ArrayList<Integer> indexes = indexesOfCharInArrayList(c, game1ActualWord);
+                                        if (indexes.size() > 0) {
+                                            for (int i : indexes) {
+                                                game1GuessedWord.set(i, game1ActualWord.get(i));
+                                            }
+                                            if (indexes.size() == 1) {
+                                                message.reply("There is 1 " + c + " in the word.");
+                                                if (!arrayListContainsIgnoreCase(game1HelpfulUsers, message.getAuthor().getName())) {
+                                                    game1HelpfulUsers.add(message.getAuthor().getName());
+                                                }
+                                            } else {
+                                                message.reply("There are " + indexes.size() + " " + c + "'s in the word.");
+                                                if (!arrayListContainsIgnoreCase(game1HelpfulUsers, message.getAuthor().getName())) {
+                                                    game1HelpfulUsers.add(message.getAuthor().getName());
+                                                }
                                             }
                                         } else {
-                                            message.reply("There are " + indexes.size() + " " + c + "'s in the word.");
-                                            if (!arrayListContainsIgnoreCase(game1HelpfulUsers, message.getAuthor().getName())) {
-                                                game1HelpfulUsers.add(message.getAuthor().getName());
-                                            }
+                                            game1lives--;
+                                            message.reply("There are no " + c + "'s in the word.");
                                         }
-                                    } else {
-                                        game1lives--;
-                                        message.reply("There are no " + c + "'s in the word.");
-                                    }
-                                    if (indexesOfCharInArrayList('_', game1GuessedWord).size() == 0) {
-                                        message.reply("Congratulations to " + arrayListAsStringList(game1HelpfulUsers) + "! You've stopped Hitler from being born and saved millions of lives!\n" +
-                                                "The word was `" + game1Word + "`. You were victorious with " + game1lives + " lives remaining.\n");
-                                        games[1] = false;
-                                    } else {
-
-                                        if (game1lives == 0) {
-                                            if (game1HelpfulUsers.size() > 1){
-                                                message.reply("Oh no! " + arrayListAsStringList(game1HelpfulUsers) + " have failed and millions of lives have been doomed to fall to Hitler.");
-                                            } else {
-                                                message.reply("Oh no! " + arrayListAsStringList(game1HelpfulUsers) + " has failed and millions of lives have been doomed to fall to Hitler.");
-                                            }
-                                            message.reply("the word was `" + game1Word + "`");
+                                        if (indexesOfCharInArrayList('_', game1GuessedWord).size() == 0) {
+                                            message.reply("Congratulations to " + arrayListAsStringList(game1HelpfulUsers) + "! You've stopped Hitler from being born and saved millions of lives!\n" +
+                                                    "The word was `" + game1Word + "`. You were victorious with " + game1lives + " lives remaining.\n");
                                             games[1] = false;
                                         } else {
-                                            message.reply(game1lives + " lives remaining.");
-                                            message.reply(makeAsciiSpermEgg(game1lives) + "\n" +
-                                                    "```\n" +
-                                                    arrayListAsStringForHitlermanGuess(game1GuessedWord) + "\n" +
-                                                    "```");
-                                        }
-                                    }
 
+                                            if (game1lives == 0) {
+                                                if (game1HelpfulUsers.size() > 1) {
+                                                    message.reply("Oh no! " + arrayListAsStringList(game1HelpfulUsers) + " have failed and millions of lives have been doomed to fall to Hitler.");
+                                                } else {
+                                                    message.reply("Oh no! " + arrayListAsStringList(game1HelpfulUsers) + " has failed and millions of lives have been doomed to fall to Hitler.");
+                                                }
+                                                message.reply("the word was `" + game1Word + "`");
+                                                games[1] = false;
+                                            } else {
+                                                message.reply(game1lives + " lives remaining.");
+                                                message.reply(makeAsciiSpermEgg(game1lives) + "\n" +
+                                                        "```\n" +
+                                                        arrayListAsStringForHitlermanGuess(game1GuessedWord) + "\n" +
+                                                        "```");
+                                            }
+                                        }
+                                    } else {
+                                        message.reply("You've already guessed that character.");
+                                    }
                                 } else {
                                     message.reply("Error: Make sure you guess exactly one character at a time.");
                                     return;
@@ -1462,11 +1467,16 @@ public class memebot {
                                         Random rand = new Random();
                                         int index = rand.nextInt(words.size());
                                         game1Word = words.get(index).toLowerCase();
+                                        game1UnusedChars.clear();
+                                        for (char c = 'a'; c != '{'; c++) { //fills it with 26 letters of alphabet
+                                            game1UnusedChars.add(c);
+                                        }
                                         game1lives = 8;
                                         System.out.println(game1Word);
                                         game1GuessedWord.clear();
                                         game1ActualWord.clear();
                                         game1HelpfulUsers.clear();
+
                                         String blanks = multiplyString("_", game1Word.length());
 
                                         game1GuessedWord = arrayListFromArray(blanks.toCharArray());
@@ -1814,13 +1824,13 @@ public class memebot {
         String string = "```\n" +
                 "           1, - ~ ~ ~ - ,\n" +
                 "       1, '               ' ,\n" +
-                "     1,                       ,\n" +
-                "    1,                         ,\n" +
-                "   1,                           ,\n" +
-                "   1,                           ,\n" +
-                "~~•1,                           ,\n" +
-                "    1,                         ,\n" +
-                "     1,                       ,\n" +
+                "     1,    a     b     c      ,\n" +
+                "    1,  d     e     f     g    ,\n" +
+                "   1,      h     i     j    k   ,\n" +
+                "   1,  l      m     n     o     ,\n" +
+                "~~•1,     p     q     r    s    ,\n" +
+                "    1,  t    u     v     w     ,\n" +
+                "     1,    x     y     z      ,\n" +
                 "       1,                  , '\n" +
                 "         1' - , _ _ _ ,  '\n" +
                 "```";
@@ -1828,8 +1838,11 @@ public class memebot {
         if (sizeOfSpace == 0) {
              returnString = string.replace("1", "");
         } else {
-            String spaces = multiplyString(" ", sizeOfSpace*2);
+            String spaces = multiplyString(" ", sizeOfSpace*8); //change the number sizeOfSpace is multiplied by to change the distance between sperm and egg accordingly
             returnString = string.replace("1", spaces);
+        }
+        for (char c : game1UnusedChars) {
+            returnString = returnString.replace(c, ' ');
         }
         return returnString;
     }
