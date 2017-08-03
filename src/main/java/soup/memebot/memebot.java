@@ -69,8 +69,8 @@ public class memebot {
         DiscordAPI api = Javacord.getApi(token, true);
         final int numOfCommands = 29;
         final int numOfSubCommands = 17;
-        final String version = "1.2.9.8";
-        final String complieDate = "7/31/17 21:291 EST";
+        final String version = "1.2.9.10";
+        final String complieDate = "7/31/17 23:13 EST";
         final String chatFilterVersion = "1.5";
         final boolean[] censor = {false};
         final long[] cooldown = {0};
@@ -230,7 +230,11 @@ public class memebot {
                                     } else {
 
                                         if (game1lives == 0) {
-                                            message.reply("rip you died");
+                                            if (game1HelpfulUsers.size() > 1){
+                                                message.reply("Oh no! " + arrayListAsStringList(game1HelpfulUsers) + " have failed and millions of lives have been doomed to fall to Hitler.");
+                                            } else {
+                                                message.reply("Oh no! " + arrayListAsStringList(game1HelpfulUsers) + " has failed and millions of lives have been doomed to fall to Hitler.");
+                                            }
                                             message.reply("the word was `" + game1Word + "`");
                                             games[1] = false;
                                         } else {
@@ -243,12 +247,14 @@ public class memebot {
                                     }
 
                                 } else {
-                                    message.reply("Error: Make sure you only guess one character at a time.");
+                                    message.reply("Error: Make sure you guess exactly one character at a time.");
                                     return;
                                 }
                             } else if (message.getContent().startsWith("$guessword")) {
                                 String word = message.getContent().replace("$guessword ", "");
-                                if (word.equalsIgnoreCase(game1Word)) {
+                                if (message.getContent().equalsIgnoreCase("$guessword")){ //user didn't give a word
+                                    message.reply("Use \"$guessword [word]\" to guess a word.");
+                                } else if (word.equalsIgnoreCase(game1Word)) {
                                     if (!arrayListContainsIgnoreCase(game1HelpfulUsers, message.getAuthor().getName())) {
                                         game1HelpfulUsers.add(message.getAuthor().getName());
                                     }
@@ -265,7 +271,11 @@ public class memebot {
                                                 arrayListAsStringForHitlermanGuess(game1GuessedWord) + "\n" +
                                                 "```");
                                     } else {
-                                        message.reply("rip you died");
+                                        if (game1HelpfulUsers.size() > 1){
+                                            message.reply("Oh no! " + arrayListAsStringList(game1HelpfulUsers) + " have failed and millions of lives have been doomed to fall to Hitler.");
+                                        } else {
+                                            message.reply("Oh no! " + arrayListAsStringList(game1HelpfulUsers) + " has failed and millions of lives have been doomed to fall to Hitler.");
+                                        }
                                         message.reply("the word was `" + game1Word + "`");
                                         games[1] = false;
                                     }
@@ -281,9 +291,17 @@ public class memebot {
                                         "```\n" +
                                         arrayListAsStringForHitlermanGuess(game1GuessedWord) + "\n" +
                                         "```");
+                            } else if (message.getContent().equalsIgnoreCase("$addlife")) {
+                                if (isOnList(message.getAuthor().getName(), whitelist)) {
+                                    game1lives++;
+                                    message.reply("Number of lives increased to " + game1lives + ".");
+                                } else {
+                                    message.reply("Error: You are not a whitelisted user.");
+                                }
                             }
                         }
 
+                        //end of games
 
                         if (message.getContent().equalsIgnoreCase("$help")) {
                             // reply to the message
