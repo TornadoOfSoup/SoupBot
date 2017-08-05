@@ -76,9 +76,9 @@ public class memebot {
         DiscordAPI api = Javacord.getApi(token, true);
         final int numOfCommands = 29;
         final int numOfSubCommands = 17;
-        final String version = "1.2.3.1";
-        final String complieDate = "8/5/17 03:33 EST";
-        final String chatFilterVersion = "1.5";
+        final String version = "1.2.3.2";
+        final String complieDate = "8/5/17 16:58 EST";
+        final String chatFilterVersion = "1.6";
         final boolean[] censor = {false};
         final long[] cooldown = {0};
         final boolean[] modes = {false, false}; //0 = fastPictures, 1 = restricted
@@ -152,8 +152,8 @@ public class memebot {
                         // censorship below
 
                         String editedMessage = message.getContent();
-                        if (censor[0] && (message.getContent().contains("fuck") || message.getContent().contains("shit") || message.getContent().contains("bastard") || message.getContent().contains("dick") || message.getContent().contains("pussy") || message.getContent().contains("cunt") || message.getContent().contains("bitch") || message.getContent().contains("cock")
-                                || message.getContent().contains("Fuck") || message.getContent().contains("Shit") || message.getContent().contains("Dick") || message.getContent().contains("Pussy") || message.getContent().contains("Cunt") || message.getContent().contains("Bitch") || message.getContent().contains("nigger") || message.getContent().contains("or does it"))) {
+
+                        if (censor[0]) {
                             editedMessage = StringUtils.replaceIgnoreCase(editedMessage, "fuck", "tarnation"); //replace all of this with a StringUtils.replaceEach();
                             editedMessage = StringUtils.replaceIgnoreCase(editedMessage, "shit", "flummery");
                             editedMessage = StringUtils.replaceIgnoreCase(editedMessage, "pussy", "baguette");
@@ -165,9 +165,11 @@ public class memebot {
                             editedMessage = StringUtils.replaceIgnoreCase(editedMessage, "bastard", "baguette");
                             editedMessage = StringUtils.replaceIgnoreCase(editedMessage, "or does it", "I'm a frog");
 
-                            message.delete();
-                            message.reply(String.valueOf("**" + message.getAuthor()) + "**: \n" + editedMessage);
-                            System.out.println(editedMessage);
+                            if (!message.getContent().equals(editedMessage)) {
+                                message.delete();
+                                message.reply(String.valueOf("**" + message.getAuthor()) + "**: \n" + editedMessage);
+                                System.out.println(message.getContent() + " → " + editedMessage);
+                            }
                         }
                         // end of censorship
 
