@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_6">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_6" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -16,5 +16,6 @@
     <orderEntry type="library" name="commons-lang3-3.5" level="project" />
     <orderEntry type="library" name="httpclient-4.5.3" level="project" />
     <orderEntry type="library" name="commons-math-2.2" level="project" />
+    <orderEntry type="library" name="jsoup-1.10.3-javadoc" level="project" />
   </component>
 </module>

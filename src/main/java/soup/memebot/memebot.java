@@ -12,6 +12,7 @@ import de.btobastian.javacord.listener.message.MessageCreateListener;
 import de.btobastian.javacord.*;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.*;
 import java.sql.Timestamp;
@@ -23,6 +24,7 @@ import java.util.concurrent.Future;
 import java.util.Random;
 import java.awt.TrayIcon.MessageType;
 
+import javax.imageio.ImageIO;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
@@ -32,6 +34,10 @@ import de.btobastian.javacord.listener.user.UserChangeStatusListener;
 import org.apache.commons.lang3.StringUtils;
 
 import org.apache.commons.math.util.MathUtils;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 public class memebot {
 
@@ -70,8 +76,8 @@ public class memebot {
         DiscordAPI api = Javacord.getApi(token, true);
         final int numOfCommands = 29;
         final int numOfSubCommands = 17;
-        final String version = "1.2.9.11";
-        final String complieDate = "8/3/17 04:24 EST";
+        final String version = "1.2.3.1";
+        final String complieDate = "8/5/17 03:33 EST";
         final String chatFilterVersion = "1.5";
         final boolean[] censor = {false};
         final long[] cooldown = {0};
@@ -346,6 +352,8 @@ public class memebot {
                                     "$factors\n" +
                                     "$leetspeak\n" +
                                     "$game\n" +
+                                    "$google\n" +
+                                    "$cat\n" +
                                     "```");
                         } else if (message.getContent().equalsIgnoreCase("$info")) {
                             message.reply("```\n" +
@@ -1513,6 +1521,79 @@ public class memebot {
                                 return;
                             }
 
+                        } else if (message.getContent().startsWith("$google")) { //featuring the worst way ever to implement this
+                            if (message.getContent().equalsIgnoreCase("$google")) {
+                                message.reply("```\n" +
+                                        "Do a google search or something.\n" +
+                                        "Syntax: \"$google [query]\"\n" +
+                                        "Example: \"$google cats\"" +
+                                        "```");
+                                return;
+                            }
+                            String query = message.getContent().replace("$google ", "");
+                            query = query.replace("+", "%2B");
+                            query = query.replace(' ', '+'); //formatting for google search
+                            try {
+                                Document doc = Jsoup.connect("https://www.google.com/search?q=" + query + "&num=5").userAgent("SoupBot v1.2.9.11").get();
+                                Elements links = doc.select("a[href]");
+                                Elements meaningfulLinks = new Elements();
+
+                                for (Element link : links) {
+                                    if (link.toString().startsWith("<a href=\"/url?")) {
+                                        meaningfulLinks.add(link);
+                                    }
+                                }
+                                int elementNo = 0;
+                                for (Element link : meaningfulLinks) {
+                                    boolean foundALink = false;
+                                    if (link.text().contains("wikipedia")) {
+                                        elementNo = links.indexOf(link);
+                                        foundALink = true;
+                                    }
+                                    if (foundALink) break;
+                                }
+                                    String href = meaningfulLinks.get(elementNo).attr("abs:href");
+                                    System.out.println(href);
+                                    message.reply(href);
+                                //okitworksfornow
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        } else if (message.getContent().startsWith("$cat")) {
+                            String url = "";
+                            int number = 0;
+                            if (message.getContent().equalsIgnoreCase("$cat")) {
+                                Random rand = new Random();
+                                number = rand.nextInt(365);
+                                url = "http://www.iscalio.com/cats/" + number + ".jpg";
+                            } else {
+                                String[] parts = message.getContent().split(" ");
+                                number = Integer.parseInt(parts[1]);
+                                url = "http://www.iscalio.com/cats/" + number + ".jpg";
+                                try {
+                                    Document img = Jsoup.connect(url).get();
+                                    message.reply(img.html());
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                            try {
+                                BufferedImage img = ImageIO.read(new URL(url));
+                                System.out.println(ClassLoader.getSystemResource("images/donotdelete").getPath());
+                                String path = ClassLoader.getSystemResource("images/donotdelete").getPath().substring(0, ClassLoader.getSystemResource("images/donotdelete").getPath().lastIndexOf("donotdelete"));
+                                File file = new File(path + number + ".jpg");
+                                if (file.exists()) {
+                                    message.getChannelReceiver().sendFile(file);
+                                } else {
+                                    ImageIO.write(img, "jpg", file);
+                                    Thread.sleep(500);
+                                    message.getChannelReceiver().sendFile(file);
+                                }
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
                         }
 
                     }
@@ -1838,7 +1919,7 @@ public class memebot {
         if (sizeOfSpace == 0) {
              returnString = string.replace("1", "");
         } else {
-            String spaces = multiplyString(" ", sizeOfSpace*8); //change the number sizeOfSpace is multiplied by to change the distance between sperm and egg accordingly
+            String spaces = multiplyString(" ", sizeOfSpace*5); //change the number sizeOfSpace is multiplied by to change the distance between sperm and egg accordingly
             returnString = string.replace("1", spaces);
         }
         for (char c : game1UnusedChars) {
