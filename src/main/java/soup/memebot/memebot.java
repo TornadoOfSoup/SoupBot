@@ -76,8 +76,8 @@ public class memebot {
         DiscordAPI api = Javacord.getApi(token, true);
         final int numOfCommands = 30;
         final int numOfSubCommands = 17;
-        final String version = "1.2.4.3";
-        final String complieDate = "8/6/17 22:12 EST";
+        final String version = "1.2.4.5";
+        final String complieDate = "8/6/17 00:29 EST";
         final String chatFilterVersion = "1.6";
         final boolean[] censor = {false};
         final long[] cooldown = {0};
@@ -1604,8 +1604,13 @@ public class memebot {
                             ArrayList<String> idle = new ArrayList<String>();
                             ArrayList<String> dnd = new ArrayList<String>(); //do not disturb
 
+                            int longestLength = 0;
+
                             for (User user : users) {
                                 if (message.getChannelReceiver().getServer().isMember(user)) {
+                                    if (user.getName().length() > longestLength && user.getStatus() != UserStatus.OFFLINE) {
+                                        longestLength = user.getName().length();
+                                    }
                                     switch (user.getStatus()) {
                                         case ONLINE:
                                             online.add(user.getName());
@@ -1627,11 +1632,17 @@ public class memebot {
                             Collections.sort(dnd, String.CASE_INSENSITIVE_ORDER);
 
                             ArrayList<String>[] userLists = new ArrayList[] {online, idle, dnd};
+                            int columnWidth = longestLength + 10; //leaves some space between columns
+                            if (columnWidth > 36) {
+                                columnWidth = 36; //caps column width at 36
+                            }
                             String outputString = "```\n" +
-                                    formatListsAsColumnsForUserList(userLists) +
+                                    formatListsAsColumns(userLists, columnWidth) +
                                     "```";
                             Future<Message> isSent = message.reply("```\n" +
-                                    "ONLINE" + multiplyString(" ", 27) + "IDLE" + multiplyString(" ", 29) + "DO NOT DISTURB" +
+                                    "ONLINE" + multiplyString(" ", columnWidth - "ONLINE".length()) +
+                                    "IDLE" + multiplyString(" ", columnWidth - "IDLE".length()) +
+                                    "DO NOT DISTURB" + multiplyString(" ", columnWidth - "DO NOT DISTURB".length()) +
                                     "```");
                             while (!isSent.isDone()) {} //should only continue once message sends
                             message.reply(outputString);
@@ -2034,7 +2045,7 @@ public class memebot {
         return returnString;
     }
 
-    public static String formatListsAsColumnsForUserList(ArrayList<String>[] arrayLists) {
+    public static String formatListsAsColumns(ArrayList<String>[] arrayLists, int columnWidth) {
         ArrayList<String> lines = new ArrayList<String>(Arrays.asList(arrayListAsVerticalList(arrayLists[0]).split("\n")));
 
         int longestLength = 0;
@@ -2044,11 +2055,11 @@ public class memebot {
             }
         }
         while (lines.size() < longestLength) {
-            lines.add(multiplyString(" ", 33));
+            lines.add(multiplyString(" ", columnWidth));
         }
         for (String line : lines) {
             try {
-                lines.set(lines.indexOf(line), line + multiplyString(" ", 33 - line.length()));
+                lines.set(lines.indexOf(line), line + multiplyString(" ", columnWidth - line.length()));
             } catch (IndexOutOfBoundsException e) {
                 System.out.println("IndexOutOfBoundsException");
             }
@@ -2057,7 +2068,7 @@ public class memebot {
             if (!arrayList.equals(arrayLists[0])) { //won't add the first list twice
                 for (String line : lines) {
                     try {
-                        lines.set(lines.indexOf(line), line + arrayList.get(lines.indexOf(line)) + multiplyString(" ", (33 - arrayList.get(lines.indexOf(line)).length())));
+                        lines.set(lines.indexOf(line), line + arrayList.get(lines.indexOf(line)) + multiplyString(" ", (columnWidth - arrayList.get(lines.indexOf(line)).length())));
                     } catch (IndexOutOfBoundsException e) {
                         System.out.println("IndexOutOfBoundsException");
                     }
