@@ -17,5 +17,6 @@
     <orderEntry type="library" name="commons-math-2.2" level="project" />
     <orderEntry type="library" name="jsoup-1.10.3-javadoc" level="project" />
     <orderEntry type="library" name="javacord-2.0.15-shaded" level="project" />
+    <orderEntry type="library" name="gson-2.8.1-javadoc" level="project" />
   </component>
 </module>

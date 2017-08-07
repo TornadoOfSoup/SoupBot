@@ -2,6 +2,7 @@ package soup.memebot;
 
 import com.google.common.util.concurrent.FutureCallback;
 import de.btobastian.javacord.entities.Channel;
+import de.btobastian.javacord.entities.Server;
 import de.btobastian.javacord.entities.User;
 import de.btobastian.javacord.entities.UserStatus;
 import de.btobastian.javacord.entities.message.Message;
@@ -53,6 +54,8 @@ public class memebot {
 
     static String game1Word = "";
     static int game1lives = 0;
+    static int game1TurnNumber = 0;
+    static int game1MaxLives = 0;
     static ArrayList<Character> game1GuessedWord = new ArrayList<Character>();
     static ArrayList<Character> game1ActualWord = new ArrayList<Character>();
     static ArrayList<String> game1HelpfulUsers = new ArrayList<String>();
@@ -74,10 +77,10 @@ public class memebot {
         }
 
         DiscordAPI api = Javacord.getApi(token, true);
-        final int numOfCommands = 30;
+        final int numOfCommands = 32;
         final int numOfSubCommands = 17;
-        final String version = "1.2.4.5";
-        final String complieDate = "8/6/17 00:29 EST";
+        final String version = "1.3.2";
+        final String complieDate = "8/6/17 08:23 EST";
         final String chatFilterVersion = "1.6";
         final boolean[] censor = {false};
         final long[] cooldown = {0};
@@ -90,6 +93,9 @@ public class memebot {
                 break;
             }
         }
+
+        new File(Utils.getPathOfResourcesFolder() + "/images").mkdir(); //create necessary directories
+        new File(Utils.getPathOfResourcesFolder() + "/stats").mkdir();
 
         System.out.println("Logging in...");
 
@@ -221,30 +227,37 @@ public class memebot {
                                             }
                                             if (indexes.size() == 1) {
                                                 message.reply("There is 1 " + c + " in the word.");
-                                                if (!arrayListContainsIgnoreCase(game1HelpfulUsers, message.getAuthor().getName())) {
-                                                    game1HelpfulUsers.add(message.getAuthor().getName());
+                                                game1TurnNumber++;
+                                                if (!arrayListContainsIgnoreCase(game1HelpfulUsers, message.getAuthor().getId())) {
+                                                    game1HelpfulUsers.add(message.getAuthor().getId());
+                                                    try { LoadUserStats.loadStats(message.getAuthor()).addPlayedGames1(1); } catch (IOException e) { e.printStackTrace(); }
                                                 }
                                             } else {
                                                 message.reply("There are " + indexes.size() + " " + c + "'s in the word.");
-                                                if (!arrayListContainsIgnoreCase(game1HelpfulUsers, message.getAuthor().getName())) {
-                                                    game1HelpfulUsers.add(message.getAuthor().getName());
+                                                game1TurnNumber++;
+                                                if (!arrayListContainsIgnoreCase(game1HelpfulUsers, message.getAuthor().getId())) {
+                                                    game1HelpfulUsers.add(message.getAuthor().getId());
+                                                    try { LoadUserStats.loadStats(message.getAuthor()).addPlayedGames1(1); } catch (IOException e) { e.printStackTrace(); }
                                                 }
                                             }
                                         } else {
                                             game1lives--;
+                                            game1TurnNumber++;
                                             message.reply("There are no " + c + "'s in the word.");
                                         }
                                         if (indexesOfCharInArrayList('_', game1GuessedWord).size() == 0) {
-                                            message.reply("Congratulations to " + arrayListAsStringList(game1HelpfulUsers) + "! You've stopped Hitler from being born and saved millions of lives!\n" +
-                                                    "The word was `" + game1Word + "`. You were victorious with " + game1lives + " lives remaining.\n");
+                                            message.reply("Congratulations to " + arrayListOfIdsAsStringListOfNames(game1HelpfulUsers, api) + "! You've stopped Hitler from being born and saved millions of lives!\n" +
+                                                    "The word was `" + game1Word + "`. You were victorious with " + game1lives + " lives remaining in " + game1TurnNumber + " turns.\n");
+
+                                            message.reply("All players involved earn **" + hitlermanVictory(game1HelpfulUsers, game1TurnNumber, game1lives, game1MaxLives, api) + "** exp.");
                                             games[1] = false;
                                         } else {
-
+                                            game1TurnNumber++;
                                             if (game1lives == 0) {
                                                 if (game1HelpfulUsers.size() > 1) {
-                                                    message.reply("Oh no! " + arrayListAsStringList(game1HelpfulUsers) + " have failed and millions of lives have been doomed to fall to Hitler.");
+                                                    message.reply("Oh no! " + arrayListOfIdsAsStringListOfNames(game1HelpfulUsers, api) + " have failed and millions of lives have been doomed to fall to Hitler.");
                                                 } else {
-                                                    message.reply("Oh no! " + arrayListAsStringList(game1HelpfulUsers) + " has failed and millions of lives have been doomed to fall to Hitler.");
+                                                    message.reply("Oh no! " + arrayListOfIdsAsStringListOfNames(game1HelpfulUsers, api) + " has failed and millions of lives have been doomed to fall to Hitler.");
                                                 }
                                                 message.reply("The word was `" + game1Word + "`");
                                                 games[1] = false;
@@ -268,15 +281,21 @@ public class memebot {
                                 if (message.getContent().equalsIgnoreCase("$guessword")){ //user didn't give a word
                                     message.reply("Use \"$guessword [word]\" to guess a word.");
                                 } else if (word.equalsIgnoreCase(game1Word)) {
-                                    if (!arrayListContainsIgnoreCase(game1HelpfulUsers, message.getAuthor().getName())) {
-                                        game1HelpfulUsers.add(message.getAuthor().getName());
+                                    if (!arrayListContainsIgnoreCase(game1HelpfulUsers, message.getAuthor().getId())) {
+                                        game1HelpfulUsers.add(message.getAuthor().getId());
+                                        try { LoadUserStats.loadStats(message.getAuthor()).addPlayedGames1(1); } catch (IOException e) { e.printStackTrace(); }
                                     }
-                                    message.reply("Congratulations to " + arrayListAsStringList(game1HelpfulUsers) + "! You've stopped Hitler from being born and saved millions of lives!\n" +
-                                            "The word was `" + game1Word + "`. You were victorious with " + game1lives + " lives remaining.\n");
+                                    game1TurnNumber++;
+                                    message.reply("Congratulations to " + arrayListOfIdsAsStringListOfNames(game1HelpfulUsers, api) + "! You've stopped Hitler from being born and saved millions of lives!\n" +
+                                            "The word was `" + game1Word + "`. You were victorious with " + game1lives + " lives remaining in " + game1TurnNumber + " turns.\n");
+
+                                    message.reply("All players involved earn **" + hitlermanVictory(game1HelpfulUsers, game1TurnNumber, game1lives, game1MaxLives, api) + "** exp.");
                                     games[1] = false;
                                 } else {
                                     game1lives--;
+                                    game1TurnNumber++;
                                     if (game1lives > 0) {
+
                                         message.reply("That's not it! Try again.\n" +
                                                 game1lives + " lives remaining.");
                                         message.reply(makeAsciiSpermEgg(game1lives) + "\n" +
@@ -285,9 +304,9 @@ public class memebot {
                                                 "```");
                                     } else {
                                         if (game1HelpfulUsers.size() > 1){
-                                            message.reply("Oh no! " + arrayListAsStringList(game1HelpfulUsers) + " have failed and millions of lives have been doomed to fall to Hitler.");
+                                            message.reply("Oh no! " + arrayListOfIdsAsStringListOfNames(game1HelpfulUsers, api) + " have failed and millions of lives have been doomed to fall to Hitler.");
                                         } else {
-                                            message.reply("Oh no! " + arrayListAsStringList(game1HelpfulUsers) + " has failed and millions of lives have been doomed to fall to Hitler.");
+                                            message.reply("Oh no! " + arrayListOfIdsAsStringListOfNames(game1HelpfulUsers, api) + " has failed and millions of lives have been doomed to fall to Hitler.");
                                         }
                                         message.reply("The word was `" + game1Word + "`");
                                         games[1] = false;
@@ -357,6 +376,8 @@ public class memebot {
                                     "$google\n" +
                                     "$cat\n" +
                                     "$onlineusers\n" +
+                                    "$addxp\n" +
+                                    "$getstats\n" +
                                     "```");
                         } else if (message.getContent().equalsIgnoreCase("$info")) {
                             message.reply("```\n" +
@@ -1483,10 +1504,12 @@ public class memebot {
                                             game1UnusedChars.add(c);
                                         }
                                         game1lives = 8;
+                                        game1MaxLives = 8;
                                         System.out.println(game1Word);
                                         game1GuessedWord.clear();
                                         game1ActualWord.clear();
                                         game1HelpfulUsers.clear();
+                                        game1TurnNumber = 0;
 
                                         String blanks = multiplyString("_", game1Word.length());
 
@@ -1611,6 +1634,7 @@ public class memebot {
                                     if (user.getName().length() > longestLength && user.getStatus() != UserStatus.OFFLINE) {
                                         longestLength = user.getName().length();
                                     }
+
                                     switch (user.getStatus()) {
                                         case ONLINE:
                                             online.add(user.getName());
@@ -1646,6 +1670,93 @@ public class memebot {
                                     "```");
                             while (!isSent.isDone()) {} //should only continue once message sends
                             message.reply(outputString);
+                        } else if (message.getContent().startsWith("$addxp")) {
+                            if (message.getContent().equals("$addxp")) {
+                                message.reply("```\n" +
+                                        "Adds a given number of xp.\n" +
+                                        "Syntax: \"$addxp [num] [user]\"\n" +
+                                        "Example: \"$addxp 5 @TornadoOfSoup\"\n" +
+                                        "If a username is not provided, xp will be given to the command sender.\n" +
+                                        "```");
+                                return;
+                            }
+                            if (isOnList(message.getAuthor().getName(), whitelist)) {
+                                String id = message.getAuthor().getId();
+                                String[] parts = message.getContent().split(" ");
+
+                                if (parts.length == 2) {
+                                    if (Utils.statsFileExists(id)) {
+                                        try {
+                                            UserStats userStats = LoadUserStats.loadStats(id);
+                                            userStats.addExp(Integer.parseInt(parts[1]));
+                                        } catch (FileNotFoundException e) {
+                                            e.printStackTrace();
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
+                                    } else {
+                                        UserStats userStats = new UserStats(id);
+                                        userStats.addExp(Integer.parseInt(parts[1]));
+                                    }
+                                    message.reply("Added " + parts[1] + " exp to user " + message.getAuthor().getName() + ".");
+                                } else if (parts.length == 3) {
+                                    List<User> mentions = message.getMentions();
+                                    if (!mentions.isEmpty()) {
+                                        if (Utils.statsFileExists(mentions.get(0).getId())) {
+                                            try {
+                                                UserStats userStats = LoadUserStats.loadStats(id);
+                                                userStats.addExp(Integer.parseInt(parts[1]));
+                                            } catch (FileNotFoundException e) {
+                                                e.printStackTrace();
+                                            } catch (IOException e) {
+                                                e.printStackTrace();
+                                            }
+                                        } else {
+                                            UserStats userStats = new UserStats(mentions.get(0).getId());
+                                            userStats.addExp(Integer.parseInt(parts[1]));
+                                        }
+                                        message.reply("Added " + parts[1] + " exp to user " + mentions.get(0).getName() + ".");
+                                    } else {
+                                        message.reply("Error: No mentions found.");
+                                    }
+
+                                } else {
+                                    message.reply("Error: Command must have three or fewer parts.");
+                                }
+                            }
+                        } else if (message.getContent().startsWith("$getstats")) {
+                            if (message.getContent().equalsIgnoreCase("$getstats")) {
+                                if (Utils.statsFileExists(message.getAuthor().getId())) {
+                                    try {
+                                        message.reply(formatStats(api, LoadUserStats.loadStats(message.getAuthor().getId())));
+                                    } catch (FileNotFoundException e) {
+                                        e.printStackTrace();
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                } else {
+                                    UserStats userStats = new UserStats(message.getAuthor().getId());
+                                    message.reply(formatStats(api, userStats));
+                                }
+                            } else {
+                                List<User> mentions = message.getMentions();
+                                if (mentions.isEmpty()) {
+                                    message.reply("Error: Command must include one mention.");
+                                } else {
+                                    if (Utils.statsFileExists(mentions.get(0).getId())) {
+                                        try {
+                                            message.reply(formatStats(api, LoadUserStats.loadStats(mentions.get(0))));
+                                        } catch (FileNotFoundException e) {
+                                            e.printStackTrace();
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
+                                    } else {
+                                        UserStats userStats = new UserStats(mentions.get(0).getId());
+                                        message.reply(formatStats(api, userStats));
+                                    }
+                                }
+                            }
                         }
 
                     }
@@ -1996,6 +2107,34 @@ public class memebot {
         return returnString;
     }
 
+    public static String arrayListOfIdsAsStringListOfNames(ArrayList<String> arrayList, DiscordAPI api) {
+        String returnString = "";
+        int indexOfLastComma = 0;
+        int indexOfSecondLastComma = 0;
+
+        for (String string : arrayList) {
+            try {
+                string = api.getUserById(string).get().getName();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+            returnString += string + ", ";
+            indexOfSecondLastComma = indexOfLastComma;
+            indexOfLastComma = returnString.length() - 2;
+        }
+
+        returnString = returnString.substring(0, indexOfLastComma); //cut the string before the comma
+        if (arrayList.size() > 1 && arrayList.size() != 2) {
+            returnString = returnString.substring(0, indexOfSecondLastComma) + ", and" + returnString.substring(indexOfSecondLastComma + 1);
+        }
+        if (arrayList.size() == 2) {
+            returnString = returnString.substring(0, indexOfSecondLastComma) + " and" + returnString.substring(indexOfSecondLastComma + 1);
+        }
+        return returnString;
+    }
+
     public static String arrayListAsStringList(ArrayList<String> arrayList) {
         String returnString = "";
         int indexOfLastComma = 0;
@@ -2076,6 +2215,76 @@ public class memebot {
             }
         }
         return arrayListAsVerticalList(lines);
+    }
+
+    public static String formatStats(DiscordAPI api, UserStats userStats) {
+        String id = userStats.getId();
+        int exp = userStats.getExp();
+        double hitlermanWinLossRatio = 0;
+
+        try {
+            hitlermanWinLossRatio = userStats.getPlayedGames1() / (userStats.getWonGames1() + userStats.getWonTeamGames1());
+        } catch (ArithmeticException e) {
+            hitlermanWinLossRatio = 0;
+        }
+
+        String returnString = "";
+
+        try {
+            returnString = "```\n" +
+                "Name: " + api.getUserById(id).get().getName() + "\n" +
+                "ID: " + id + "\n" +
+                "Level: " + "WIP" + "\n" +
+                "EXP: " + exp + "\n" +
+                "\n" +
+                "Hitlerman games played: " + userStats.getPlayedGames1() + "\n" +
+                "Hitlerman games won: " + userStats.getWonGames1() + "\n" +
+                "Hitlerman team games won: " + userStats.getWonTeamGames1() + "\n" +
+                "Hitlerman W/L ratio: " + hitlermanWinLossRatio + "\n" +
+                "```";
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        return returnString;
+    }
+
+    public static int hitlermanVictory(ArrayList<String> players, int turns, int lives, int maxLives, DiscordAPI api) {
+        double xp = 0;
+        double xpBase = 1000;
+        xp =  xpBase / (maxLives - lives) / (turns / 2) / players.size();
+
+        int intXp = (int)Math.round(xp);
+
+        for (String id : players) {
+            if (Utils.statsFileExists(id)) {
+                try {
+                    UserStats userStats = LoadUserStats.loadStats(id);
+                    userStats.addExp(intXp);
+
+                    if (players.size() > 1) {
+                        userStats.addWonTeamGames1(1);
+                    } else {
+                        userStats.addWonGames1(1);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                UserStats userStats = new UserStats(id);
+                userStats.addExp(intXp);
+
+                if (players.size() > 1) {
+                    userStats.addWonTeamGames1(1);
+                } else {
+                    userStats.addWonGames1(1);
+                }
+            }
+        }
+
+        return intXp;
     }
 
 }
