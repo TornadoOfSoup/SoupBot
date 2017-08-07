@@ -76,7 +76,7 @@ public class memebot {
         DiscordAPI api = Javacord.getApi(token, true);
         final int numOfCommands = 30;
         final int numOfSubCommands = 17;
-        final String version = "1.2.4.2";
+        final String version = "1.2.4.3";
         final String complieDate = "8/6/17 22:12 EST";
         final String chatFilterVersion = "1.6";
         final boolean[] censor = {false};
@@ -1604,11 +1604,6 @@ public class memebot {
                             ArrayList<String> idle = new ArrayList<String>();
                             ArrayList<String> dnd = new ArrayList<String>(); //do not disturb
 
-                            Collections.sort(online, String.CASE_INSENSITIVE_ORDER);
-                            Collections.sort(idle, String.CASE_INSENSITIVE_ORDER);
-                            Collections.sort(dnd, String.CASE_INSENSITIVE_ORDER);
-
-
                             for (User user : users) {
                                 if (message.getChannelReceiver().getServer().isMember(user)) {
                                     switch (user.getStatus()) {
@@ -1626,6 +1621,11 @@ public class memebot {
                                     }
                                 }
                             }
+
+                            Collections.sort(online, String.CASE_INSENSITIVE_ORDER);
+                            Collections.sort(idle, String.CASE_INSENSITIVE_ORDER);
+                            Collections.sort(dnd, String.CASE_INSENSITIVE_ORDER);
+
                             ArrayList<String>[] userLists = new ArrayList[] {online, idle, dnd};
                             String outputString = "```\n" +
                                     formatListsAsColumnsForUserList(userLists) +
