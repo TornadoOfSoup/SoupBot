@@ -79,8 +79,8 @@ public class memebot {
         DiscordAPI api = Javacord.getApi(token, true);
         final int numOfCommands = 32;
         final int numOfSubCommands = 17;
-        final String version = "1.3.2";
-        final String complieDate = "8/6/17 08:23 EST";
+        final String version = "1.3.2.2";
+        final String complieDate = "8/7/17 18:07 EST";
         final String chatFilterVersion = "1.6";
         final boolean[] censor = {false};
         final long[] cooldown = {0};
@@ -219,6 +219,7 @@ public class memebot {
                                     char c = strChar.charAt(0);
                                     c = Character.toLowerCase(c);
                                     if (game1UnusedChars.contains(c)) {
+                                        game1TurnNumber++;
                                         game1UnusedChars.remove(game1UnusedChars.indexOf(c));
                                         ArrayList<Integer> indexes = indexesOfCharInArrayList(c, game1ActualWord);
                                         if (indexes.size() > 0) {
@@ -227,14 +228,13 @@ public class memebot {
                                             }
                                             if (indexes.size() == 1) {
                                                 message.reply("There is 1 " + c + " in the word.");
-                                                game1TurnNumber++;
+
                                                 if (!arrayListContainsIgnoreCase(game1HelpfulUsers, message.getAuthor().getId())) {
                                                     game1HelpfulUsers.add(message.getAuthor().getId());
                                                     try { LoadUserStats.loadStats(message.getAuthor()).addPlayedGames1(1); } catch (IOException e) { e.printStackTrace(); }
                                                 }
                                             } else {
                                                 message.reply("There are " + indexes.size() + " " + c + "'s in the word.");
-                                                game1TurnNumber++;
                                                 if (!arrayListContainsIgnoreCase(game1HelpfulUsers, message.getAuthor().getId())) {
                                                     game1HelpfulUsers.add(message.getAuthor().getId());
                                                     try { LoadUserStats.loadStats(message.getAuthor()).addPlayedGames1(1); } catch (IOException e) { e.printStackTrace(); }
@@ -242,17 +242,15 @@ public class memebot {
                                             }
                                         } else {
                                             game1lives--;
-                                            game1TurnNumber++;
                                             message.reply("There are no " + c + "'s in the word.");
                                         }
                                         if (indexesOfCharInArrayList('_', game1GuessedWord).size() == 0) {
                                             message.reply("Congratulations to " + arrayListOfIdsAsStringListOfNames(game1HelpfulUsers, api) + "! You've stopped Hitler from being born and saved millions of lives!\n" +
                                                     "The word was `" + game1Word + "`. You were victorious with " + game1lives + " lives remaining in " + game1TurnNumber + " turns.\n");
 
-                                            message.reply("All players involved earn **" + hitlermanVictory(game1HelpfulUsers, game1TurnNumber, game1lives, game1MaxLives, api) + "** exp.");
+                                            message.reply("All players involved earn **" + hitlermanVictory(game1HelpfulUsers, game1TurnNumber, game1lives, game1MaxLives, game1Word) + "** exp.");
                                             games[1] = false;
                                         } else {
-                                            game1TurnNumber++;
                                             if (game1lives == 0) {
                                                 if (game1HelpfulUsers.size() > 1) {
                                                     message.reply("Oh no! " + arrayListOfIdsAsStringListOfNames(game1HelpfulUsers, api) + " have failed and millions of lives have been doomed to fall to Hitler.");
@@ -281,15 +279,16 @@ public class memebot {
                                 if (message.getContent().equalsIgnoreCase("$guessword")){ //user didn't give a word
                                     message.reply("Use \"$guessword [word]\" to guess a word.");
                                 } else if (word.equalsIgnoreCase(game1Word)) {
+                                    game1TurnNumber++;
                                     if (!arrayListContainsIgnoreCase(game1HelpfulUsers, message.getAuthor().getId())) {
                                         game1HelpfulUsers.add(message.getAuthor().getId());
                                         try { LoadUserStats.loadStats(message.getAuthor()).addPlayedGames1(1); } catch (IOException e) { e.printStackTrace(); }
                                     }
-                                    game1TurnNumber++;
+
                                     message.reply("Congratulations to " + arrayListOfIdsAsStringListOfNames(game1HelpfulUsers, api) + "! You've stopped Hitler from being born and saved millions of lives!\n" +
                                             "The word was `" + game1Word + "`. You were victorious with " + game1lives + " lives remaining in " + game1TurnNumber + " turns.\n");
 
-                                    message.reply("All players involved earn **" + hitlermanVictory(game1HelpfulUsers, game1TurnNumber, game1lives, game1MaxLives, api) + "** exp.");
+                                    message.reply("All players involved earn **" + hitlermanVictory(game1HelpfulUsers, game1TurnNumber, game1lives, game1MaxLives, game1Word) + "** exp.");
                                     games[1] = false;
                                 } else {
                                     game1lives--;
@@ -2251,10 +2250,17 @@ public class memebot {
         return returnString;
     }
 
-    public static int hitlermanVictory(ArrayList<String> players, int turns, int lives, int maxLives, DiscordAPI api) {
+    public static int hitlermanVictory(ArrayList<String> players, int turns, int lives, int maxLives, String word) {
         double xp = 0;
         double xpBase = 1000;
-        xp =  xpBase / (maxLives - lives) / (turns / 2) / players.size();
+        double xpDistribution = 1;
+        xp = xpBase / (maxLives - lives) / (turns / 2) * (word.length() / 6);
+
+        if (players.size() > 1) {
+            xpDistribution = players.size() * 0.625; //makes distribution factor less heavy
+        }
+
+        xp = xp / xpDistribution;
 
         int intXp = (int)Math.round(xp);
 

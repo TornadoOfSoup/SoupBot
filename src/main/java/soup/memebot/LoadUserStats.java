@@ -17,29 +17,41 @@ public class LoadUserStats {
     static Gson gson;
 
     public static UserStats loadStats(User player) throws IOException {
-        reader = new FileReader(new File(Utils.getPathOfResourcesFolder() + "/stats/" + player.getId() + ".json"));
-        gson = new Gson();
-        UserStats userStats = null;
+        File file = new File(Utils.getPathOfResourcesFolder() + "/stats/" + player.getId() + ".json");
+        if (file.exists()) {
+            reader = new FileReader(file);
+            gson = new Gson();
+            UserStats userStats = null;
 
-        while (userStats == null) {
-            if (reader.ready()) {
-                userStats = gson.fromJson(reader, UserStats.class);
+            while (userStats == null) {
+                if (reader.ready()) {
+                    userStats = gson.fromJson(reader, UserStats.class);
+                }
             }
+            return userStats;
+        } else {
+            UserStats userStats = new UserStats(player.getId());
+            return userStats;
         }
-        return userStats;
     }
 
     public static UserStats loadStats(String playerID) throws IOException {
-        reader = new FileReader(new File(Utils.getPathOfResourcesFolder() + "/stats/" + playerID + ".json"));
-        gson = new Gson();
-        UserStats userStats = null;
+        File file = new File(Utils.getPathOfResourcesFolder() + "/stats/" + playerID + ".json");
+        if (file.exists()) {
+            reader = new FileReader(file);
+            gson = new Gson();
+            UserStats userStats = null;
 
-        while (userStats == null) {
-            if (reader.ready()) {
-                userStats = gson.fromJson(reader, UserStats.class);
+            while (userStats == null) {
+                if (reader.ready()) {
+                    userStats = gson.fromJson(reader, UserStats.class);
+                }
             }
+            return userStats;
+        } else {
+            UserStats userStats = new UserStats(playerID);
+            return userStats;
         }
-        return userStats;
     }
 
 }
