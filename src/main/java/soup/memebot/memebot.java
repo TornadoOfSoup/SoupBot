@@ -79,8 +79,8 @@ public class memebot {
         DiscordAPI api = Javacord.getApi(token, true);
         final int numOfCommands = 32;
         final int numOfSubCommands = 17;
-        final String version = "1.3.2.2";
-        final String complieDate = "8/7/17 18:07 EST";
+        final String version = "1.3.2.3";
+        final String complieDate = "8/7/17 18:35 EST";
         final String chatFilterVersion = "1.6";
         final boolean[] censor = {false};
         final long[] cooldown = {0};
@@ -1756,11 +1756,45 @@ public class memebot {
                                     }
                                 }
                             }
+                        } else if (message.getContent().startsWith("$setxp")) {
+                            if (message.getContent().equalsIgnoreCase("$setxp")) {
+                                message.reply("```\n" +
+                                        "Sets player's xp to a given amount.\n" +
+                                        "Syntax: \"$setxp [player] [x]\"\n" +
+                                        "Example: \"$setxp @TornadoOfSoup 50\"\n" +
+                                        "If a player is not provided, xp will be given to the command sender.");
+                                return;
+                            } else {
+                                List<User> mentions = message.getMentions();
+                                String[] parts = message.getContent().split(" ");
+                                if (mentions.size() > 0) {
+                                    try {
+                                        LoadUserStats.loadStats(mentions.get(0)).setExp(Integer.parseInt(parts[2]));
+                                        message.reply("Set user " + mentions.get(0).getName() + "'s xp to " + parts[2] + ".");
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    } catch (NumberFormatException e) {
+                                        e.printStackTrace();
+                                        message.reply("Error: Please make sure an integer is provided.\n" +
+                                                "Syntax: \"$setxp [player] [x]\"\n");
+                                    }
+                                } else {
+                                    try {
+                                        LoadUserStats.loadStats(message.getAuthor()).setExp(Integer.parseInt(parts[1]));
+                                        message.reply("Set user " + message.getAuthor().getName() + "'s xp to " + parts[1] + ".");
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    } catch (NumberFormatException e) {
+                                        e.printStackTrace();
+                                        message.reply("Error: Please make sure an integer is provided.\n" +
+                                                "Syntax: \"$setxp [player] [x]\"\n");
+                                    }
+                                }
+                            }
                         }
 
                     }
                 }); //end of listener
-
 
             }
 

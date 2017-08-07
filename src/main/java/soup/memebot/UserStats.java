@@ -48,7 +48,7 @@ public class UserStats {
     }
 
     public void addExp(int number) {
-        exp += number;
+        this.exp += number;
         System.out.println("Added " + number + " exp to " + this.id);
         try {
             SaveUserStats.saveStats(this);
@@ -58,7 +58,7 @@ public class UserStats {
     }
 
     public void addPlayedGames1(int number) {
-        playedGames1 += number;
+        this.playedGames1 += number;
         try {
             SaveUserStats.saveStats(this);
         } catch (IOException e) {
@@ -67,7 +67,7 @@ public class UserStats {
     }
 
     public void addWonGames1(int number) {
-        wonGames1 += number;
+        this.wonGames1 += number;
         try {
             SaveUserStats.saveStats(this);
         } catch (IOException e) {
@@ -76,7 +76,16 @@ public class UserStats {
     }
 
     public void addWonTeamGames1(int number) {
-        wonTeamGames1 += number;
+        this.wonTeamGames1 += number;
+        try {
+            SaveUserStats.saveStats(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setExp(int exp) {
+        this.exp = exp;
         try {
             SaveUserStats.saveStats(this);
         } catch (IOException e) {
