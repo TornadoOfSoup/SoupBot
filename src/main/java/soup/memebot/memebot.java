@@ -69,30 +69,30 @@ public class memebot {
             ArrayList<String> admin = getArrayListOfLines("admin.pass");
             token = admin.get(0);
             password = admin.get(1);
+            while(true) {
+                String pass = JOptionPane.showInputDialog("Password:"); //checks for a password
+                if (pass.equals(password)) {
+                    break;
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("admin.pass not found, an admin.pass file should have two lines. " +
                     "The first should contain a token, and the second should contain the bot password. It should be located in the resources folder.");
-            System.exit(0);
+                token = JOptionPane.showInputDialog("Token:"); //takes token
+
         }
 
         DiscordAPI api = Javacord.getApi(token, true);
         final int numOfCommands = 32;
         final int numOfSubCommands = 17;
-        final String version = "1.3.2.3";
+        final String version = "1.3.2.4";
         final String complieDate = "8/7/17 18:35 EST";
         final String chatFilterVersion = "1.6";
         final boolean[] censor = {false};
         final long[] cooldown = {0};
         final boolean[] modes = {false, false}; //0 = fastPictures, 1 = restricted
 
-
-        while(true) {
-            String pass = JOptionPane.showInputDialog("Password:"); //checks for a password
-            if (pass.equals(password)) {
-                break;
-            }
-        }
 
         new File(Utils.getPathOfResourcesFolder() + "/images").mkdir(); //create necessary directories
         new File(Utils.getPathOfResourcesFolder() + "/stats").mkdir();
