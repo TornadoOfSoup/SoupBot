@@ -11,11 +11,11 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="javacord-2.0.14-shaded" level="project" />
     <orderEntry type="library" name="sdcf4j-javacord-1.0.4" level="project" />
     <orderEntry type="library" name="commons-lang3-3.5" level="project" />
     <orderEntry type="library" name="httpclient-4.5.3" level="project" />
     <orderEntry type="library" name="commons-math-2.2" level="project" />
     <orderEntry type="library" name="jsoup-1.10.3-javadoc" level="project" />
+    <orderEntry type="library" name="javacord-2.0.15-shaded" level="project" />
   </component>
 </module>

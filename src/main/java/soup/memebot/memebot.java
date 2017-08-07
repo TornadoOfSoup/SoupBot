@@ -74,10 +74,10 @@ public class memebot {
         }
 
         DiscordAPI api = Javacord.getApi(token, true);
-        final int numOfCommands = 29;
+        final int numOfCommands = 30;
         final int numOfSubCommands = 17;
-        final String version = "1.2.3.2";
-        final String complieDate = "8/5/17 16:58 EST";
+        final String version = "1.2.4.2";
+        final String complieDate = "8/6/17 22:12 EST";
         final String chatFilterVersion = "1.6";
         final boolean[] censor = {false};
         final long[] cooldown = {0};
@@ -246,7 +246,7 @@ public class memebot {
                                                 } else {
                                                     message.reply("Oh no! " + arrayListAsStringList(game1HelpfulUsers) + " has failed and millions of lives have been doomed to fall to Hitler.");
                                                 }
-                                                message.reply("the word was `" + game1Word + "`");
+                                                message.reply("The word was `" + game1Word + "`");
                                                 games[1] = false;
                                             } else {
                                                 message.reply(game1lives + " lives remaining.");
@@ -289,7 +289,7 @@ public class memebot {
                                         } else {
                                             message.reply("Oh no! " + arrayListAsStringList(game1HelpfulUsers) + " has failed and millions of lives have been doomed to fall to Hitler.");
                                         }
-                                        message.reply("the word was `" + game1Word + "`");
+                                        message.reply("The word was `" + game1Word + "`");
                                         games[1] = false;
                                     }
                                 }
@@ -356,6 +356,7 @@ public class memebot {
                                     "$game\n" +
                                     "$google\n" +
                                     "$cat\n" +
+                                    "$onlineusers\n" +
                                     "```");
                         } else if (message.getContent().equalsIgnoreCase("$info")) {
                             message.reply("```\n" +
@@ -1596,6 +1597,44 @@ public class memebot {
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
+                        } else if (message.getContent().equalsIgnoreCase("$onlineusers")) {
+                            ArrayList<User> users = new ArrayList<User>(api.getUsers());
+
+                            ArrayList<String> online = new ArrayList<String>();
+                            ArrayList<String> idle = new ArrayList<String>();
+                            ArrayList<String> dnd = new ArrayList<String>(); //do not disturb
+
+                            Collections.sort(online, String.CASE_INSENSITIVE_ORDER);
+                            Collections.sort(idle, String.CASE_INSENSITIVE_ORDER);
+                            Collections.sort(dnd, String.CASE_INSENSITIVE_ORDER);
+
+
+                            for (User user : users) {
+                                if (message.getChannelReceiver().getServer().isMember(user)) {
+                                    switch (user.getStatus()) {
+                                        case ONLINE:
+                                            online.add(user.getName());
+                                            break;
+                                        case IDLE:
+                                            idle.add(user.getName());
+                                            break;
+                                        case DO_NOT_DISTURB:
+                                            dnd.add(user.getName());
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
+                            }
+                            ArrayList<String>[] userLists = new ArrayList[] {online, idle, dnd};
+                            String outputString = "```\n" +
+                                    formatListsAsColumnsForUserList(userLists) +
+                                    "```";
+                            Future<Message> isSent = message.reply("```\n" +
+                                    "ONLINE" + multiplyString(" ", 27) + "IDLE" + multiplyString(" ", 29) + "DO NOT DISTURB" +
+                                    "```");
+                            while (!isSent.isDone()) {} //should only continue once message sends
+                            message.reply(outputString);
                         }
 
                     }
@@ -1985,6 +2024,47 @@ public class memebot {
             i++;
         }
         return indexes;
+    }
+
+    public static String arrayListAsVerticalList(ArrayList<String> arrayList) {
+        String returnString = "";
+        for (String string : arrayList) {
+            returnString += string + "\n";
+        }
+        return returnString;
+    }
+
+    public static String formatListsAsColumnsForUserList(ArrayList<String>[] arrayLists) {
+        ArrayList<String> lines = new ArrayList<String>(Arrays.asList(arrayListAsVerticalList(arrayLists[0]).split("\n")));
+
+        int longestLength = 0;
+        for (ArrayList<String> arrayList : arrayLists) { //makes sure the first column is as long as the longest column
+            if (arrayList.size() > longestLength) {
+                longestLength = arrayList.size();
+            }
+        }
+        while (lines.size() < longestLength) {
+            lines.add(multiplyString(" ", 33));
+        }
+        for (String line : lines) {
+            try {
+                lines.set(lines.indexOf(line), line + multiplyString(" ", 33 - line.length()));
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("IndexOutOfBoundsException");
+            }
+        }
+        for (ArrayList<String> arrayList : arrayLists) {
+            if (!arrayList.equals(arrayLists[0])) { //won't add the first list twice
+                for (String line : lines) {
+                    try {
+                        lines.set(lines.indexOf(line), line + arrayList.get(lines.indexOf(line)) + multiplyString(" ", (33 - arrayList.get(lines.indexOf(line)).length())));
+                    } catch (IndexOutOfBoundsException e) {
+                        System.out.println("IndexOutOfBoundsException");
+                    }
+                }
+            }
+        }
+        return arrayListAsVerticalList(lines);
     }
 
 }
