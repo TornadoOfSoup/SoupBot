@@ -9,7 +9,7 @@ import java.io.IOException;
  */
 public class UserStats {
     String id;
-    int exp, level, skillPoints;
+    int exp, level, potentiorbs;
 
     int playedGames1, wonGames1, wonTeamGames1;
 
@@ -17,7 +17,7 @@ public class UserStats {
         id = player.getId();
         exp = 0;
         level = 1;
-        skillPoints = 10;
+        potentiorbs = 1000;
 
         playedGames1 = 0;
         wonGames1 = 0;
@@ -38,7 +38,7 @@ public class UserStats {
         id = userID;
         exp = 0;
         level = 1;
-        skillPoints = 10;
+        potentiorbs = 1000;
 
         playedGames1 = 0;
         wonGames1 = 0;
@@ -88,8 +88,8 @@ public class UserStats {
         }
     }
 
-    public void addSkillPoints(int number) {
-        this.skillPoints += number;
+    public void addPotentiorbs(int number) {
+        this.potentiorbs += number;
         try {
             SaveUserStats.saveStats(this);
         } catch (IOException e) {
@@ -115,8 +115,8 @@ public class UserStats {
         }
     }
 
-    public void setSkillPoints(int skillPoints) {
-        this.skillPoints = skillPoints;
+    public void setPotentiorbs(int potentiorbs) {
+        this.potentiorbs = potentiorbs;
         try {
             SaveUserStats.saveStats(this);
         } catch (IOException e) {
@@ -170,8 +170,8 @@ public class UserStats {
         return exp;
     }
 
-    public int getSkillPoints() {
-        return skillPoints;
+    public int getPotentiorbs() {
+        return potentiorbs;
     }
 
     public int getPlayedGames1() {

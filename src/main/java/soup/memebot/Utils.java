@@ -5,6 +5,7 @@ import de.btobastian.javacord.entities.User;
 import de.btobastian.javacord.entities.message.Message;
 
 import java.io.File;
+import java.util.Random;
 import java.util.concurrent.Future;
 
 /**
@@ -30,11 +31,21 @@ public class Utils {
     }
 
     public static void levelUpDialog(Channel channel, User user, UserStats userStats) {
-        userStats.addSkillPoints(5);
+        Random rand = new Random();
+        double randomFactor = (((double) rand.nextInt(350)) / 1000) - 0.1; //random number between -0.1 and 0.3
+
+        double level = userStats.getLevel() - 1;
+
+        double potentiorbs = 200 * (1 + (level / 10)) * (1 + randomFactor);
+        int intPotentiorbs = (int) Math.round(potentiorbs);
+
+        System.out.println("Potentiorbs: 200 * " + (1 + (level / 10)) + " * " + (1 + randomFactor) + " = " + potentiorbs);
+
+        userStats.addPotentiorbs(intPotentiorbs);
         Future<Message> messageFuture = channel.sendMessage("User " + user.getName() + " has levelled up!\n" +
                 "```\n" +
                 "lvl " + (userStats.getLevel() - 1) + " → lvl " + userStats.getLevel() + "\n" +
-                "+ 5 skill points\n" +
+                "+" + intPotentiorbs + " potentiorbs\n" +
                 "```");
         while (!messageFuture.isDone()) {}
     }

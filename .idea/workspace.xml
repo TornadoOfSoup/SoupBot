@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ea4e70f-1515-453f-a887-74c5aba0549c" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/stats/189357141599977473.json" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/soup/memebot/UserStats.java" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/UserStats.java" />
@@ -46,12 +41,10 @@
       <file leaf-file-name="memebot.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="93" column="39" selection-start-line="93" selection-start-column="39" selection-end-line="93" selection-end-column="39" />
+            <state relative-caret-position="185">
+              <caret line="2373" column="149" selection-start-line="2373" selection-start-column="149" selection-end-line="2373" selection-end-column="149" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#5084#7604#0" expanded="true" />
-                <element signature="e#7603#7604#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -60,12 +53,10 @@
       <file leaf-file-name="UserStats.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/UserStats.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-948">
-              <caret line="96" column="9" selection-start-line="96" selection-start-column="9" selection-end-line="96" selection-end-column="9" />
+            <state relative-caret-position="-2254">
+              <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3906#3907#0" expanded="true" />
-                <element signature="e#3934#3935#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -86,8 +77,8 @@
       <file leaf-file-name="LoadUserStats.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/LoadUserStats.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="38" column="84" selection-start-line="38" selection-start-column="84" selection-end-line="38" selection-end-column="84" />
+            <state relative-caret-position="267">
+              <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -98,8 +89,8 @@
       <file leaf-file-name="Utils.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/Utils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="35" column="58" selection-start-line="35" selection-start-column="58" selection-end-line="35" selection-end-column="58" />
+            <state relative-caret-position="180">
+              <caret line="34" column="57" selection-start-line="34" selection-start-column="57" selection-end-line="34" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -338,8 +329,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -351,7 +342,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="settings.editor.splitter.proportion" value="0.17292644" />
   </component>
   <component name="RecentsManager">
@@ -787,12 +778,19 @@
       <option name="project" value="LOCAL" />
       <updated>1502147417552</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="added skill points&#10;added skill point-based commands&#10;added skill points to $getstats&#10;&#10;added levels&#10;xp required for next level is determined by the formula y=25(x-1)(1.025^(x-1))+100&#10;added level-based commands&#10;added xp needed for next level to $getstats&#10;&#10;imported important methods from other classes&#10;create directories on launch&#10;most situations should support levelling more than once at a time&#10;$setxp properly lets users know if they don't input an integer&#10;added method paramenters to hitlermanVictory&#10;&#10;cleaned up and standardized levelling dialog&#10;improved hitlerman xp formula&#10;fixed hitlerman W/L ratio, used to display percentage of games won&#10;">
+      <created>1502186634626</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1502186634626</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -800,6 +798,7 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281075" sideWeight="0.502445" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="SLIDING" type="FLOATING" visible="false" show_stripe_button="true" weight="0.3294621" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="92" y="92" width="1496" height="826" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294621" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28555432" sideWeight="0.49755502" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26539755" sideWeight="0.49511003" order="2" side_tool="false" content_ui="tabs" />
@@ -807,6 +806,8 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20904645" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922733" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -815,9 +816,8 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32922733" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="SLIDING" type="FLOATING" visible="false" show_stripe_button="true" weight="0.3294621" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="92" y="92" width="1496" height="826" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286004" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -874,7 +874,9 @@
     <MESSAGE value="added stats folder to github" />
     <MESSAGE value="added $setxp command" />
     <MESSAGE value="allow users to input token if admin.pass is not found" />
-    <option name="LAST_COMMIT_MESSAGE" value="allow users to input token if admin.pass is not found" />
+    <MESSAGE value="added skill points&#10;added skill point-based commands&#10;added skill points to $getstats&#10;&#10;added levels&#10;xp required for next level is determined by the formula y=25(x-1)(1.025^(x-1))+100&#10;added level-based commands&#10;added xp needed for next level to $getstats&#10;&#10;imported important methods from other classes&#10;create directories on launch&#10;most situations should support levelling more than once at a time&#10;$setxp properly lets users know if they don't input an integer&#10;added method paramenters to hitlermanVictory&#10;&#10;cleaned up and standardized levelling dialog&#10;improved hitlerman xp formula&#10;fixed hitlerman W/L ratio, used to display percentage of games won&#10;" />
+    <MESSAGE value="improved hitlerman xp formula&#10;added xp to guessnumber&#10;&#10;replaced skill points with potentiorbs, planned to be convertible to other points&#10;potentiorb calculation formula is based on level and some random values&#10;it's cool&#10;check it out&#10;&#10;some other things" />
+    <option name="LAST_COMMIT_MESSAGE" value="improved hitlerman xp formula&#10;added xp to guessnumber&#10;&#10;replaced skill points with potentiorbs, planned to be convertible to other points&#10;potentiorb calculation formula is based on level and some random values&#10;it's cool&#10;check it out&#10;&#10;some other things" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -911,8 +913,6 @@
           <caret line="63" column="21" selection-start-line="63" selection-start-column="21" selection-end-line="63" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5084#7604#0" expanded="true" />
-            <element signature="e#7603#7604#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -931,8 +931,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5084#7604#0" expanded="true" />
-            <element signature="e#7603#7604#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -951,8 +949,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5084#7604#0" expanded="true" />
-            <element signature="e#7603#7604#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -971,8 +967,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5084#7604#0" expanded="true" />
-            <element signature="e#7603#7604#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -991,8 +985,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5084#7604#0" expanded="true" />
-            <element signature="e#7603#7604#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1011,8 +1003,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5084#7604#0" expanded="true" />
-            <element signature="e#7603#7604#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1031,8 +1021,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5084#7604#0" expanded="true" />
-            <element signature="e#7603#7604#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1051,8 +1039,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5084#7604#0" expanded="true" />
-            <element signature="e#7603#7604#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1071,8 +1057,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5084#7604#0" expanded="true" />
-            <element signature="e#7603#7604#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1091,8 +1075,6 @@
           <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5084#7604#0" expanded="true" />
-            <element signature="e#7603#7604#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1111,8 +1093,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5084#7604#0" expanded="true" />
-            <element signature="e#7603#7604#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1131,8 +1111,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5084#7604#0" expanded="true" />
-            <element signature="e#7603#7604#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1151,8 +1129,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5084#7604#0" expanded="true" />
-            <element signature="e#7603#7604#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1171,8 +1147,6 @@
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5084#7604#0" expanded="true" />
-            <element signature="e#7603#7604#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1239,20 +1213,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/LoadUserStats.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/SaveUserStats.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="38" column="84" selection-start-line="38" selection-start-column="84" selection-end-line="38" selection-end-column="84" />
+        <state relative-caret-position="347">
+          <caret line="23" column="64" selection-start-line="23" selection-start-column="64" selection-end-line="23" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/SaveUserStats.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/LoadUserStats.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="23" column="64" selection-start-line="23" selection-start-column="64" selection-end-line="23" selection-end-column="64" />
+        <state relative-caret-position="267">
+          <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1267,22 +1241,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/UserStats.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/Utils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-948">
-          <caret line="96" column="9" selection-start-line="96" selection-start-column="9" selection-end-line="96" selection-end-column="9" />
+        <state relative-caret-position="180">
+          <caret line="34" column="57" selection-start-line="34" selection-start-column="57" selection-end-line="34" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3906#3907#0" expanded="true" />
-            <element signature="e#3934#3935#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/Utils.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/UserStats.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="35" column="58" selection-start-line="35" selection-start-column="58" selection-end-line="35" selection-end-column="58" />
+        <state relative-caret-position="-2254">
+          <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1291,12 +1263,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="93" column="39" selection-start-line="93" selection-start-column="39" selection-end-line="93" selection-end-column="39" />
+        <state relative-caret-position="185">
+          <caret line="2373" column="149" selection-start-line="2373" selection-start-column="149" selection-end-line="2373" selection-end-column="149" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5084#7604#0" expanded="true" />
-            <element signature="e#7603#7604#0" expanded="true" />
           </folding>
         </state>
       </provider>

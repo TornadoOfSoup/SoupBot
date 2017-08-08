@@ -2,7 +2,6 @@ package soup.memebot;
 
 import com.google.common.util.concurrent.FutureCallback;
 import de.btobastian.javacord.entities.Channel;
-import de.btobastian.javacord.entities.Server;
 import de.btobastian.javacord.entities.User;
 import de.btobastian.javacord.entities.UserStatus;
 import de.btobastian.javacord.entities.message.Message;
@@ -55,7 +54,8 @@ public class memebot {
     static boolean[] games = new boolean[] {false, false}; //0 = guessnumber, 1 = hangman
 
     static int game0Num = 0;
-    static String gameUserID = "";
+    static int game0Turns = 0;
+    static String game0UserID = "";
 
     static String game1Word = "";
     static int game1lives = 0;
@@ -91,8 +91,8 @@ public class memebot {
         DiscordAPI api = Javacord.getApi(token, true);
         final int numOfCommands = 44;
         final int numOfSubCommands = 17;
-        final String version = "1.3.2.8";
-        final String complieDate = "8/7/17 22:43 EST";
+        final String version = "1.3.3.3";
+        final String complieDate = "8/8/17 18:09 EST";
         final String chatFilterVersion = "1.6";
         final boolean[] censor = {false};
         final long[] cooldown = {0};
@@ -197,15 +197,17 @@ public class memebot {
 
                         if (games[0]) { //guessnumber game
 
-                            if (message.getAuthor().getId().equals(gameUserID)) {
+                            if (message.getAuthor().getId().equals(game0UserID)) {
                                 if (message.getContent().startsWith("$guess ")) {
+                                    game0Turns++;
                                     String msg = message.getContent().replace("$guess ", "");
                                     int guess = Integer.parseInt(msg);
                                     if (guess < game0Num) message.reply("Higher.");
                                     else if (guess > game0Num) message.reply("Lower.");
                                     else if (guess == game0Num) {
                                         message.reply("That's it!");
-                                        message.reply(message.getAuthor().getName() + " is victorious!");
+                                        message.reply(message.getAuthor().getName() + " is victorious in " + game0Turns + " turns!");
+                                        message.reply(message.getAuthor().getName() + " receives **" + guessNumberVictory(game0UserID, game0Turns, api, message.getChannelReceiver()) + "** exp.");
                                         games[0] = false;
                                         return;
                                     }
@@ -385,7 +387,7 @@ public class memebot {
                                     "$addlevel\n" +
                                     "$setlevel\n" +
                                     "$getstats\n" +
-                                    "$setskillpoints\n" +
+                                    "$setpotentiorbs\n" +
                                     "```");
                         } else if (message.getContent().equalsIgnoreCase("$info")) {
                             message.reply("```\n" +
@@ -1477,7 +1479,7 @@ public class memebot {
                             String username = message.getAuthor().getName();
                             if (game.equalsIgnoreCase("guessnumber")) {
                                 if (games[0] == false) {
-                                    gameUserID = message.getAuthor().getId();
+                                    game0UserID = message.getAuthor().getId();
                                     message.reply(("User " + username + " has challenged SoupBot to a number guessing game!\n\n" +
                                             "```\n" +
                                             "I've generated a random number between 0 and 100.\n" +
@@ -1488,6 +1490,7 @@ public class memebot {
                                             "The game begins now!"));
                                     Random rand = new Random();
                                     game0Num = rand.nextInt(100) + 1;
+                                    game0Turns = 0;
                                     System.out.println(game0Num);
                                     games[0] = true;
                                 } else {
@@ -1840,13 +1843,13 @@ public class memebot {
                                 }
 
                             }
-                        } else if (message.getContent().startsWith("$setskillpoints")) {
-                            if (message.getContent().equalsIgnoreCase("$setskillpoint")) {
+                        } else if (message.getContent().startsWith("$setpotentiorbs")) {
+                            if (message.getContent().equalsIgnoreCase("$setpotentiorbs")) {
                                 message.reply("```\n" +
-                                        "Sets player's skill point count to a given amount.\n" +
-                                        "Syntax: \"$setskillpoints [player] [x]\"\n" +
-                                        "Example: \"$setskillpoints @TornadoOfSoup 15\"\n" +
-                                        "If a player is not provided, skill points will be given to the command sender.");
+                                        "Sets player's potentiorb count to a given amount.\n" +
+                                        "Syntax: \"$setpotentiorbs [player] [x]\"\n" +
+                                        "Example: \"$setpotentiorbs @TornadoOfSoup 15\"\n" +
+                                        "If a player is not provided, potentiorbs will be given to the command sender.");
                                 return;
                             } else {
                                 List<User> mentions = message.getMentions();
@@ -1855,25 +1858,25 @@ public class memebot {
                                     try {
                                         UserStats userStats = loadStats(mentions.get(0));
                                         userStats.setExp(Integer.parseInt(parts[1]));
-                                        message.reply("Set user " + mentions.get(0).getName() + "'s skill point count to " + parts[2] + ".");
+                                        message.reply("Set user " + mentions.get(0).getName() + "'s potentiorb count to " + parts[2] + ".");
                                     } catch (IOException e) {
                                         e.printStackTrace();
                                     } catch (NumberFormatException e) {
                                         e.printStackTrace();
                                         message.reply("Error: Please make sure an integer is provided.\n" +
-                                                "Syntax: \"$setskillpoints [player] [x]\"\n");
+                                                "Syntax: \"$setpotentiorbs [player] [x]\"\n");
                                     }
                                 } else {
                                     try {
                                         UserStats userStats = loadStats(message.getAuthor());
                                         userStats.setExp(Integer.parseInt(parts[1]));
-                                        message.reply("Set user " + message.getAuthor().getName() + "'s skill point count to " + parts[1] + ".");
+                                        message.reply("Set user " + message.getAuthor().getName() + "'s potentiorb count to " + parts[1] + ".");
                                     } catch (IOException e) {
                                         e.printStackTrace();
                                     } catch (NumberFormatException e) {
                                         e.printStackTrace();
                                         message.reply("Error: Please make sure an integer is provided.\n" +
-                                                "Syntax: \"$setxp [player] [x]\"\n");
+                                                "Syntax: \"$setpotentiorbs [player] [x]\"\n");
                                     }
                                 }
                             }
@@ -2016,11 +2019,7 @@ public class memebot {
     }
 
     public static boolean isEmptyOrNull(String s) {
-        if (s.equals("") || s.equals(null)) {
-            return true;
-        } else {
-            return false;
-        }
+        return s.equals("") || s.equals(null);
     }
 
     public static int[] simplifyFraction(int num, int den) {
@@ -2356,7 +2355,7 @@ public class memebot {
                 "ID: " + id + "\n" +
                 "Level: " + userStats.getLevel() + "\n" +
                 "EXP: " + exp + " / " + userStats.xpNeededForLevelUp() + "\n" +
-                "Skill Points: " + userStats.getSkillPoints() + "\n" +
+                "Potentiorbs: " + userStats.getPotentiorbs() + "\n" +
                 "\n" +
                 "Hitlerman games played: " + userStats.getPlayedGames1() + "\n" +
                 "Hitlerman games won: " + userStats.getWonGames1() + "\n" +
@@ -2376,7 +2375,12 @@ public class memebot {
         double xp = 0;
         double xpBase = 1000;
         double xpDistribution = 1;
-        xp = xpBase / (maxLives - lives) / (turns / 2) * (word.length() / 6);
+
+        if (maxLives - lives == 0) {
+            xp = xpBase / (0.9) / ((double) turns / 2) * ((double) word.length() / 7);
+        } else {
+            xp = xpBase / (maxLives - lives) / ((double) turns / 2) * ((double) word.length() / 7);
+        }
 
         if (players.size() > 1) {
             xpDistribution = players.size() * 0.625; //makes distribution factor less heavy
@@ -2431,6 +2435,34 @@ public class memebot {
             }
         }
 
+        return intXp;
+    }
+
+    public static int guessNumberVictory(String id, int turns, DiscordAPI api, Channel channel) {
+        double xpBase = 10;
+        double randomFactor = (double) 0.95 + ((new Random().nextInt(699) + 1) / 100);
+        double xp = (xpBase - turns) * randomFactor;
+
+        int intXp = (int) Math.round(xp);
+
+        UserStats userStats = null;
+        try {
+            userStats = loadStats(id);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        userStats.addExp(intXp);
+
+        while (userStats.canLevelUp()) {
+            userStats.levelUpIfPossible();
+            try {
+                levelUpDialog(channel, api.getUserById(id).get(), userStats);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
         return intXp;
     }
 
