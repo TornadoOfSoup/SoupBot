@@ -40,6 +40,11 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import static soup.memebot.LoadUserStats.loadStats;
+import static soup.memebot.Utils.getPathOfResourcesFolder;
+import static soup.memebot.Utils.statsFileExists;
+import static soup.memebot.Utils.levelUpDialog;
+
 public class memebot {
 
     static final ArrayList<String> whitelist = new ArrayList<String>(Arrays.asList("TornadoOfSoup", "Kotamonn", "SoupBot"));
@@ -84,18 +89,18 @@ public class memebot {
         }
 
         DiscordAPI api = Javacord.getApi(token, true);
-        final int numOfCommands = 32;
+        final int numOfCommands = 44;
         final int numOfSubCommands = 17;
-        final String version = "1.3.2.4";
-        final String complieDate = "8/7/17 18:35 EST";
+        final String version = "1.3.2.8";
+        final String complieDate = "8/7/17 22:43 EST";
         final String chatFilterVersion = "1.6";
         final boolean[] censor = {false};
         final long[] cooldown = {0};
         final boolean[] modes = {false, false}; //0 = fastPictures, 1 = restricted
 
 
-        new File(Utils.getPathOfResourcesFolder() + "/images").mkdir(); //create necessary directories
-        new File(Utils.getPathOfResourcesFolder() + "/stats").mkdir();
+        new File(getPathOfResourcesFolder() + "/images").mkdir(); //create necessary directories
+        new File(getPathOfResourcesFolder() + "/stats").mkdir();
 
         System.out.println("Logging in...");
 
@@ -231,13 +236,13 @@ public class memebot {
 
                                                 if (!arrayListContainsIgnoreCase(game1HelpfulUsers, message.getAuthor().getId())) {
                                                     game1HelpfulUsers.add(message.getAuthor().getId());
-                                                    try { LoadUserStats.loadStats(message.getAuthor()).addPlayedGames1(1); } catch (IOException e) { e.printStackTrace(); }
+                                                    try { loadStats(message.getAuthor()).addPlayedGames1(1); } catch (IOException e) { e.printStackTrace(); }
                                                 }
                                             } else {
                                                 message.reply("There are " + indexes.size() + " " + c + "'s in the word.");
                                                 if (!arrayListContainsIgnoreCase(game1HelpfulUsers, message.getAuthor().getId())) {
                                                     game1HelpfulUsers.add(message.getAuthor().getId());
-                                                    try { LoadUserStats.loadStats(message.getAuthor()).addPlayedGames1(1); } catch (IOException e) { e.printStackTrace(); }
+                                                    try { loadStats(message.getAuthor()).addPlayedGames1(1); } catch (IOException e) { e.printStackTrace(); }
                                                 }
                                             }
                                         } else {
@@ -248,7 +253,7 @@ public class memebot {
                                             message.reply("Congratulations to " + arrayListOfIdsAsStringListOfNames(game1HelpfulUsers, api) + "! You've stopped Hitler from being born and saved millions of lives!\n" +
                                                     "The word was `" + game1Word + "`. You were victorious with " + game1lives + " lives remaining in " + game1TurnNumber + " turns.\n");
 
-                                            message.reply("All players involved earn **" + hitlermanVictory(game1HelpfulUsers, game1TurnNumber, game1lives, game1MaxLives, game1Word) + "** exp.");
+                                            message.reply("All players involved earn **" + hitlermanVictory(game1HelpfulUsers, game1TurnNumber, game1lives, game1MaxLives, game1Word, api, message.getChannelReceiver()) + "** exp.");
                                             games[1] = false;
                                         } else {
                                             if (game1lives == 0) {
@@ -282,13 +287,13 @@ public class memebot {
                                     game1TurnNumber++;
                                     if (!arrayListContainsIgnoreCase(game1HelpfulUsers, message.getAuthor().getId())) {
                                         game1HelpfulUsers.add(message.getAuthor().getId());
-                                        try { LoadUserStats.loadStats(message.getAuthor()).addPlayedGames1(1); } catch (IOException e) { e.printStackTrace(); }
+                                        try { loadStats(message.getAuthor()).addPlayedGames1(1); } catch (IOException e) { e.printStackTrace(); }
                                     }
 
                                     message.reply("Congratulations to " + arrayListOfIdsAsStringListOfNames(game1HelpfulUsers, api) + "! You've stopped Hitler from being born and saved millions of lives!\n" +
                                             "The word was `" + game1Word + "`. You were victorious with " + game1lives + " lives remaining in " + game1TurnNumber + " turns.\n");
 
-                                    message.reply("All players involved earn **" + hitlermanVictory(game1HelpfulUsers, game1TurnNumber, game1lives, game1MaxLives, game1Word) + "** exp.");
+                                    message.reply("All players involved earn **" + hitlermanVictory(game1HelpfulUsers, game1TurnNumber, game1lives, game1MaxLives, game1Word, api, message.getChannelReceiver()) + "** exp.");
                                     games[1] = false;
                                 } else {
                                     game1lives--;
@@ -376,7 +381,11 @@ public class memebot {
                                     "$cat\n" +
                                     "$onlineusers\n" +
                                     "$addxp\n" +
+                                    "$setxp\n" +
+                                    "$addlevel\n" +
+                                    "$setlevel\n" +
                                     "$getstats\n" +
+                                    "$setskillpoints\n" +
                                     "```");
                         } else if (message.getContent().equalsIgnoreCase("$info")) {
                             message.reply("```\n" +
@@ -567,7 +576,7 @@ public class memebot {
                             System.out.println("hypixel: " + message.getAuthor().getName() + " | " + message.getAuthor().getId());
                             if (message.getAuthor().getId().equals("193043685053562881")) { //if the message author is nick | 190519404780322818
                                 System.out.println("it's a nick");
-                                if (System.currentTimeMillis() < (cooldown[0] + 3600000) && System.currentTimeMillis() != 0) { //double the cooldown
+                                if (System.currentTimeMillis() < (cooldown[0] + 3600000) && System.currentTimeMillis() != 0) { //sextuple the cooldown
                                     message.reply("Because you're Nick, this command is on cooldown for another " + Math.abs(((System.currentTimeMillis() - cooldown[0]) / 1000) - 3600) + " seconds.");
                                     return;
                                 }
@@ -1684,9 +1693,9 @@ public class memebot {
                                 String[] parts = message.getContent().split(" ");
 
                                 if (parts.length == 2) {
-                                    if (Utils.statsFileExists(id)) {
+                                    if (statsFileExists(id)) {
                                         try {
-                                            UserStats userStats = LoadUserStats.loadStats(id);
+                                            UserStats userStats = loadStats(id);
                                             userStats.addExp(Integer.parseInt(parts[1]));
                                         } catch (FileNotFoundException e) {
                                             e.printStackTrace();
@@ -1701,9 +1710,9 @@ public class memebot {
                                 } else if (parts.length == 3) {
                                     List<User> mentions = message.getMentions();
                                     if (!mentions.isEmpty()) {
-                                        if (Utils.statsFileExists(mentions.get(0).getId())) {
+                                        if (statsFileExists(mentions.get(0).getId())) {
                                             try {
-                                                UserStats userStats = LoadUserStats.loadStats(id);
+                                                UserStats userStats = loadStats(id);
                                                 userStats.addExp(Integer.parseInt(parts[1]));
                                             } catch (FileNotFoundException e) {
                                                 e.printStackTrace();
@@ -1725,9 +1734,9 @@ public class memebot {
                             }
                         } else if (message.getContent().startsWith("$getstats")) {
                             if (message.getContent().equalsIgnoreCase("$getstats")) {
-                                if (Utils.statsFileExists(message.getAuthor().getId())) {
+                                if (statsFileExists(message.getAuthor().getId())) {
                                     try {
-                                        message.reply(formatStats(api, LoadUserStats.loadStats(message.getAuthor().getId())));
+                                        message.reply(formatStats(api, loadStats(message.getAuthor().getId())));
                                     } catch (FileNotFoundException e) {
                                         e.printStackTrace();
                                     } catch (IOException e) {
@@ -1742,9 +1751,9 @@ public class memebot {
                                 if (mentions.isEmpty()) {
                                     message.reply("Error: Command must include one mention.");
                                 } else {
-                                    if (Utils.statsFileExists(mentions.get(0).getId())) {
+                                    if (statsFileExists(mentions.get(0).getId())) {
                                         try {
-                                            message.reply(formatStats(api, LoadUserStats.loadStats(mentions.get(0))));
+                                            message.reply(formatStats(api, loadStats(mentions.get(0))));
                                         } catch (FileNotFoundException e) {
                                             e.printStackTrace();
                                         } catch (IOException e) {
@@ -1769,8 +1778,13 @@ public class memebot {
                                 String[] parts = message.getContent().split(" ");
                                 if (mentions.size() > 0) {
                                     try {
-                                        LoadUserStats.loadStats(mentions.get(0)).setExp(Integer.parseInt(parts[2]));
+                                        UserStats userStats = loadStats(mentions.get(0));
+                                        userStats.setExp(Integer.parseInt(parts[1]));
                                         message.reply("Set user " + mentions.get(0).getName() + "'s xp to " + parts[2] + ".");
+                                        while (userStats.canLevelUp()) {
+                                            userStats.levelUpIfPossible();
+                                            levelUpDialog(message.getChannelReceiver(), mentions.get(0), userStats);
+                                        }
                                     } catch (IOException e) {
                                         e.printStackTrace();
                                     } catch (NumberFormatException e) {
@@ -1780,8 +1794,80 @@ public class memebot {
                                     }
                                 } else {
                                     try {
-                                        LoadUserStats.loadStats(message.getAuthor()).setExp(Integer.parseInt(parts[1]));
+                                        UserStats userStats = loadStats(message.getAuthor());
+                                        userStats.setExp(Integer.parseInt(parts[1]));
                                         message.reply("Set user " + message.getAuthor().getName() + "'s xp to " + parts[1] + ".");
+                                        while (userStats.canLevelUp()) {
+                                            userStats.levelUpIfPossible();
+                                            levelUpDialog(message.getChannelReceiver(), message.getAuthor(), userStats);
+                                        }
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    } catch (NumberFormatException e) {
+                                        e.printStackTrace();
+                                        message.reply("Error: Please make sure an integer is provided.\n" +
+                                                "Syntax: \"$setxp [player] [x]\"\n");
+                                    }
+                                }
+                            }
+                        } else if (message.getContent().startsWith("$setlevel")) {
+                            if (message.getContent().equalsIgnoreCase("$setlevel")) {
+                                message.reply("```\n" +
+                                        "Sets the level of a player to the given value." +
+                                        "Syntax: \"$setlevel [player] [x]\"\n" +
+                                        "Example: \"$setlevel @TornadoOfSoup 5\"\n" +
+                                        "If a player is not given, the level of the command sender will be set.\n" +
+                                        "```");
+                                return;
+                            }
+                            List<User> mentions = message.getMentions();
+                            String[] parts = message.getContent().split(" ");
+                            if (!mentions.isEmpty()) {
+                                try {
+                                    UserStats userStats = loadStats(mentions.get(0));
+                                    userStats.setLevel(Integer.parseInt(parts[2]));
+                                    message.reply("Set level of user " + mentions.get(0).getName() + " to " + parts[2] + ".");
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            } else {
+                                try {
+                                    UserStats userStats = loadStats(message.getAuthor());
+                                    userStats.setLevel(Integer.parseInt(parts[1]));
+                                    message.reply("Set level of user " + message.getAuthor().getName() + " to " + parts[1] + ".");
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+                        } else if (message.getContent().startsWith("$setskillpoints")) {
+                            if (message.getContent().equalsIgnoreCase("$setskillpoint")) {
+                                message.reply("```\n" +
+                                        "Sets player's skill point count to a given amount.\n" +
+                                        "Syntax: \"$setskillpoints [player] [x]\"\n" +
+                                        "Example: \"$setskillpoints @TornadoOfSoup 15\"\n" +
+                                        "If a player is not provided, skill points will be given to the command sender.");
+                                return;
+                            } else {
+                                List<User> mentions = message.getMentions();
+                                String[] parts = message.getContent().split(" ");
+                                if (mentions.size() > 0) {
+                                    try {
+                                        UserStats userStats = loadStats(mentions.get(0));
+                                        userStats.setExp(Integer.parseInt(parts[1]));
+                                        message.reply("Set user " + mentions.get(0).getName() + "'s skill point count to " + parts[2] + ".");
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    } catch (NumberFormatException e) {
+                                        e.printStackTrace();
+                                        message.reply("Error: Please make sure an integer is provided.\n" +
+                                                "Syntax: \"$setskillpoints [player] [x]\"\n");
+                                    }
+                                } else {
+                                    try {
+                                        UserStats userStats = loadStats(message.getAuthor());
+                                        userStats.setExp(Integer.parseInt(parts[1]));
+                                        message.reply("Set user " + message.getAuthor().getName() + "'s skill point count to " + parts[1] + ".");
                                     } catch (IOException e) {
                                         e.printStackTrace();
                                     } catch (NumberFormatException e) {
@@ -2256,7 +2342,8 @@ public class memebot {
         double hitlermanWinLossRatio = 0;
 
         try {
-            hitlermanWinLossRatio = userStats.getPlayedGames1() / (userStats.getWonGames1() + userStats.getWonTeamGames1());
+            hitlermanWinLossRatio = (userStats.getWonGames1() + userStats.getWonTeamGames1() /
+                    (userStats.getPlayedGames1() - (userStats.getWonGames1() + userStats.getWonTeamGames1())));
         } catch (ArithmeticException e) {
             hitlermanWinLossRatio = 0;
         }
@@ -2267,8 +2354,9 @@ public class memebot {
             returnString = "```\n" +
                 "Name: " + api.getUserById(id).get().getName() + "\n" +
                 "ID: " + id + "\n" +
-                "Level: " + "WIP" + "\n" +
-                "EXP: " + exp + "\n" +
+                "Level: " + userStats.getLevel() + "\n" +
+                "EXP: " + exp + " / " + userStats.xpNeededForLevelUp() + "\n" +
+                "Skill Points: " + userStats.getSkillPoints() + "\n" +
                 "\n" +
                 "Hitlerman games played: " + userStats.getPlayedGames1() + "\n" +
                 "Hitlerman games won: " + userStats.getWonGames1() + "\n" +
@@ -2284,7 +2372,7 @@ public class memebot {
         return returnString;
     }
 
-    public static int hitlermanVictory(ArrayList<String> players, int turns, int lives, int maxLives, String word) {
+    public static int hitlermanVictory(ArrayList<String> players, int turns, int lives, int maxLives, String word, DiscordAPI api, Channel channel) {
         double xp = 0;
         double xpBase = 1000;
         double xpDistribution = 1;
@@ -2299,10 +2387,15 @@ public class memebot {
         int intXp = (int)Math.round(xp);
 
         for (String id : players) {
-            if (Utils.statsFileExists(id)) {
+            if (statsFileExists(id)) {
                 try {
-                    UserStats userStats = LoadUserStats.loadStats(id);
+                    UserStats userStats = loadStats(id);
                     userStats.addExp(intXp);
+
+                    while (userStats.canLevelUp()) {
+                        userStats.levelUpIfPossible();
+                        levelUpDialog(channel, api.getUserById(id).get(), userStats);
+                    }
 
                     if (players.size() > 1) {
                         userStats.addWonTeamGames1(1);
@@ -2311,10 +2404,24 @@ public class memebot {
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
                 }
             } else {
                 UserStats userStats = new UserStats(id);
                 userStats.addExp(intXp);
+
+                if (userStats.levelUpIfPossible()) {
+                    try {
+                        levelUpDialog(channel, api.getUserById(id).get(), userStats);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    }
+                }
 
                 if (players.size() > 1) {
                     userStats.addWonTeamGames1(1);

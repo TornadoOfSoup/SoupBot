@@ -9,13 +9,15 @@ import java.io.IOException;
  */
 public class UserStats {
     String id;
-    int exp;
+    int exp, level, skillPoints;
 
     int playedGames1, wonGames1, wonTeamGames1;
 
     public UserStats(User player) {
         id = player.getId();
         exp = 0;
+        level = 1;
+        skillPoints = 10;
 
         playedGames1 = 0;
         wonGames1 = 0;
@@ -35,6 +37,8 @@ public class UserStats {
     public UserStats(String userID) {
         id = userID;
         exp = 0;
+        level = 1;
+        skillPoints = 10;
 
         playedGames1 = 0;
         wonGames1 = 0;
@@ -84,6 +88,15 @@ public class UserStats {
         }
     }
 
+    public void addSkillPoints(int number) {
+        this.skillPoints += number;
+        try {
+            SaveUserStats.saveStats(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void setExp(int exp) {
         this.exp = exp;
         try {
@@ -93,12 +106,72 @@ public class UserStats {
         }
     }
 
+    public void setLevel(int level) {
+        this.level = level;
+        try {
+            SaveUserStats.saveStats(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setSkillPoints(int skillPoints) {
+        this.skillPoints = skillPoints;
+        try {
+            SaveUserStats.saveStats(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addLevel(int number) {
+        this.level += number;
+        try {
+            SaveUserStats.saveStats(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+    public boolean levelUpIfPossible() { //checks if level up is possible, and levels up if so
+        if (xpNeededForLevelUp() <= exp) {
+            exp -= xpNeededForLevelUp();
+            addLevel(1);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public int xpNeededForLevelUp() {
+        double xpNeeded = 25 * (level - 1) * (Math.pow(1.025, (level - 1))) + 100;
+        return (int) Math.round(xpNeeded);
+    }
+
+    public boolean canLevelUp() {
+        if (xpNeededForLevelUp() <= exp) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
     public String getId() {
         return id;
     }
 
     public int getExp() {
         return exp;
+    }
+
+    public int getSkillPoints() {
+        return skillPoints;
     }
 
     public int getPlayedGames1() {
