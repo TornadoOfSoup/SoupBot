@@ -609,7 +609,7 @@ public class memebot {
                                 message.reply("This command is on cooldown for another " + Math.abs(((System.currentTimeMillis() - cooldown[0]) / 1000) - 600) + " seconds.");
                             }
                         } else if (message.getContent().equalsIgnoreCase("$censor")) {
-                            if (message.getAuthor().getName().equalsIgnoreCase("TornadoOfSoup")) {
+                            if (isOnList(message.getAuthor().getName(), whitelist)) {
                                 censor[0] = !censor[0];
                                 message.reply("Censorship mode toggled to *" + censor[0] + "*");
                             } else {
