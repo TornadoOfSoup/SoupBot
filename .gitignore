@@ -23,3 +23,13 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+!/lib/gson-2.8.1.jar
+!/lib/jsoup-1.10.3.jar
+!/lib/jsoup-1.10.3-javadoc.jar
+!/lib/gson-2.8.1-javadoc.jar
+!/lib/javacord-2.0.15-shaded.jar
+!/lib/sdcf4j-core-1.0.4.jar
+!/lib/commons-lang3-3.5.jar
+!/lib/sdcf4j-javacord-1.0.4.jar
+!/lib/commons-math-2.2.jar
+!/lib/httpclient-4.5.3.jar
