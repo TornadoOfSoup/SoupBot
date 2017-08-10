@@ -91,8 +91,8 @@ public class memebot {
         DiscordAPI api = Javacord.getApi(token, true);
         final int numOfCommands = 44;
         final int numOfSubCommands = 17;
-        final String version = "1.3.3.3";
-        final String complieDate = "8/8/17 18:09 EST";
+        final String version = "1.3.3.5";
+        final String complieDate = "8/9/17 20:27 EST";
         final String chatFilterVersion = "1.6";
         final boolean[] censor = {false};
         final long[] cooldown = {0};
@@ -1637,6 +1637,7 @@ public class memebot {
                             ArrayList<String> online = new ArrayList<String>();
                             ArrayList<String> idle = new ArrayList<String>();
                             ArrayList<String> dnd = new ArrayList<String>(); //do not disturb
+                            ArrayList<String> bots = new ArrayList<String>();
 
                             int longestLength = 0;
 
@@ -1648,13 +1649,13 @@ public class memebot {
 
                                     switch (user.getStatus()) {
                                         case ONLINE:
-                                            online.add(user.getName());
+                                            if (user.isBot()) bots.add(user.getName()); else online.add(user.getName());
                                             break;
                                         case IDLE:
-                                            idle.add(user.getName());
+                                            if (user.isBot()) bots.add(user.getName()); else idle.add(user.getName());
                                             break;
                                         case DO_NOT_DISTURB:
-                                            dnd.add(user.getName());
+                                            if (user.isBot()) bots.add(user.getName()); else dnd.add(user.getName());
                                             break;
                                         default:
                                             break;
@@ -1666,8 +1667,8 @@ public class memebot {
                             Collections.sort(idle, String.CASE_INSENSITIVE_ORDER);
                             Collections.sort(dnd, String.CASE_INSENSITIVE_ORDER);
 
-                            ArrayList<String>[] userLists = new ArrayList[] {online, idle, dnd};
-                            int columnWidth = longestLength + 10; //leaves some space between columns
+                            ArrayList<String>[] userLists = new ArrayList[] {online, idle, dnd, bots};
+                            int columnWidth = longestLength + 8; //leaves some space between columns
                             if (columnWidth > 36) {
                                 columnWidth = 36; //caps column width at 36
                             }
@@ -1678,6 +1679,7 @@ public class memebot {
                                     "ONLINE" + multiplyString(" ", columnWidth - "ONLINE".length()) +
                                     "IDLE" + multiplyString(" ", columnWidth - "IDLE".length()) +
                                     "DO NOT DISTURB" + multiplyString(" ", columnWidth - "DO NOT DISTURB".length()) +
+                                    "BOTS" + multiplyString(" ", columnWidth - "BOTS".length()) +
                                     "```");
                             while (!isSent.isDone()) {} //should only continue once message sends
                             message.reply(outputString);
@@ -2314,6 +2316,7 @@ public class memebot {
         while (lines.size() < longestLength) {
             lines.add(multiplyString(" ", columnWidth));
         }
+
         for (String line : lines) {
             try {
                 lines.set(lines.indexOf(line), line + multiplyString(" ", columnWidth - line.length()));
@@ -2328,6 +2331,7 @@ public class memebot {
                         lines.set(lines.indexOf(line), line + arrayList.get(lines.indexOf(line)) + multiplyString(" ", (columnWidth - arrayList.get(lines.indexOf(line)).length())));
                     } catch (IndexOutOfBoundsException e) {
                         System.out.println("IndexOutOfBoundsException");
+                        lines.set(lines.indexOf(line), line + multiplyString(" ", columnWidth));
                     }
                 }
             }
@@ -2387,6 +2391,10 @@ public class memebot {
         }
 
         xp = xp / xpDistribution;
+
+        if (xp > 150) { //lazy capping mechanism that pushes the number towards 150 if it's above it, TODO add better curving levels
+            xp = (xp + 150) / 2;
+        }
 
         int intXp = (int)Math.round(xp);
 
