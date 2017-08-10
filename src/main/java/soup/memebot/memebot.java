@@ -89,10 +89,10 @@ public class memebot {
         }
 
         DiscordAPI api = Javacord.getApi(token, true);
-        final int numOfCommands = 44;
+        final int numOfCommands = 45;
         final int numOfSubCommands = 17;
-        final String version = "1.3.3.5";
-        final String complieDate = "8/9/17 20:27 EST";
+        final String version = "1.4";
+        final String complieDate = "8/10/17 05:00 EST";
         final String chatFilterVersion = "1.6";
         final boolean[] censor = {false};
         final long[] cooldown = {0};
@@ -388,6 +388,7 @@ public class memebot {
                                     "$setlevel\n" +
                                     "$getstats\n" +
                                     "$setpotentiorbs\n" +
+                                    "$newpet\n" +
                                     "```");
                         } else if (message.getContent().equalsIgnoreCase("$info")) {
                             message.reply("```\n" +
@@ -1882,6 +1883,19 @@ public class memebot {
                                     }
                                 }
                             }
+                        } else if (message.getContent().startsWith("$newpet")) {
+                            if (message.getContent().equalsIgnoreCase("$newpet")) {
+                                Random rand = new Random();
+                                int petSpecies = rand.nextInt(2);
+                                Pet pet;
+                                switch (petSpecies) {
+                                    case 0: pet = new Pet(Species.DOG); break;
+                                    case 1: pet = new Pet(Species.CAT); break;
+                                    default: pet = new Pet(Species.DOG); break;
+                                }
+                                String outputString = formatPetStats(api, pet);
+                                message.reply(outputString);
+                            }
                         }
 
                     }
@@ -2339,6 +2353,25 @@ public class memebot {
         return arrayListAsVerticalList(lines);
     }
 
+    public static String formatPetStats(DiscordAPI api, Pet pet) {
+        int exp = pet.getExp();
+
+        String returnString = "```\n" +
+            "Level: " + pet.getLevel() + "\n" +
+            "EXP: " + exp + " / " + "TODO" + "\n" +
+            "\n" +
+            "Species: " + pet.getSpecies().name() + "\n" +
+            "Breed: " + pet.getBreed().name() + "\n" +
+            "STR: " + pet.getStrength() + "\n" +
+            "VIT: " + pet.getVitality() + "\n" +
+            "CHR: " + pet.getCharisma() + "\n" +
+            "AGI: " + pet.getAgility() + "\n" +
+            "INT: " + pet.getIntelligence() + "\n" +
+            "```";
+
+        return returnString;
+    }
+
     public static String formatStats(DiscordAPI api, UserStats userStats) {
         String id = userStats.getId();
         int exp = userStats.getExp();
@@ -2355,17 +2388,17 @@ public class memebot {
 
         try {
             returnString = "```\n" +
-                "Name: " + api.getUserById(id).get().getName() + "\n" +
-                "ID: " + id + "\n" +
-                "Level: " + userStats.getLevel() + "\n" +
-                "EXP: " + exp + " / " + userStats.xpNeededForLevelUp() + "\n" +
-                "Potentiorbs: " + userStats.getPotentiorbs() + "\n" +
-                "\n" +
-                "Hitlerman games played: " + userStats.getPlayedGames1() + "\n" +
-                "Hitlerman games won: " + userStats.getWonGames1() + "\n" +
-                "Hitlerman team games won: " + userStats.getWonTeamGames1() + "\n" +
-                "Hitlerman W/L ratio: " + hitlermanWinLossRatio + "\n" +
-                "```";
+                    "Name: " + api.getUserById(id).get().getName() + "\n" +
+                    "ID: " + id + "\n" +
+                    "Level: " + userStats.getLevel() + "\n" +
+                    "EXP: " + exp + " / " + userStats.xpNeededForLevelUp() + "\n" +
+                    "Potentiorbs: " + userStats.getPotentiorbs() + "\n" +
+                    "\n" +
+                    "Hitlerman games played: " + userStats.getPlayedGames1() + "\n" +
+                    "Hitlerman games won: " + userStats.getWonGames1() + "\n" +
+                    "Hitlerman team games won: " + userStats.getWonTeamGames1() + "\n" +
+                    "Hitlerman W/L ratio: " + hitlermanWinLossRatio + "\n" +
+                    "```";
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {

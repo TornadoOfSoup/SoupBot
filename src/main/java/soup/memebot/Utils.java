@@ -49,4 +49,10 @@ public class Utils {
                 "```");
         while (!messageFuture.isDone()) {}
     }
+
+    public static int plusMinus(int factor) {
+        Random rand = new Random();
+        int varyingFactor = rand.nextInt((factor*2) + 1) - factor;
+        return varyingFactor;
+    }
 }
