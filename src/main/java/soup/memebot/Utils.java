@@ -55,4 +55,22 @@ public class Utils {
         int varyingFactor = rand.nextInt((factor*2) + 1) - factor;
         return varyingFactor;
     }
+
+    public static String wordToProperCase(String word) {
+        word = word.toLowerCase();
+        char[] chars = word.toCharArray();
+
+        chars[0] = Character.toUpperCase(chars[0]);
+        return String.valueOf(chars);
+    }
+
+    public static String toProperCase(String string) {
+        String[] words = string.split(" ");
+        String returnString = "";
+        for (String word : words) {
+            returnString += wordToProperCase(word) + " ";
+        }
+        returnString = returnString.trim();
+        return returnString;
+    }
 }

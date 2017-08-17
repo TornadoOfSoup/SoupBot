@@ -1,5 +1,7 @@
 package soup.memebot;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Random;
 
 /**
@@ -125,19 +127,19 @@ public class Breed {
 
 
     enum DogBreeds {
-        GOLDEN,
-        PUG,
-        SHEPHERD,
-        SHIBA,
-        CHIHUAHUA;
+        @SerializedName("GOLDEN") GOLDEN,
+        @SerializedName("PUG") PUG,
+        @SerializedName("SHEPHERD") SHEPHERD,
+        @SerializedName("SHIBA") SHIBA,
+        @SerializedName("CHIHUAHUA") CHIHUAHUA;
     }
 
     enum CatBreeds {
-        SIAMESE,
-        PERSIAN,
-        SPHYNX,
-        SHORTHAIR,
-        NYAN;
+        @SerializedName("SIAMESE") SIAMESE,
+        @SerializedName("PERSIAN") PERSIAN,
+        @SerializedName("SPHYNX") SPHYNX,
+        @SerializedName("SHORTHAIR") SHORTHAIR,
+        @SerializedName("NYAN") NYAN;
     }
 
     enum SnakeBreeds {

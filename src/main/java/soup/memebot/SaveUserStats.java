@@ -17,7 +17,8 @@ public class SaveUserStats {
     static Writer writer;
     static Gson gson;
 
-    public SaveUserStats() throws IOException {
+    public SaveUserStats() {
+
     }
 
     static void saveStats(UserStats player) throws IOException {

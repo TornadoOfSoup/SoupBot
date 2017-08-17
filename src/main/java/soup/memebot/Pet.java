@@ -1,16 +1,20 @@
 package soup.memebot;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by RPGenius on 8/9/2017.
  */
 public class Pet {
     Species species;
     Enum breed;
+    String name;
     int strength, vitality, charisma, agility, intelligence;
     int exp, level;
 
     public Pet(Species petSpecies) {
         species = petSpecies;
+        name = Utils.toProperCase(species.name().replace('_', ' '));
         breed = Breed.getBreed(species);
         level = 1;
         exp = 0;
@@ -18,6 +22,19 @@ public class Pet {
         calculateBaseStats();
     }
 
+    public Pet(Species petSpecies, String petName) {
+        species = petSpecies;
+        name = petName;
+        breed = Breed.getBreed(species);
+        level = 1;
+        exp = 0;
+        System.out.println("Breed for new " + species.name() + " has been set to " + breed.name());
+        calculateBaseStats();
+    }
+
+    public Pet() {
+
+    }
 
     private void calculateBaseStats() {
         if (species.equals(Species.DOG)) {
@@ -55,6 +72,14 @@ public class Pet {
         this.charisma = charisma + Utils.plusMinus(3);
         this.agility = agility + Utils.plusMinus(3);
         this.intelligence = intelligence + Utils.plusMinus(3);
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public Species getSpecies() {

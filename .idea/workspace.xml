@@ -2,19 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ea4e70f-1515-453f-a887-74c5aba0549c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/Breed.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/Pet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/Species.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1$1.class" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/InterfaceAdapter.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/stats/189357141599977473.json" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1$2.class" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1.class" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$2.class" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot.class" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/soup/memebot/Breed.java" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/Breed.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/soup/memebot/LoadUserStats.java" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/LoadUserStats.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/soup/memebot/Pet.java" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/Pet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/soup/memebot/SaveUserStats.java" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/SaveUserStats.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/soup/memebot/Species.java" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/Species.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/soup/memebot/UserStats.java" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/UserStats.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/soup/memebot/Utils.java" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/Utils.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/stats/189357141599977473.json" afterPath="$PROJECT_DIR$/target/classes/stats/189357141599977473.json" />
     </list>
     <ignored path="SoupMemeBot.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,7 +41,7 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1224">
+            <state relative-caret-position="450">
               <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
               <folding />
             </state>
@@ -49,8 +51,20 @@
       <file leaf-file-name="memebot.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="390" column="46" selection-start-line="390" selection-start-column="46" selection-end-line="390" selection-end-column="46" />
+            <state relative-caret-position="204">
+              <caret line="1853" column="95" selection-start-line="1853" selection-start-column="95" selection-end-line="1853" selection-end-column="95" />
+              <folding>
+                <marker date="1502871375403" expanded="false" signature="7633:7775" ph="(MessageCreateListener) (api, message) → {" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoadUserStats.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/LoadUserStats.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="320">
+              <caret line="29" column="30" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -59,8 +73,8 @@
       <file leaf-file-name="UserStats.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/UserStats.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+            <state relative-caret-position="3315">
+              <caret line="222" column="51" selection-start-line="222" selection-start-column="51" selection-end-line="222" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -69,8 +83,8 @@
       <file leaf-file-name="Pet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/Pet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="46" column="16" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="16" />
+            <state relative-caret-position="238">
+              <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -79,9 +93,23 @@
       <file leaf-file-name="Species.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/Species.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="204">
+              <caret line="12" column="27" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InterfaceAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/InterfaceAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -89,8 +117,8 @@
       <file leaf-file-name="Utils.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/Utils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="833">
-              <caret line="55" column="29" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="29" />
+            <state relative-caret-position="1122">
+              <caret line="72" column="43" selection-start-line="72" selection-start-column="43" selection-end-line="72" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -99,9 +127,11 @@
       <file leaf-file-name="Breed.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/Breed.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2958">
-              <caret line="192" column="5" selection-start-line="192" selection-start-column="5" selection-end-line="192" selection-end-column="5" />
-              <folding />
+            <state relative-caret-position="272">
+              <caret line="141" column="29" selection-start-line="141" selection-start-column="29" selection-end-line="141" selection-end-column="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -109,8 +139,8 @@
       <file leaf-file-name="SaveUserStats.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/SaveUserStats.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="23" column="64" selection-start-line="23" selection-start-column="64" selection-end-line="23" selection-end-column="64" />
+            <state relative-caret-position="238">
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -149,19 +179,20 @@
         <option value="$PROJECT_DIR$/src/main/resources/hangman/hangman_videogames.txt" />
         <option value="$PROJECT_DIR$/src/main/resources/hangman/hangman_pokemon.txt" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/soup/memebot/SaveUserStats.java" />
-        <option value="$PROJECT_DIR$/src/main/java/soup/memebot/LoadUserStats.java" />
         <option value="$PROJECT_DIR$/target/classes/stats/189357141599977473.json" />
-        <option value="$PROJECT_DIR$/src/main/java/soup/memebot/UserStats.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/main/java/soup/memebot/DogBreeds.java" />
         <option value="$PROJECT_DIR$/src/main/java/soup/memebot/CatBreeds.java" />
-        <option value="$PROJECT_DIR$/src/main/java/soup/memebot/Species.java" />
         <option value="$PROJECT_DIR$/src/main/java/soup/memebot/Breeds.java" />
-        <option value="$PROJECT_DIR$/src/main/java/soup/memebot/Breed.java" />
         <option value="$PROJECT_DIR$/src/main/java/soup/memebot/Utils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java" />
+        <option value="$PROJECT_DIR$/src/main/java/soup/memebot/SaveUserStats.java" />
+        <option value="$PROJECT_DIR$/src/main/java/soup/memebot/InterfaceAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/soup/memebot/LoadUserStats.java" />
+        <option value="$PROJECT_DIR$/src/main/java/soup/memebot/Species.java" />
+        <option value="$PROJECT_DIR$/src/main/java/soup/memebot/Breed.java" />
         <option value="$PROJECT_DIR$/src/main/java/soup/memebot/Pet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/soup/memebot/UserStats.java" />
+        <option value="$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java" />
       </list>
     </option>
   </component>
@@ -782,7 +813,14 @@
       <option name="project" value="LOCAL" />
       <updated>1502324980761</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Added pets!&#10;8 different species, 5 different breeds each&#10;pets have five base stats:&#10;STRength, VITality, CHaRisma, AGIlity, INTelligence&#10;&#10;stats are determined by breed, as well as a slight factor of randomness&#10;added $newpet, note that this does not actually give you a pet, it only generates one for testing purposes&#10;&#10;added formatPetStats to display pet stats in a friendly manner&#10;&#10;planned:&#10;base stats can be levelled through training minigames&#10;actual stats can be levelled through levelling up and increasing base stats&#10;pets can compete and play in games&#10;more pet slots can be purchased with currency of some sort">
+      <created>1502356729693</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1502356729693</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -795,6 +833,7 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281075" sideWeight="0.502445" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="SLIDING" type="FLOATING" visible="false" show_stripe_button="true" weight="0.3294621" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="92" y="92" width="1496" height="826" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294621" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28555432" sideWeight="0.49755502" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28331468" sideWeight="0.49511003" order="2" side_tool="false" content_ui="tabs" />
@@ -814,11 +853,41 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32922733" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="SLIDING" type="FLOATING" visible="false" show_stripe_button="true" weight="0.3294621" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="92" y="92" width="1496" height="826" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286004" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281075" sideWeight="0.502445" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294621" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30795074" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32922733" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33370662" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32138857" sideWeight="0.496875" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="SLIDING" type="FLOATING" visible="false" show_stripe_button="true" weight="0.3294621" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="92" y="92" width="1496" height="826" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28555432" sideWeight="0.49755502" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28331468" sideWeight="0.49511003" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917964" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20904645" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286004" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="UpdateCopyrightCheckinHandler">
     <option name="UPDATE_COPYRIGHT" value="true" />
@@ -874,14 +943,15 @@
     <MESSAGE value="added skill points&#10;added skill point-based commands&#10;added skill points to $getstats&#10;&#10;added levels&#10;xp required for next level is determined by the formula y=25(x-1)(1.025^(x-1))+100&#10;added level-based commands&#10;added xp needed for next level to $getstats&#10;&#10;imported important methods from other classes&#10;create directories on launch&#10;most situations should support levelling more than once at a time&#10;$setxp properly lets users know if they don't input an integer&#10;added method paramenters to hitlermanVictory&#10;&#10;cleaned up and standardized levelling dialog&#10;improved hitlerman xp formula&#10;fixed hitlerman W/L ratio, used to display percentage of games won&#10;" />
     <MESSAGE value="improved hitlerman xp formula&#10;added xp to guessnumber&#10;&#10;replaced skill points with potentiorbs, planned to be convertible to other points&#10;potentiorb calculation formula is based on level and some random values&#10;it's cool&#10;check it out&#10;&#10;some other things" />
     <MESSAGE value="added a lazy capping mechanism to hitlerman xp&#10;capping mechanism should keep xp from going too high, but it needs to be improved&#10;&#10;added bots to their own section in $onlineusers" />
-    <option name="LAST_COMMIT_MESSAGE" value="added a lazy capping mechanism to hitlerman xp&#10;capping mechanism should keep xp from going too high, but it needs to be improved&#10;&#10;added bots to their own section in $onlineusers" />
+    <MESSAGE value="Added pets!&#10;8 different species, 5 different breeds each&#10;pets have five base stats:&#10;STRength, VITality, CHaRisma, AGIlity, INTelligence&#10;&#10;stats are determined by breed, as well as a slight factor of randomness&#10;added $newpet, note that this does not actually give you a pet, it only generates one for testing purposes&#10;&#10;added formatPetStats to display pet stats in a friendly manner&#10;&#10;planned:&#10;base stats can be levelled through training minigames&#10;actual stats can be levelled through levelling up and increasing base stats&#10;pets can compete and play in games&#10;more pet slots can be purchased with currency of some sort" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added pets!&#10;8 different species, 5 different breeds each&#10;pets have five base stats:&#10;STRength, VITality, CHaRisma, AGIlity, INTelligence&#10;&#10;stats are determined by breed, as well as a slight factor of randomness&#10;added $newpet, note that this does not actually give you a pet, it only generates one for testing purposes&#10;&#10;added formatPetStats to display pet stats in a friendly manner&#10;&#10;planned:&#10;base stats can be levelled through training minigames&#10;actual stats can be levelled through levelling up and increasing base stats&#10;pets can compete and play in games&#10;more pet slots can be purchased with currency of some sort" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="63" />
+      <option name="time" value="67" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -895,11 +965,21 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1224">
+          <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1502871375403" expanded="false" signature="7633:7775" ph="(MessageCreateListener) (api, message) → {" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -915,7 +995,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1502871375403" expanded="false" signature="7633:7775" ph="(MessageCreateListener) (api, message) → {" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -931,23 +1013,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1502871375403" expanded="false" signature="7633:7775" ph="(MessageCreateListener) (api, message) → {" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -963,7 +1031,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1502871375403" expanded="false" signature="7633:7775" ph="(MessageCreateListener) (api, message) → {" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -979,7 +1049,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1502871375403" expanded="false" signature="7633:7775" ph="(MessageCreateListener) (api, message) → {" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -995,7 +1067,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1502871375403" expanded="false" signature="7633:7775" ph="(MessageCreateListener) (api, message) → {" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1011,7 +1085,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1502871375403" expanded="false" signature="7633:7775" ph="(MessageCreateListener) (api, message) → {" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1027,7 +1103,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1020">
           <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1502871375403" expanded="false" signature="7633:7775" ph="(MessageCreateListener) (api, message) → {" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1043,7 +1121,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1502871375403" expanded="false" signature="7633:7775" ph="(MessageCreateListener) (api, message) → {" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1059,7 +1139,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1502871375403" expanded="false" signature="7633:7775" ph="(MessageCreateListener) (api, message) → {" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1075,7 +1157,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1502871375403" expanded="false" signature="7633:7775" ph="(MessageCreateListener) (api, message) → {" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1091,7 +1175,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1502871375403" expanded="false" signature="7633:7775" ph="(MessageCreateListener) (api, message) → {" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1139,22 +1225,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/SaveUserStats.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="23" column="64" selection-start-line="23" selection-start-column="64" selection-end-line="23" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -1165,59 +1235,91 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/CatBreeds.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/DogBreeds.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/LoadUserStats.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
+        <state relative-caret-position="450">
+          <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/SaveUserStats.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/Utils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="55" column="29" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="29" />
+        <state relative-caret-position="1122">
+          <caret line="72" column="43" selection-start-line="72" selection-start-column="43" selection-end-line="72" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/Breed.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/InterfaceAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2958">
-          <caret line="192" column="5" selection-start-line="192" selection-start-column="5" selection-end-line="192" selection-end-column="5" />
-          <folding />
+        <state relative-caret-position="180">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/Species.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="204">
+          <caret line="12" column="27" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/Breed.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="141" column="29" selection-start-line="141" selection-start-column="29" selection-end-line="141" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/Pet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="46" column="16" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="16" />
+        <state relative-caret-position="238">
+          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/LoadUserStats.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="29" column="30" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/UserStats.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+        <state relative-caret-position="3315">
+          <caret line="222" column="51" selection-start-line="222" selection-start-column="51" selection-end-line="222" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="390" column="46" selection-start-line="390" selection-start-column="46" selection-end-line="390" selection-end-column="46" />
-          <folding />
+        <state relative-caret-position="204">
+          <caret line="1853" column="95" selection-start-line="1853" selection-start-column="95" selection-end-line="1853" selection-end-column="95" />
+          <folding>
+            <marker date="1502871375403" expanded="false" signature="7633:7775" ph="(MessageCreateListener) (api, message) → {" />
+          </folding>
         </state>
       </provider>
     </entry>

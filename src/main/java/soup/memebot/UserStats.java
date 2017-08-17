@@ -3,6 +3,8 @@ package soup.memebot;
 import de.btobastian.javacord.entities.User;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by RPGenius on 8/7/2017.
@@ -12,6 +14,7 @@ public class UserStats {
     int exp, level, potentiorbs;
 
     int playedGames1, wonGames1, wonTeamGames1;
+    Pet pet;
 
     public UserStats(User player) {
         id = player.getId();
@@ -23,6 +26,7 @@ public class UserStats {
         wonGames1 = 0;
         wonTeamGames1 = 0;
 
+        pet = null;
         System.out.println("Created new UserStats object");
 
         try {
@@ -44,11 +48,17 @@ public class UserStats {
         wonGames1 = 0;
         wonTeamGames1 = 0;
 
+       pet = null;
+
         try {
             SaveUserStats.saveStats(this);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public UserStats() {
+
     }
 
     public void addExp(int number) {
@@ -90,6 +100,18 @@ public class UserStats {
 
     public void addPotentiorbs(int number) {
         this.potentiorbs += number;
+        try {
+            SaveUserStats.saveStats(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addPet(Pet pet) {
+        /*ArrayList<Pet> petArrayList = new ArrayList<Pet>(Arrays.asList(this.pets));
+        petArrayList.add(pet);
+        this.pets = petArrayList.toArray(new Pet[petArrayList.size()]);*/
+        this.pet = pet;
         try {
             SaveUserStats.saveStats(this);
         } catch (IOException e) {
@@ -158,6 +180,16 @@ public class UserStats {
         }
     }
 
+    public void clearPets() {
+        /*this.pets = new Pet[0];*/
+        this.pet = null;
+        try {
+            SaveUserStats.saveStats(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public int getLevel() {
         return level;
     }
@@ -184,6 +216,11 @@ public class UserStats {
 
     public int getWonTeamGames1() {
         return wonTeamGames1;
+    }
+
+    public ArrayList<Pet> getPets() {
+        //return new ArrayList<Pet>(Arrays.asList(this.pets));
+        return new ArrayList<Pet>(Arrays.asList(pet));
     }
 
     @Override

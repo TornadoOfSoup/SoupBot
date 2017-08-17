@@ -89,10 +89,10 @@ public class memebot {
         }
 
         DiscordAPI api = Javacord.getApi(token, true);
-        final int numOfCommands = 45;
+        final int numOfCommands = 47;
         final int numOfSubCommands = 17;
-        final String version = "1.4";
-        final String complieDate = "8/10/17 05:00 EST";
+        final String version = "1.5";
+        final String complieDate = "8/16/17 01:43 EST";
         final String chatFilterVersion = "1.6";
         final boolean[] censor = {false};
         final long[] cooldown = {0};
@@ -112,7 +112,7 @@ public class memebot {
                 receiver.sendMessage("Hello everyone! SoupBot v" + version + " here!");   //that thing travis and nick dislike
                 api.setAutoReconnect(true);
 
-                Collection users = api.getUsers();
+                final Collection users = api.getUsers();
                 System.out.print(users.size() + " users: ");
                 for (Object username : users) {
                     System.out.print(username.toString());
@@ -389,6 +389,8 @@ public class memebot {
                                     "$getstats\n" +
                                     "$setpotentiorbs\n" +
                                     "$newpet\n" +
+                                    "$getpets\n" +
+                                    "$clearpets\n" +
                                     "```");
                         } else if (message.getContent().equalsIgnoreCase("$info")) {
                             message.reply("```\n" +
@@ -1335,7 +1337,7 @@ public class memebot {
                                 message.reply("```\n" +
                                         "Returns ascii text of a message. Separate the text and the font with a semicolon.\n" +
                                         "Syntax: \"$ascii [text]; [font]\"\n" +
-                                        "Example: \"$ascii hello gothic\"\n" +
+                                        "Example: \"$ascii hello; gothic\"\n" +
                                         "```");
                                 return;
                             }
@@ -1884,17 +1886,114 @@ public class memebot {
                                 }
                             }
                         } else if (message.getContent().startsWith("$newpet")) {
-                            if (message.getContent().equalsIgnoreCase("$newpet")) {
-                                Random rand = new Random();
-                                int petSpecies = rand.nextInt(2);
-                                Pet pet;
-                                switch (petSpecies) {
-                                    case 0: pet = new Pet(Species.DOG); break;
-                                    case 1: pet = new Pet(Species.CAT); break;
-                                    default: pet = new Pet(Species.DOG); break;
+                            try {
+                                UserStats userStats = loadStats(message.getAuthor());
+                                if (userStats.getPets().get(0).equals(null)) {
+
+                                    if (message.getContent().equalsIgnoreCase("$newpet")) {
+                                        Random rand = new Random();
+                                        int petSpecies = rand.nextInt(2);
+                                        Pet pet;
+                                        switch (petSpecies) {
+                                            case 0:
+                                                pet = new Pet(Species.DOG);
+                                                break;
+                                            case 1:
+                                                pet = new Pet(Species.CAT);
+                                                break;
+                                            default:
+                                                pet = new Pet(Species.DOG);
+                                                break;
+                                        }
+
+                                        userStats.addPet(pet);
+                                        String outputString = formatPetStats(api, pet);
+                                        message.reply(outputString);
+                                    } else {
+                                        String name = message.getContent().replace("$newpet ", "");
+                                        Random rand = new Random();
+                                        int petSpecies = rand.nextInt(2);
+                                        Pet pet;
+                                        switch (petSpecies) {
+                                            case 0:
+                                                pet = new Pet(Species.DOG, name);
+                                                break;
+                                            case 1:
+                                                pet = new Pet(Species.CAT, name);
+                                                break;
+                                            default:
+                                                pet = new Pet(Species.DOG, name);
+                                                break;
+                                        }
+                                        userStats.addPet(pet);
+                                        String outputString = formatPetStats(api, pet);
+                                        message.reply(outputString);
+                                    }
+                                } else {
+                                    message.reply("You already have a pet.");
                                 }
-                                String outputString = formatPetStats(api, pet);
-                                message.reply(outputString);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                                message.reply("Something went wrong. \n" + e.toString());
+                            }
+                        } else if (message.getContent().startsWith("$getpets")) {
+                            if (message.getContent().equalsIgnoreCase("$getpets")) {
+                                try {
+                                    UserStats userStats = loadStats(message.getAuthor());
+                                    ArrayList<Pet> pets = userStats.getPets();
+
+                                    for (Pet pet : pets) {
+                                        formatPetStats(api, pet);
+                                    }
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                    message.reply("Something went wrong. \n" + e.toString());
+                                }
+                            } else {
+                                List<User> mentions = message.getMentions();
+                                if (mentions.isEmpty()) {
+                                    message.reply("Error: Command must include one mention.");
+                                } else {
+
+                                    try {
+                                        UserStats userStats = loadStats(mentions.get(0));
+                                        ArrayList<Pet> pets = userStats.getPets();
+
+                                        for (Pet pet : pets) {
+                                            formatPetStats(api, pet);
+                                        }
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                        message.reply("Something went wrong. \n" + e.toString());
+                                    }
+
+                                }
+                            }
+                        } else if (message.getContent().startsWith("$clearpets")) {
+                            if (message.getContent().equalsIgnoreCase("$clearpets")) {
+                                message.reply("```\n" +
+                                        "Clears all pets. Do not use unless you are sure.\n" +
+                                        "Syntax: \"$clearpets [your name]\"\n" +
+                                        "Example: \"$clearpets TornadoOfSoup\"\n" +
+                                        "Note: Must be your Discord name, not your server nickname.\n" +
+                                        "```");
+                                return;
+                            } else if (message.getContent().replace("$clearpets ", "").equals(message.getAuthor().getName())){
+                                try {
+                                    UserStats userStats = loadStats(message.getAuthor());
+                                    userStats.clearPets();
+                                    message.reply("Cleared all pets of user " + message.getAuthor().getName());
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                    message.reply("Something went wrong. \n" + e.toString());
+                                }
+                            } else {
+                                message.reply("```\n" +
+                                        "Clears all pets. Do not use unless you are sure.\n" +
+                                        "Syntax: \"$clearpets [your name]\"\n" +
+                                        "Example: \"$clearpets TornadoOfSoup\"\n" +
+                                        "Note: Must be your Discord name, not your server nickname.\n" +
+                                        "```");
                             }
                         }
 
@@ -2357,6 +2456,7 @@ public class memebot {
         int exp = pet.getExp();
 
         String returnString = "```\n" +
+            "Name: " + pet.getName() + "\n" +
             "Level: " + pet.getLevel() + "\n" +
             "EXP: " + exp + " / " + "TODO" + "\n" +
             "\n" +
