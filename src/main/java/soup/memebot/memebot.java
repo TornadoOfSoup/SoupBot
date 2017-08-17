@@ -91,8 +91,8 @@ public class memebot {
         DiscordAPI api = Javacord.getApi(token, true);
         final int numOfCommands = 47;
         final int numOfSubCommands = 17;
-        final String version = "1.5";
-        final String complieDate = "8/16/17 01:43 EST";
+        final String version = "1.5.1";
+        final String complieDate = "8/17/17 01:27 EST";
         final String chatFilterVersion = "1.6";
         final boolean[] censor = {false};
         final long[] cooldown = {0};
@@ -1606,18 +1606,20 @@ public class memebot {
                                 Random rand = new Random();
                                 number = rand.nextInt(365);
                                 url = "http://www.iscalio.com/cats/" + number + ".jpg";
+                                message.reply(url);
                             } else {
                                 String[] parts = message.getContent().split(" ");
                                 number = Integer.parseInt(parts[1]);
                                 url = "http://www.iscalio.com/cats/" + number + ".jpg";
-                                try {
+                                message.reply(url);
+                                /*try {
                                     Document img = Jsoup.connect(url).get();
                                     message.reply(img.html());
                                 } catch (IOException e) {
                                     e.printStackTrace();
-                                }
+                                }*/
                             }
-                            try {
+                            /*try {
                                 BufferedImage img = ImageIO.read(new URL(url));
                                 System.out.println(ClassLoader.getSystemResource("images/donotdelete").getPath());
                                 String path = ClassLoader.getSystemResource("images/donotdelete").getPath().substring(0, ClassLoader.getSystemResource("images/donotdelete").getPath().lastIndexOf("donotdelete"));
@@ -1633,7 +1635,7 @@ public class memebot {
                                 e.printStackTrace();
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
-                            }
+                            }*/
                         } else if (message.getContent().equalsIgnoreCase("$onlineusers")) {
                             ArrayList<User> users = new ArrayList<User>(api.getUsers());
 

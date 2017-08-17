@@ -1,22 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0ea4e70f-1515-453f-a887-74c5aba0549c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/InterfaceAdapter.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/stats/189357141599977473.json" afterPath="" />
+    <list default="true" id="0ea4e70f-1515-453f-a887-74c5aba0549c" name="Default" comment="Tried to add pets&#10;Kinda failed &#10;Some stuff is still there&#10;Pet commands dont' work right now&#10;&#10;--actual things--&#10;&#10;fixed help message for $ascii">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1$2.class" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1.class" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$2.class" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot.class" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/soup/memebot/Breed.java" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/Breed.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/soup/memebot/LoadUserStats.java" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/LoadUserStats.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/soup/memebot/Pet.java" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/Pet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/soup/memebot/SaveUserStats.java" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/SaveUserStats.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/soup/memebot/Species.java" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/Species.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/soup/memebot/UserStats.java" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/UserStats.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/soup/memebot/Utils.java" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/Utils.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/stats/189357141599977473.json" afterPath="$PROJECT_DIR$/target/classes/stats/189357141599977473.json" />
     </list>
     <ignored path="SoupMemeBot.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,10 +43,10 @@
       <file leaf-file-name="memebot.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="1853" column="95" selection-start-line="1853" selection-start-column="95" selection-end-line="1853" selection-end-column="95" />
+            <state relative-caret-position="323">
+              <caret line="94" column="49" selection-start-line="94" selection-start-column="49" selection-end-line="94" selection-end-column="49" />
               <folding>
-                <marker date="1502871375403" expanded="false" signature="7633:7775" ph="(MessageCreateListener) (api, message) → {" />
+                <marker date="1502947681930" expanded="false" signature="7635:7777" ph="(MessageCreateListener) (api, message) → {" />
               </folding>
             </state>
           </provider>
@@ -820,7 +812,14 @@
       <option name="project" value="LOCAL" />
       <updated>1502356729693</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Tried to add pets&#10;Kinda failed &#10;Some stuff is still there&#10;Pet commands dont' work right now&#10;&#10;--actual things--&#10;&#10;fixed help message for $ascii">
+      <created>1502946154751</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1502946154751</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -944,7 +943,8 @@
     <MESSAGE value="improved hitlerman xp formula&#10;added xp to guessnumber&#10;&#10;replaced skill points with potentiorbs, planned to be convertible to other points&#10;potentiorb calculation formula is based on level and some random values&#10;it's cool&#10;check it out&#10;&#10;some other things" />
     <MESSAGE value="added a lazy capping mechanism to hitlerman xp&#10;capping mechanism should keep xp from going too high, but it needs to be improved&#10;&#10;added bots to their own section in $onlineusers" />
     <MESSAGE value="Added pets!&#10;8 different species, 5 different breeds each&#10;pets have five base stats:&#10;STRength, VITality, CHaRisma, AGIlity, INTelligence&#10;&#10;stats are determined by breed, as well as a slight factor of randomness&#10;added $newpet, note that this does not actually give you a pet, it only generates one for testing purposes&#10;&#10;added formatPetStats to display pet stats in a friendly manner&#10;&#10;planned:&#10;base stats can be levelled through training minigames&#10;actual stats can be levelled through levelling up and increasing base stats&#10;pets can compete and play in games&#10;more pet slots can be purchased with currency of some sort" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added pets!&#10;8 different species, 5 different breeds each&#10;pets have five base stats:&#10;STRength, VITality, CHaRisma, AGIlity, INTelligence&#10;&#10;stats are determined by breed, as well as a slight factor of randomness&#10;added $newpet, note that this does not actually give you a pet, it only generates one for testing purposes&#10;&#10;added formatPetStats to display pet stats in a friendly manner&#10;&#10;planned:&#10;base stats can be levelled through training minigames&#10;actual stats can be levelled through levelling up and increasing base stats&#10;pets can compete and play in games&#10;more pet slots can be purchased with currency of some sort" />
+    <MESSAGE value="Tried to add pets&#10;Kinda failed &#10;Some stuff is still there&#10;Pet commands dont' work right now&#10;&#10;--actual things--&#10;&#10;fixed help message for $ascii" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tried to add pets&#10;Kinda failed &#10;Some stuff is still there&#10;Pet commands dont' work right now&#10;&#10;--actual things--&#10;&#10;fixed help message for $ascii" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -978,7 +978,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1502871375403" expanded="false" signature="7633:7775" ph="(MessageCreateListener) (api, message) → {" />
+            <marker date="1502947681930" expanded="false" signature="7635:7777" ph="(MessageCreateListener) (api, message) → {" />
           </folding>
         </state>
       </provider>
@@ -996,7 +996,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1502871375403" expanded="false" signature="7633:7775" ph="(MessageCreateListener) (api, message) → {" />
+            <marker date="1502947681930" expanded="false" signature="7635:7777" ph="(MessageCreateListener) (api, message) → {" />
           </folding>
         </state>
       </provider>
@@ -1014,7 +1014,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1502871375403" expanded="false" signature="7633:7775" ph="(MessageCreateListener) (api, message) → {" />
+            <marker date="1502947681930" expanded="false" signature="7635:7777" ph="(MessageCreateListener) (api, message) → {" />
           </folding>
         </state>
       </provider>
@@ -1032,7 +1032,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1502871375403" expanded="false" signature="7633:7775" ph="(MessageCreateListener) (api, message) → {" />
+            <marker date="1502947681930" expanded="false" signature="7635:7777" ph="(MessageCreateListener) (api, message) → {" />
           </folding>
         </state>
       </provider>
@@ -1050,7 +1050,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1502871375403" expanded="false" signature="7633:7775" ph="(MessageCreateListener) (api, message) → {" />
+            <marker date="1502947681930" expanded="false" signature="7635:7777" ph="(MessageCreateListener) (api, message) → {" />
           </folding>
         </state>
       </provider>
@@ -1068,7 +1068,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1502871375403" expanded="false" signature="7633:7775" ph="(MessageCreateListener) (api, message) → {" />
+            <marker date="1502947681930" expanded="false" signature="7635:7777" ph="(MessageCreateListener) (api, message) → {" />
           </folding>
         </state>
       </provider>
@@ -1086,7 +1086,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1502871375403" expanded="false" signature="7633:7775" ph="(MessageCreateListener) (api, message) → {" />
+            <marker date="1502947681930" expanded="false" signature="7635:7777" ph="(MessageCreateListener) (api, message) → {" />
           </folding>
         </state>
       </provider>
@@ -1104,7 +1104,7 @@
         <state relative-caret-position="1020">
           <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding>
-            <marker date="1502871375403" expanded="false" signature="7633:7775" ph="(MessageCreateListener) (api, message) → {" />
+            <marker date="1502947681930" expanded="false" signature="7635:7777" ph="(MessageCreateListener) (api, message) → {" />
           </folding>
         </state>
       </provider>
@@ -1122,7 +1122,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1502871375403" expanded="false" signature="7633:7775" ph="(MessageCreateListener) (api, message) → {" />
+            <marker date="1502947681930" expanded="false" signature="7635:7777" ph="(MessageCreateListener) (api, message) → {" />
           </folding>
         </state>
       </provider>
@@ -1140,7 +1140,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1502871375403" expanded="false" signature="7633:7775" ph="(MessageCreateListener) (api, message) → {" />
+            <marker date="1502947681930" expanded="false" signature="7635:7777" ph="(MessageCreateListener) (api, message) → {" />
           </folding>
         </state>
       </provider>
@@ -1158,7 +1158,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1502871375403" expanded="false" signature="7633:7775" ph="(MessageCreateListener) (api, message) → {" />
+            <marker date="1502947681930" expanded="false" signature="7635:7777" ph="(MessageCreateListener) (api, message) → {" />
           </folding>
         </state>
       </provider>
@@ -1176,7 +1176,7 @@
         <state relative-caret-position="34">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding>
-            <marker date="1502871375403" expanded="false" signature="7633:7775" ph="(MessageCreateListener) (api, message) → {" />
+            <marker date="1502947681930" expanded="false" signature="7635:7777" ph="(MessageCreateListener) (api, message) → {" />
           </folding>
         </state>
       </provider>
@@ -1315,10 +1315,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="1853" column="95" selection-start-line="1853" selection-start-column="95" selection-end-line="1853" selection-end-column="95" />
+        <state relative-caret-position="323">
+          <caret line="94" column="49" selection-start-line="94" selection-start-column="49" selection-end-line="94" selection-end-column="49" />
           <folding>
-            <marker date="1502871375403" expanded="false" signature="7633:7775" ph="(MessageCreateListener) (api, message) → {" />
+            <marker date="1502947681930" expanded="false" signature="7635:7777" ph="(MessageCreateListener) (api, message) → {" />
           </folding>
         </state>
       </provider>
