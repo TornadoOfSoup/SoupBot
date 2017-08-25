@@ -89,13 +89,13 @@ public class memebot {
         }
 
         DiscordAPI api = Javacord.getApi(token, true);
-        final int numOfCommands = 47;
+        final int numOfCommands = 48;
         final int numOfSubCommands = 17;
-        final String version = "1.5.1";
-        final String complieDate = "8/17/17 01:27 EST";
+        final String version = "1.5.2.2";
+        final String complieDate = "8/23/17 22:01 EST";
         final String chatFilterVersion = "1.6";
         final boolean[] censor = {false};
-        final long[] cooldown = {0};
+        final long[] cooldown = {0, 0};
         final boolean[] modes = {false, false}; //0 = fastPictures, 1 = restricted
 
 
@@ -359,6 +359,7 @@ public class memebot {
                                     "$vote\n" +
                                     "$upcoming\n" +
                                     "$hypixel\n" +
+                                    "$tos\n" +
                                     "$censor^\n" +
                                     "$mode^\n" +
                                     "$whitelist^^\n" +
@@ -579,7 +580,7 @@ public class memebot {
                         } else if (message.getContent().equalsIgnoreCase("$hypixel")) {
 
                             System.out.println("hypixel: " + message.getAuthor().getName() + " | " + message.getAuthor().getId());
-                            if (message.getAuthor().getId().equals("193043685053562881")) { //if the message author is nick | 190519404780322818
+                            if (message.getAuthor().getId().equals("190519404780322818")) { //if the message author is nick | 190519404780322818
                                 System.out.println("it's a nick");
                                 if (System.currentTimeMillis() < (cooldown[0] + 3600000) && System.currentTimeMillis() != 0) { //sextuple the cooldown
                                     message.reply("Because you're Nick, this command is on cooldown for another " + Math.abs(((System.currentTimeMillis() - cooldown[0]) / 1000) - 3600) + " seconds.");
@@ -1997,6 +1998,42 @@ public class memebot {
                                         "Note: Must be your Discord name, not your server nickname.\n" +
                                         "```");
                             }
+                        } else if (message.getContent().equalsIgnoreCase("$tos")) {
+                            System.out.println("tos: " + message.getAuthor().getName() + " | " + message.getAuthor().getId());
+                            if (message.getAuthor().getId().equals("190519404780322818")) { //if the message author is nick | 190519404780322818
+                                System.out.println("it's a nick");
+                                if (System.currentTimeMillis() < (cooldown[1] + 3600000) && System.currentTimeMillis() != 0) { //sextuple the cooldown
+                                    message.reply("Because you're Nick, this command is on cooldown for another " + Math.abs(((System.currentTimeMillis() - cooldown[1]) / 1000) - 3600) + " seconds.");
+                                    return;
+                                }
+                            }
+                            ArrayList<String> links = new ArrayList<String>(Arrays.asList(
+                                    "https://cdn.discordapp.com/attachments/189359733377990656/350089070455816192/unknown.png",
+                                    "https://cdn.discordapp.com/attachments/189359733377990656/350088340806172684/unknown.png",
+                                    "https://cdn.discordapp.com/attachments/189359733377990656/350088483135815700/unknown.png",
+                                    "https://cdn.discordapp.com/attachments/189359733377990656/350088669400399882/unknown.png",
+                                    "https://cdn.discordapp.com/attachments/189359733377990656/350088852389625856/unknown.png"
+                            ));
+
+                            if (System.currentTimeMillis() > (cooldown[1] + 600000)) {
+                                cooldown[1] = System.currentTimeMillis();
+
+                                try {
+                                    message.reply("Rickl: @here ToSOsotOSToSOToSToSOtoS");
+                                    Thread.sleep(1000);
+                                    message.reply(getRandomObjectFromArrayList(links).toString());
+                                    Thread.sleep(1000);
+                                    message.reply("\uD835\uDD1A\uD835\uDD22\uD835\uDD31 \uD835\uDD10\uD835\uDD22\uD835\uDD2A\uD835\uDD22\uD835\uDD30: tos or die");
+                                    Thread.sleep(500);
+                                    message.reply("FraggerX123: TOS @everyoon");
+                                    message.reply(getRandomObjectFromArrayList(links).toString());
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            } else {
+                                message.reply("This command is on cooldown for another " + Math.abs(((System.currentTimeMillis() - cooldown[1]) / 1000) - 600) + " seconds.");
+                            }
+
                         }
 
                     }
@@ -2607,6 +2644,12 @@ public class memebot {
             }
         }
         return intXp;
+    }
+
+    public static Object getRandomObjectFromArrayList(ArrayList<?> arrayList) {
+        Random rand = new Random();
+        int index = rand.nextInt(arrayList.size());
+        return arrayList.get(index);
     }
 
 }
