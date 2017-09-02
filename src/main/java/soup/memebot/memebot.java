@@ -5,6 +5,7 @@ import de.btobastian.javacord.entities.Channel;
 import de.btobastian.javacord.entities.User;
 import de.btobastian.javacord.entities.UserStatus;
 import de.btobastian.javacord.entities.message.Message;
+import de.btobastian.javacord.entities.message.MessageAttachment;
 import de.btobastian.javacord.entities.message.MessageHistory;
 import de.btobastian.javacord.entities.message.MessageReceiver;
 import de.btobastian.javacord.entities.permissions.Role;
@@ -12,7 +13,7 @@ import de.btobastian.javacord.listener.message.MessageCreateListener;
 import de.btobastian.javacord.*;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
+import java.awt.image.*;
 import java.io.*;
 import java.net.*;
 import java.sql.Timestamp;
@@ -89,10 +90,10 @@ public class memebot {
         }
 
         DiscordAPI api = Javacord.getApi(token, true);
-        final int numOfCommands = 48;
+        final int numOfCommands = 49;
         final int numOfSubCommands = 17;
-        final String version = "1.5.2.2";
-        final String complieDate = "8/23/17 22:01 EST";
+        final String version = "1.5.3.1";
+        final String complieDate = "9/2/17 19:21 EST";
         final String chatFilterVersion = "1.6";
         final boolean[] censor = {false};
         final long[] cooldown = {0, 0};
@@ -392,6 +393,7 @@ public class memebot {
                                     "$newpet\n" +
                                     "$getpets\n" +
                                     "$clearpets\n" +
+                                    "$addlogo\n" +
                                     "```");
                         } else if (message.getContent().equalsIgnoreCase("$info")) {
                             message.reply("```\n" +
@@ -1575,7 +1577,7 @@ public class memebot {
                             query = query.replace("+", "%2B");
                             query = query.replace(' ', '+'); //formatting for google search
                             try {
-                                Document doc = Jsoup.connect("https://www.google.com/search?q=" + query + "&num=5").userAgent("SoupBot v1.2.9.11").get();
+                                Document doc = Jsoup.connect("https://www.google.com/search?q=" + query + "&num=5").userAgent("SoupBot").get();
                                 Elements links = doc.select("a[href]");
                                 Elements meaningfulLinks = new Elements();
 
@@ -2034,6 +2036,44 @@ public class memebot {
                                 message.reply("This command is on cooldown for another " + Math.abs(((System.currentTimeMillis() - cooldown[1]) / 1000) - 600) + " seconds.");
                             }
 
+                        } else if (message.getContent().startsWith("$addlogo")) {
+                            boolean hasAcceptableSuffix = false;
+                            if (message.getAttachments().size() == 0) {
+                                message.reply("```\n" +
+                                        "Adds SoupBot logo to given image." +
+                                        "Requires one of the following suffixes: .jpg, .png, .gif, .bmp\n" +
+                                        "Syntax: \"$addlogo [picture]\"\n" +
+                                        "Make sure an image is sent with the command.\n" +
+                                        "```");
+                                return;
+                            }
+                            for (MessageAttachment attachment : message.getAttachments()) {
+                                if (stringEndsWithFromArray(attachment.getFileName(), new String[] {".jpg", ".png", ".gif", ".bmp"})) {
+                                    System.out.println("String has correct suffix");
+                                    hasAcceptableSuffix = true;
+                                    try {
+                                        String path = ClassLoader.getSystemResource("images/donotdelete").getPath().substring(0, ClassLoader.getSystemResource("images/donotdelete").getPath().lastIndexOf("donotdelete"));
+                                        URLConnection urlConnection = (URLConnection) attachment.getUrl().openConnection();
+                                        urlConnection.setRequestProperty("User-Agent",
+                                                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.65 Safari/537.31");
+                                        BufferedImage img = ImageIO.read(urlConnection.getInputStream());
+                                        BufferedImage logo = ImageIO.read(new File(path + "soupbot.png"));
+                                        BufferedImage result = addLogoToImage(img, logo);
+                                        File file = new File(System.currentTimeMillis() + attachment.getFileName() + ".png");
+                                        ImageIO.write(result, "PNG", file);
+
+                                        message.getChannelReceiver().sendFile(file);
+                                    } catch (IOException e) {
+                                        message.reply(e.getMessage());
+                                        e.printStackTrace();
+                                    } finally {
+                                        if (hasAcceptableSuffix == false) {
+                                            message.reply("Make sure your image is of a valid file format.\n" +
+                                                    "Valid file formats include .jpg, .png, .gif, .bmp");
+                                        }
+                                    }
+                                }
+                            }
                         }
 
                     }
@@ -2055,6 +2095,7 @@ public class memebot {
                 final MessageReceiver receiver = api.getChannelById("189359733377990656");
 
                 receiver.sendMessage("Farewell. <:timeforcrab:292796338645630978>");
+                api.disconnect();
             }
         }, "Shutdown-thread"));
     }
@@ -2661,5 +2702,16 @@ public class memebot {
         return picture;
     }
 
-}
+    public static boolean stringEndsWithFromArray(String string, String[] strings) {
+        for (String s : strings) {
+            if (string.endsWith(s)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    }
+
+
 
