@@ -2652,5 +2652,14 @@ public class memebot {
         return arrayList.get(index);
     }
 
+    public static BufferedImage addLogoToImage(BufferedImage picture, BufferedImage logo) {
+        Graphics g = picture.getGraphics();
+        g.drawImage(logo, 0, picture.getHeight() - logo.getHeight(), null);
+        JPanel imagePanel = new JPanel();
+        imagePanel.printAll(g);
+
+        return picture;
+    }
+
 }
 
