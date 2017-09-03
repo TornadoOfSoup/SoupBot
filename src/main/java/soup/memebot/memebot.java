@@ -92,8 +92,8 @@ public class memebot {
         DiscordAPI api = Javacord.getApi(token, true);
         final int numOfCommands = 49;
         final int numOfSubCommands = 17;
-        final String version = "1.5.3.1";
-        final String complieDate = "9/2/17 19:21 EST";
+        final String version = "1.5.3.2";
+        final String complieDate = "9/2/17 20:04 EST";
         final String chatFilterVersion = "1.6";
         final boolean[] censor = {false};
         final long[] cooldown = {0, 0};
@@ -2038,6 +2038,8 @@ public class memebot {
 
                         } else if (message.getContent().startsWith("$addlogo")) {
                             boolean hasAcceptableSuffix = false;
+                            String logoName = "soupbot.png";
+                            String[] parts = message.getContent().split(" ");
                             if (message.getAttachments().size() == 0) {
                                 message.reply("```\n" +
                                         "Adds SoupBot logo to given image." +
@@ -2057,7 +2059,15 @@ public class memebot {
                                         urlConnection.setRequestProperty("User-Agent",
                                                 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.65 Safari/537.31");
                                         BufferedImage img = ImageIO.read(urlConnection.getInputStream());
-                                        BufferedImage logo = ImageIO.read(new File(path + "soupbot.png"));
+                                        if (parts.length > 1) {
+                                            if (parts[1].equalsIgnoreCase("soupbot"))
+                                                logoName = "soupbot.png";
+                                            else if (parts[1].equalsIgnoreCase("rem"))
+                                                logoName = "rem.png";
+                                            else
+                                                logoName = "soupbot.png";
+                                        }
+                                        BufferedImage logo = ImageIO.read(new File(path + logoName));
                                         BufferedImage result = addLogoToImage(img, logo);
                                         File file = new File(System.currentTimeMillis() + attachment.getFileName() + ".png");
                                         ImageIO.write(result, "PNG", file);
@@ -2712,6 +2722,5 @@ public class memebot {
     }
 
     }
-
 
 
