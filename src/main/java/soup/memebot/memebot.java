@@ -92,8 +92,8 @@ public class memebot {
         DiscordAPI api = Javacord.getApi(token, true);
         final int numOfCommands = 49;
         final int numOfSubCommands = 17;
-        final String version = "1.5.3.2";
-        final String complieDate = "9/2/17 20:04 EST";
+        final String version = "1.5.3.3";
+        final String complieDate = "9/4/17 21:12 EST";
         final String chatFilterVersion = "1.6";
         final boolean[] censor = {false};
         final long[] cooldown = {0, 0};
@@ -355,8 +355,8 @@ public class memebot {
                                     "$meme\n" +
                                     "$info\n" +
                                     "$shutdown^\n" +
-                                    "$getAvatar\n" +
-                                    "$silverTime\n" +
+                                    "$getavatar\n" +
+                                    "$silvertime\n" +
                                     "$vote\n" +
                                     "$upcoming\n" +
                                     "$hypixel\n" +
@@ -491,19 +491,19 @@ public class memebot {
                             } else {
                                 message.reply("Only whitelisted members have the ability to shut me down.");
                             }
-                        } else if (message.getContent().startsWith("$getAvatar")) {
-                                    if (message.getContent().equalsIgnoreCase("$getAvatar")) {
+                        } else if (message.getContent().startsWith("$getavatar")) {
+                                    if (message.getContent().equalsIgnoreCase("$getavatar")) {
                                         message.reply("```\n" +
                                                 "Returns the profile picture of the given user.\n" +
-                                                "Syntax: \"$getAvatar [user]\"\n" +
-                                                "Example: \"$getAvatar @iamadog$1234\"\n" +
+                                                "Syntax: \"$getavatar [user]\"\n" +
+                                                "Example: \"$getavatar @iamadog$1234\"\n" +
                                                 "```");
                                     } else {
                                         List<User> mentions = message.getMentions();
                                         if (mentions.size() != 1) {
                                             message.reply("Error: The given command contains **" + mentions.size() + "** mentions instead of the necessary 1.\n" +
-                                                    "Syntax: \"$getAvatar [user]\"\n" +
-                                                    "Example: \"$getAvatar @iamadog#1234\"");
+                                                    "Syntax: \"$getavatar [user]\"\n" +
+                                                    "Example: \"$getavatar @iamadog#1234\"");
                                         } else if (mentions.size() == 1) {
                                             message.reply("Profile picture of **" + mentions.get(0) + "**: " + mentions.get(0).getAvatarUrl().toString());
                                         }
@@ -2055,7 +2055,7 @@ public class memebot {
                                     hasAcceptableSuffix = true;
                                     try {
                                         String path = ClassLoader.getSystemResource("images/donotdelete").getPath().substring(0, ClassLoader.getSystemResource("images/donotdelete").getPath().lastIndexOf("donotdelete"));
-                                        URLConnection urlConnection = (URLConnection) attachment.getUrl().openConnection();
+                                        URLConnection urlConnection = attachment.getUrl().openConnection();
                                         urlConnection.setRequestProperty("User-Agent",
                                                 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.65 Safari/537.31");
                                         BufferedImage img = ImageIO.read(urlConnection.getInputStream());
@@ -2068,6 +2068,10 @@ public class memebot {
                                                 logoName = "soupbot.png";
                                         }
                                         BufferedImage logo = ImageIO.read(new File(path + logoName));
+                                        if (logo.getWidth() > img.getWidth() / 6) {
+                                            double scaleFactor = ((double) img.getWidth() / 6) / logo.getWidth();
+                                            logo = resizeBufferedImage(logo, scaleFactor);
+                                        }
                                         BufferedImage result = addLogoToImage(img, logo);
                                         File file = new File(System.currentTimeMillis() + attachment.getFileName() + ".png");
                                         ImageIO.write(result, "PNG", file);
@@ -2719,6 +2723,15 @@ public class memebot {
             }
         }
         return false;
+    }
+
+    public static BufferedImage resizeBufferedImage(BufferedImage image, double scaleFactor) {
+        int scaledWidth = (int) Math.round(image.getWidth() * scaleFactor);
+        int scaledHeight = (int) Math.round(image.getHeight() * scaleFactor);
+        BufferedImage resizedImage = new BufferedImage(scaledWidth, scaledHeight, image.getType());
+        Graphics2D resized = resizedImage.createGraphics();
+        resized.drawImage(image, 0, 0, scaledWidth, scaledHeight, null);
+        return resizedImage;
     }
 
     }
