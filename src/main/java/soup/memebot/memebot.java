@@ -12,6 +12,14 @@ import de.btobastian.javacord.entities.permissions.Role;
 import de.btobastian.javacord.listener.message.MessageCreateListener;
 import de.btobastian.javacord.*;
 
+import clarifai2.api.ClarifaiBuilder;
+import clarifai2.api.ClarifaiClient;
+import clarifai2.api.request.ClarifaiRequest;
+import clarifai2.dto.input.ClarifaiInput;
+import clarifai2.dto.input.ClarifaiImage;
+import clarifai2.dto.model.output.ClarifaiOutput;
+import clarifai2.dto.prediction.Concept;
+
 import java.awt.*;
 import java.awt.image.*;
 import java.io.*;
@@ -32,9 +40,12 @@ import javax.script.ScriptException;
 import javax.swing.*;
 
 import de.btobastian.javacord.listener.user.UserChangeStatusListener;
+import okhttp3.OkHttpClient;
 import org.apache.commons.lang3.StringUtils;
 
+
 import org.apache.commons.math.util.MathUtils;
+import org.apache.commons.validator.routines.UrlValidator;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -90,10 +101,10 @@ public class memebot {
         }
 
         DiscordAPI api = Javacord.getApi(token, true);
-        final int numOfCommands = 49;
+        final int numOfCommands = 50;
         final int numOfSubCommands = 17;
-        final String version = "1.5.3.3";
-        final String complieDate = "9/4/17 21:12 EST";
+        final String version = "1.6.1";
+        final String complieDate = "9/5/17 20:57 EST";
         final String chatFilterVersion = "1.6";
         final boolean[] censor = {false};
         final long[] cooldown = {0, 0};
@@ -122,12 +133,16 @@ public class memebot {
 
                 api.setGame("$help");
 
+                final ClarifaiClient client = new ClarifaiBuilder("a12e63a5994d4261a02d42c8640b20ad")
+                        .client(new OkHttpClient()) // OPTIONAL. Allows customization of OkHttp by the user
+                        .buildSync();
+
                 api.registerListener(new UserChangeStatusListener() { //user status changes
                     @Override
                     public void onUserChangeStatus(DiscordAPI discordAPI, User user, UserStatus oldStatus) {
                         System.out.println(new Timestamp(System.currentTimeMillis()) + ": " + user.getName() + "'s status has changed from " + oldStatus.toString() + " to " + user.getStatus().toString());
 
-                        ArrayList<String> notificationPeople = new ArrayList<String>(Arrays.asList("Silver", "Almurray155", "Meme", "Rickl", "Cyrinthia"));
+                        ArrayList<String> notificationPeople = new ArrayList<String>(Arrays.asList("Silver", "Almurray155", "Meme", "Rickl", "Cyrinthia", "Zomyster"));
                         ArrayList<String> runningProcesses = getProcessList();
                         String[] uninterruptibleProcesses = new String[] {"MinecraftLauncher.exe", "Terraria.exe"}; //add more to here
 
@@ -394,6 +409,7 @@ public class memebot {
                                     "$getpets\n" +
                                     "$clearpets\n" +
                                     "$addlogo\n" +
+                                    "$identify\n" +
                                     "```");
                         } else if (message.getContent().equalsIgnoreCase("$info")) {
                             message.reply("```\n" +
@@ -2077,7 +2093,7 @@ public class memebot {
                                         ImageIO.write(result, "PNG", file);
 
                                         message.getChannelReceiver().sendFile(file);
-                                    } catch (IOException e) {
+                                    } catch (Exception e) {
                                         message.reply(e.getMessage());
                                         e.printStackTrace();
                                     } finally {
@@ -2087,6 +2103,70 @@ public class memebot {
                                         }
                                     }
                                 }
+                            }
+                        } else if (message.getContent().startsWith("$identify")) {
+                            if (message.getContent().equalsIgnoreCase("$identify") && message.getAttachments().size() < 1) {
+                                message.reply("```\n" +
+                                        "Passes the provided image to the Clarifai image recognition API.\n" +
+                                        "Will take a link or an image.\n" +
+                                        "Syntax: \"$identify [link/image]\"\n" +
+                                        "Example: \"$identify http://iscalio.com/cats/0.jpg\"\n" +
+                                        "If sending an image, make sure it is sent with the command.\n" +
+                                        "```");
+                                return;
+                            }
+                            String link = "link";
+                            if (message.getContent().equalsIgnoreCase("$identify") && message.getAttachments().size() > 0) {
+                                for (MessageAttachment attachment : message.getAttachments()) {
+                                    if (stringEndsWithFromArray(attachment.getFileName(), new String[]{".jpg", ".png", ".gif", ".bmp", ".tiff"})) {
+                                        System.out.println("Uploaded picture " + attachment.getFileName() + " is of a valid file format.");
+                                        link = attachment.getUrl().toString();
+                                    }
+                                }
+                            }
+                            String[] parts = message.getContent().split(" ");
+                            if (parts.length > 1) {
+                                UrlValidator urlValidator = new UrlValidator();
+                                if (urlValidator.isValid(parts[1])) {
+                                    link = parts[1];
+                                } else {
+                                    message.reply("Error: Please input a valid URL.");
+                                }
+
+                            }
+                            if (!link.equals("link")) {
+                                List<ClarifaiOutput<Concept>> predictionResults =
+                                        client.getDefaultModels().generalModel() // You can also do Clarifai.getModelByID("id") to get custom models
+                                                .predict()
+                                                .withInputs(
+                                                        ClarifaiInput.forImage(ClarifaiImage.of(link))
+                                                )
+                                                .executeSync() // optionally, pass a ClarifaiClient parameter to override the default client instance with another one
+                                                .get();
+                                for (ClarifaiOutput clarifaiOutput : predictionResults) {
+                                    ArrayList<String> names = new ArrayList<String>();
+                                    ArrayList<String> percentages = new ArrayList<String>();
+                                    for (Object o : clarifaiOutput.data()) {
+                                        System.out.println(o);
+                                        names.add(parseClarifaiConcept(o.toString())[0]);
+                                        percentages.add(parseClarifaiConcept(o.toString())[1]);
+                                    }
+                                    names.add(0, "NAMES");
+                                    names.add(1, "");
+
+                                    percentages.add(0, "PERCENTAGES");
+                                    percentages.add(1, "");
+
+                                    names = truncateArrayList(names, 11);
+                                    percentages = truncateArrayList(percentages, 11);
+
+                                    message.reply("```\n" +
+                                            formatListsAsColumns(new ArrayList[] {names, percentages}, 24) + "\n" +
+                                            "```");
+                                }
+
+                            } else {
+                                message.reply("An error occurred.");
                             }
                         }
 
@@ -2732,6 +2812,44 @@ public class memebot {
         Graphics2D resized = resizedImage.createGraphics();
         resized.drawImage(image, 0, 0, scaledWidth, scaledHeight, null);
         return resizedImage;
+    }
+
+    public static String[] parseClarifaiConcept(String line) {
+        line = line.substring(24, line.length() - 2);
+        String[] parts = line.split(", ");
+        String name = parts[0].substring(parts[0].indexOf("=") + 1);
+        String percentage = parts[3].substring(parts[0].indexOf("=") + 2);
+        String[] returnArray = new String[] {name, formatDecimalAsPercent(percentage, 4)};
+        return returnArray;
+    }
+
+    public static ArrayList<String> truncateArrayList(ArrayList<String> arrayList, int desiredNumOfElements) {
+        while (arrayList.size() > desiredNumOfElements) {
+            arrayList.remove(arrayList.size() - 1);
+        }
+        return arrayList;
+    }
+
+    public static String formatDecimalAsPercent(String decimal, int decimalPlaces) {
+        /*int indexOfDecimal = decimal.indexOf(".");
+        ArrayList<Character> characters = new ArrayList<Character>();
+
+        for (char c : decimal.toCharArray()) {
+            characters.add(c);
+        }
+
+        characters.remove(indexOfDecimal);
+        characters.add(indexOfDecimal + 2, '.');
+        */
+
+        double d = Double.parseDouble(decimal);
+        int multiplier = Integer.parseInt("1" + multiplyString("0", decimalPlaces));
+        d *= multiplier * 100;
+
+        d = Math.round(d);
+        d /= multiplier;
+
+        return String.valueOf(d) + "%";
     }
 
     }

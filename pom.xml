@@ -6,7 +6,7 @@
 
     <groupId>com.soup.memebot</groupId>
     <artifactId>soupmemebot</artifactId>
-    <version>0.9</version>
+    <version>1.5</version>
     <build>
         <plugins>
             <plugin>
@@ -20,56 +20,34 @@
         </plugins>
     </build>
 
-    <repository>
-        <id>javacord-repo</id>
-        <url>http://repo.bastian-oppermann.de</url>
-    </repository>
-    ...
-    <dependency>
-        <groupId>de.btobastian.javacord</groupId>
-        <artifactId>javacord</artifactId>
-        <version>2.0.14</version>
-        <classifier>shaded</classifier>
-    </dependency>
-    <!-- Any SLF4J comaptible logging framework. -->
-    <dependency>
-        <groupId>ch.qos.logback</groupId>
-        <artifactId>logback-classic</artifactId>
-        <version>1.0.13</version>
-    </dependency>
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-math3 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>3.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.5</version>
+        </dependency>
 
-    <!-- sdcf4j is below this -->
+        <!-- https://mvnrepository.com/artifact/commons-validator/commons-validator -->
+        <dependency>
+            <groupId>commons-validator</groupId>
+            <artifactId>commons-validator</artifactId>
+            <version>1.4.0</version>
+        </dependency>
 
-    <repository>
-        <id>sdcf4j-repo</id>
-        <url>http://repo.bastian-oppermann.de</url>
-    </repository>
-    ...
-    <!-- The core module -->
-    <dependency>
-        <groupId>de.btobastian.sdcf4j</groupId>
-        <artifactId>sdcf4j-core</artifactId>
-        <version>1.0.4</version>
-    </dependency>
-    <!-- The module for your prefered lib-->
-    <dependency>
-        <groupId>de.btobastian.sdcf4j</groupId>
-        <!-- Possible artifact ids: sdcf4j-javacord, sdcf4j-jda, sdcf4j-jda3, sdcf4j-discord4j -->
-        <artifactId>sdcf4j-javacord</artifactId>
-        <version>1.0.4</version>
-    </dependency>
-    <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-math3 -->
-    <dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-math3</artifactId>
-        <version>3.2</version>
-    </dependency>
-    <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
-    <dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-lang3</artifactId>
-        <version>3.5</version>
-    </dependency>
+
+        <dependency>
+            <groupId>com.clarifai.clarifai-api2</groupId>
+            <artifactId>core</artifactId>
+            <version>2.2.12</version>
+        </dependency>
+    </dependencies>
 
 
 </project>
