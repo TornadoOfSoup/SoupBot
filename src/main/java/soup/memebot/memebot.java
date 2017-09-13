@@ -14,7 +14,6 @@ import de.btobastian.javacord.*;
 
 import clarifai2.api.ClarifaiBuilder;
 import clarifai2.api.ClarifaiClient;
-import clarifai2.api.request.ClarifaiRequest;
 import clarifai2.dto.input.ClarifaiInput;
 import clarifai2.dto.input.ClarifaiImage;
 import clarifai2.dto.model.output.ClarifaiOutput;
@@ -52,11 +51,11 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import static soup.memebot.LoadUserStats.loadStats;
-import static soup.memebot.Utils.getPathOfResourcesFolder;
-import static soup.memebot.Utils.statsFileExists;
-import static soup.memebot.Utils.levelUpDialog;
+import static soup.memebot.Utils.*;
 
 public class memebot {
+
+    static TimedEventsRunnable checkOnline = new TimedEventsRunnable("CheckOnline", 60);
 
     static final ArrayList<String> whitelist = new ArrayList<String>(Arrays.asList("TornadoOfSoup", "Kotamonn", "SoupBot"));
     static final ArrayList<String> unitTypeList = new ArrayList<String>(Arrays.asList("temp", "weight", "length", "angle"));
@@ -103,8 +102,8 @@ public class memebot {
         DiscordAPI api = Javacord.getApi(token, true);
         final int numOfCommands = 50;
         final int numOfSubCommands = 17;
-        final String version = "1.6.1";
-        final String complieDate = "9/5/17 20:57 EST";
+        final String version = "1.6.2";
+        final String complieDate = "9/13/17 00:28 EST";
         final String chatFilterVersion = "1.6";
         final boolean[] censor = {false};
         final long[] cooldown = {0, 0};
@@ -132,6 +131,9 @@ public class memebot {
                 System.out.println();
 
                 api.setGame("$help");
+
+                TimedEventHandlerRunnable timedEventHandlerRunnable = new TimedEventHandlerRunnable(api, api.getChannelById("189359733377990656")); //general in ddc;
+                timedEventHandlerRunnable.start();
 
                 final ClarifaiClient client = new ClarifaiBuilder("a12e63a5994d4261a02d42c8640b20ad")
                         .client(new OkHttpClient()) // OPTIONAL. Allows customization of OkHttp by the user
@@ -1656,40 +1658,22 @@ public class memebot {
                                 e.printStackTrace();
                             }*/
                         } else if (message.getContent().equalsIgnoreCase("$onlineusers")) {
-                            ArrayList<User> users = new ArrayList<User>(api.getUsers());
+                            ArrayList<ArrayList<String>> arrayLists = getListsOfOnlineUsers(api, message.getChannelReceiver());
 
-                            ArrayList<String> online = new ArrayList<String>();
-                            ArrayList<String> idle = new ArrayList<String>();
-                            ArrayList<String> dnd = new ArrayList<String>(); //do not disturb
-                            ArrayList<String> bots = new ArrayList<String>();
+                            ArrayList<String> online = arrayLists.get(0);
+                            ArrayList<String> idle = arrayLists.get(1);
+                            ArrayList<String> dnd = arrayLists.get(2);
+                            ArrayList<String> bots = arrayLists.get(3);
 
                             int longestLength = 0;
 
-                            for (User user : users) {
-                                if (message.getChannelReceiver().getServer().isMember(user)) {
-                                    if (user.getName().length() > longestLength && user.getStatus() != UserStatus.OFFLINE) {
-                                        longestLength = user.getName().length();
-                                    }
-
-                                    switch (user.getStatus()) {
-                                        case ONLINE:
-                                            if (user.isBot()) bots.add(user.getName()); else online.add(user.getName());
-                                            break;
-                                        case IDLE:
-                                            if (user.isBot()) bots.add(user.getName()); else idle.add(user.getName());
-                                            break;
-                                        case DO_NOT_DISTURB:
-                                            if (user.isBot()) bots.add(user.getName()); else dnd.add(user.getName());
-                                            break;
-                                        default:
-                                            break;
+                            for (ArrayList<String> arrayList : arrayLists) {
+                                for (String s : arrayList) {
+                                    if (s.length() > longestLength) {
+                                        longestLength = s.length();
                                     }
                                 }
                             }
-
-                            Collections.sort(online, String.CASE_INSENSITIVE_ORDER);
-                            Collections.sort(idle, String.CASE_INSENSITIVE_ORDER);
-                            Collections.sort(dnd, String.CASE_INSENSITIVE_ORDER);
 
                             ArrayList<String>[] userLists = new ArrayList[] {online, idle, dnd, bots};
                             int columnWidth = longestLength + 8; //leaves some space between columns
@@ -2852,6 +2836,112 @@ public class memebot {
         return String.valueOf(d) + "%";
     }
 
+    public static ArrayList<ArrayList<String>> getListsOfOnlineUsers(DiscordAPI api, Channel channel) {
+        ArrayList<User> users = new ArrayList<User>(api.getUsers());
+        ArrayList<ArrayList<String>> arrayLists = new ArrayList<ArrayList<String>>();
+
+        ArrayList<String> online = new ArrayList<String>();
+        ArrayList<String> idle = new ArrayList<String>();
+        ArrayList<String> dnd = new ArrayList<String>(); //do not disturb
+        ArrayList<String> bots = new ArrayList<String>();
+
+        for (User user : users) {
+            if (channel.getServer().isMember(user)) {
+
+                switch (user.getStatus()) {
+                    case ONLINE:
+                        if (user.isBot()) bots.add(user.getName()); else online.add(user.getName());
+                        break;
+                    case IDLE:
+                        if (user.isBot()) bots.add(user.getName()); else idle.add(user.getName());
+                        break;
+                    case DO_NOT_DISTURB:
+                        if (user.isBot()) bots.add(user.getName()); else dnd.add(user.getName());
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        Collections.sort(online, String.CASE_INSENSITIVE_ORDER);
+        Collections.sort(idle, String.CASE_INSENSITIVE_ORDER);
+        Collections.sort(dnd, String.CASE_INSENSITIVE_ORDER);
+        Collections.sort(bots, String.CASE_INSENSITIVE_ORDER);
+
+        arrayLists.add(online);
+        arrayLists.add(idle);
+        arrayLists.add(dnd);
+        arrayLists.add(bots);
+
+        return arrayLists;
     }
 
+    }
 
+class TimedEventHandlerRunnable implements Runnable {
+
+    DiscordAPI api;
+    Channel channel;
+    private Thread thread;
+
+    public TimedEventHandlerRunnable(DiscordAPI api, Channel channel) {
+        System.out.println(getTimestampFull() + " Creating " + this.getClass().getName() + " thread");
+
+        this.api = api;
+        this.channel = channel;
+    }
+
+    @Override
+    public void run() {
+        memebot.checkOnline.start();
+        try {
+
+            while (true) {
+                if (memebot.checkOnline.getTimedBool()) {
+                    ArrayList<ArrayList<String>> arrayLists = memebot.getListsOfOnlineUsers(api, channel);
+
+                    ArrayList<String> online = arrayLists.get(0);
+                    ArrayList<String> idle = arrayLists.get(1);
+                    ArrayList<String> dnd = arrayLists.get(2);
+
+                    File onlineUserNum = new File(getPathOfResourcesFolder() + "/stats/online.txt");
+                    File idleUserNum = new File(getPathOfResourcesFolder() + "/stats/idle.txt");
+                    File dndUserNum = new File(getPathOfResourcesFolder() + "/stats/dnd.txt");
+
+                    System.out.println(getTimestampFull() + " Writing user counts to file");
+                    onlineUserNum.createNewFile();
+                    idleUserNum.createNewFile();
+                    dndUserNum.createNewFile();
+
+                    FileWriter onlineWriter = new FileWriter(onlineUserNum, true);
+                    onlineWriter.append(getTimestampTime() + " | " + online.size() + "\n");
+                    onlineWriter.close();
+
+                    FileWriter idleWriter = new FileWriter(idleUserNum, true);
+                    idleWriter.append(getTimestampTime() + " | " + idle.size() + "\n");
+                    idleWriter.close();
+
+                    FileWriter dndWriter = new FileWriter(dndUserNum, true);
+                    dndWriter.append(getTimestampTime() + " | " + dnd.size() + "\n");
+                    dndWriter.close();
+
+                    memebot.checkOnline.setTimedBool(false);
+
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+
+        }
+    }
+
+    public void start () {
+        System.out.println(getTimestampFull() + " Starting " +  this.getClass().getName() + "!");
+        if (thread == null) {
+            thread = new Thread (this, "TimedEventsHandlerRunnable");
+            thread.start();
+        }
+    }
+}

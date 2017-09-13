@@ -5,6 +5,9 @@ import de.btobastian.javacord.entities.User;
 import de.btobastian.javacord.entities.message.Message;
 
 import java.io.File;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.Future;
 
@@ -72,5 +75,18 @@ public class Utils {
         }
         returnString = returnString.trim();
         return returnString;
+    }
+
+    public static String getTimestampFull() {
+        Date date = new Date();
+        String timeStamp = new SimpleDateFormat("yyyy-MM-dd | HH:mm:ss").format(date);
+        timeStamp = "[" + timeStamp + "]";
+        return timeStamp;
+    }
+
+    public static String getTimestampTime() {
+        Date date = new Date();
+        String timeStamp = new SimpleDateFormat("HH:mm").format(date);
+        return timeStamp;
     }
 }
