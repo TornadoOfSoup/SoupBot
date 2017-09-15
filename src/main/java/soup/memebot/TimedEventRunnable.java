@@ -5,14 +5,14 @@ import static soup.memebot.Utils.getTimestampFull;
 /**
  * Created by RPGenius on 9/12/2017.
  */
-public class TimedEventsRunnable implements Runnable {
+public class TimedEventRunnable implements Runnable {
 
     volatile boolean timedBool;
     String threadName;
     int timerLength;
     private Thread thread;
 
-    public TimedEventsRunnable(String threadName, int timerLengthInSeconds) {
+    public TimedEventRunnable(String threadName, int timerLengthInSeconds) {
         this.threadName = threadName;
         this.timerLength = timerLengthInSeconds;
         System.out.println(getTimestampFull() + " Creating " + this.getClass().getName() + " thread called " + threadName);

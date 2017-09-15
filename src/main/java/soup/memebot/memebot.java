@@ -8,6 +8,7 @@ import de.btobastian.javacord.entities.message.Message;
 import de.btobastian.javacord.entities.message.MessageAttachment;
 import de.btobastian.javacord.entities.message.MessageHistory;
 import de.btobastian.javacord.entities.message.MessageReceiver;
+import de.btobastian.javacord.entities.permissions.Permissions;
 import de.btobastian.javacord.entities.permissions.Role;
 import de.btobastian.javacord.listener.message.MessageCreateListener;
 import de.btobastian.javacord.*;
@@ -55,9 +56,10 @@ import static soup.memebot.Utils.*;
 
 public class memebot {
 
-    static TimedEventsRunnable checkOnline = new TimedEventsRunnable("CheckOnline", 60);
+    static TimedEventRunnable checkOnline = new TimedEventRunnable("CheckOnline", 60);
 
     static final ArrayList<String> whitelist = new ArrayList<String>(Arrays.asList("TornadoOfSoup", "Kotamonn", "SoupBot"));
+    static final ArrayList<String> promotedList = new ArrayList<>(Arrays.asList("Butterwhales, Almurray155, Meme"));
     static final ArrayList<String> unitTypeList = new ArrayList<String>(Arrays.asList("temp", "weight", "length", "angle"));
     static final ArrayList<String> unitTempList = new ArrayList<String>(Arrays.asList("C", "F", "K"));
     static final ArrayList<String> unitAngleList = new ArrayList<String>(Arrays.asList("D", "R", "deg", "rad"));
@@ -101,9 +103,9 @@ public class memebot {
 
         DiscordAPI api = Javacord.getApi(token, true);
         final int numOfCommands = 50;
-        final int numOfSubCommands = 17;
-        final String version = "1.6.2";
-        final String complieDate = "9/13/17 00:28 EST";
+        final int numOfSubCommands = 18;
+        final String version = "1.6.5";
+        final String complieDate = "9/15/17 01:05 EST";
         final String chatFilterVersion = "1.6";
         final boolean[] censor = {false};
         final long[] cooldown = {0, 0};
@@ -535,64 +537,69 @@ public class memebot {
                             if (message.getContent().equalsIgnoreCase("$vote")) {
                                 message.reply("```\n" +
                                         "Conducts a vote based on reactions.\n" +
-                                        "Syntax: \"$vote [question]\"\n" +
-                                        "React with a :thumbsup: for yes or a :thumbsdown: for no.\n" +
+                                        "Syntax: \"$vote [question] | [time in minutes] | [reaction 1] [reaction 2] ...\"\n" +
+                                        "Example: \"$vote Happy, sad, or mad? | 60 | :smile: :frowning: :angry:\"" +
+                                        "Note that you can have as many reactions as you want.\n" +
                                         "```");
-                            } else if (message.getContent().equalsIgnoreCase("$vote yes") || message.getContent().equalsIgnoreCase("$vote no") ||message.getContent().equalsIgnoreCase("$vote y") || message.getContent().equalsIgnoreCase("$vote n")) {
-                                message.reply("```\n" +
-                                        "The given command is only meant to be used during an active vote session.\n" +
-                                        "Please start a vote to use this command.\n" +
-                                        "```");
+                            } else if (!isOnList(message.getAuthor().getName(), whitelist) || isOnList(message.getAuthor().getName(), promotedList)) {
+                                message.reply("This command is only usable by whitelisted or promoted members.");
+                                return;
+                            } else if (message.getContent().startsWith("$vote readID ")) {
+                                String id = message.getContent().replace("$vote readID ", "");
+                                new ScheduledVoteReadRunnable("Vote ReadID", 0.01, api.getMessageById(id), api).start();
                             } else {
-                                String[] parts = message.getContent().split(" ");
-                                if (parts.length < 2) {
-                                    message.reply("Error: The given command contains **" + parts.length + "** parts instead of the necessary 2 or more.");
-                                } else {
+                                    String msg = message.getContent().replace("$vote ", "");
+                                    String[] parts = msg.split(" \\| ");
+                                    if (parts.length != 3) {
+                                        message.reply("Error: The command must have exactly 3 parts separated by vertical bars. (\"|\")");
+                                        //System.out.println(parts.length);
+                                    } else {
+                                        try {
+                                            Future<Message> voteFutureMessage;
+                                            if (Double.parseDouble(parts[1]) > 60) {
+                                                int hours = (int) Math.floor(Double.parseDouble(parts[1]) / 60);
+                                                if (hours > 24) {
+                                                    int days = (int) Math.floor(hours / 24);
+                                                    voteFutureMessage = message.reply("```\n\"" + parts[0] + "\"\n" +
+                                                            "\n" +
+                                                            "The voting period will end in " + days + " days, " + hours % 24 + " hours, and " + Double.parseDouble(parts[1]) % 60 + " minutes.\n" +
+                                                            "Vote!\n" +
+                                                            "```");
+                                                } else {
+                                                    voteFutureMessage = message.reply("```\n\"" + parts[0] + "\"\n" +
+                                                            "\n" +
+                                                            "The voting period will end in " + hours + " hours and " + Double.parseDouble(parts[1]) % 60 + " minutes.\n" +
+                                                            "Vote!\n" +
+                                                            "```");
+                                                }
+                                            } else {
+                                                voteFutureMessage = message.reply("```\n\"" + parts[0] + "\"\n" +
+                                                        "\n" +
+                                                        "The voting period will end in " + parts[1] + " minutes.\n" +
+                                                        "Vote!\n" +
+                                                        "```");
+                                            }
+                                            while (!voteFutureMessage.isDone()) {}
 
-                                    message.reply("```\n" +
-                                            "This command is currently under maintenance because Shoji has no idea what the hell to do.\n" +
-                                            "We are sorry for the inconvenience.\n" +
-                                            "```");
-                                    /*
-                                    try {
-                                        String question = message.getContent().substring(message.getContent().indexOf(" ") + 1);
+                                            Message voteMessage = voteFutureMessage.get();
 
-                                        Future<Message> vote = message.reply("/tts```\n" +
-                                                "Beginning vote on question: \"" + question + "\"\n" +
-                                                "The vote will last for 45 seconds.\n" +
-                                                "React with :thumbsup: or :thumbsdown: to vote!\n" +
-                                                "```");
-                                        Message voteMessage = vote.get();
-                                        Thread.sleep(15000);
-                                        message.reply("/tts```\n" +
-                                                "30 seconds left!\n" +
-                                                "```");
-                                        //Thread.sleep(20000);
-                                        message.reply("/tts```\n" +
-                                                "10 seconds left!\n" +
-                                                "```");
-                                        Thread.sleep(10000);
+                                            String[] reactions = parts[2].split(" ");
 
-                                        System.out.println(voteMessage.getReactions() + String.valueOf(voteMessage.getReactions().size()));
-                                        message.reply(voteMessage.getReactions() + String.valueOf(voteMessage.getReactions().size()));
-
-
-
-
-                                    } catch (InterruptedException e) {
-                                        e.printStackTrace();
-                                    } catch (java.util.concurrent.ExecutionException e) {
-                                        e.printStackTrace();
+                                            new ReactionAddingWithSimulatedRateLimitRunnable(voteMessage, reactions).start();
+                                            ScheduledVoteReadRunnable vote = new ScheduledVoteReadRunnable("Vote", Double.parseDouble(parts[1]), voteMessage, api);
+                                            vote.start();
+                                        } catch (InterruptedException e) {
+                                            e.printStackTrace();
+                                        } catch (ExecutionException e) {
+                                            e.printStackTrace();
+                                        }
                                     }
-                                    */
                                 }
-                            }
                         } else if (message.getContent().equalsIgnoreCase("$upcoming")) {
                             message.reply("```\n" +
                                     "Here's a non-exhaustive list of what is currently planned for updates in the near future.\n" +
                                     "   A way to add memes to the library and maybe rename them from the discord.\n" +
                                     "   Implement coterminal and other math things.\n" +
-                                    "   Maybe find a way to make $vote work?\n" +
                                     "   Make the $mode command work more.\n" +
                                     "   Add levels of restriction to restricted mode.\n" +
                                     "   Implement picture reformatter.\n" +
@@ -2938,6 +2945,41 @@ class TimedEventHandlerRunnable implements Runnable {
     }
 
     public void start () {
+        System.out.println(getTimestampFull() + " Starting " +  this.getClass().getName() + "!");
+        if (thread == null) {
+            thread = new Thread (this, "TimedEventsHandlerRunnable");
+            thread.start();
+        }
+    }
+}
+
+class ReactionAddingWithSimulatedRateLimitRunnable implements Runnable {
+
+    Message message;
+    String[] reactions;
+    private Thread thread;
+
+    public ReactionAddingWithSimulatedRateLimitRunnable (Message message, String[] reactions) {
+        this.message = message;
+        this.reactions = reactions;
+        System.out.println(getTimestampFull() + " Creating " + this.getClass().getName() + " thread");
+    }
+
+    @Override
+    public void run() {
+        try {
+            for (String reaction : reactions) {
+                Future<Void> future = message.addUnicodeReaction(reaction);
+                System.out.println("Adding reaction " + reaction);
+                while (!future.isDone()) {}
+                Thread.sleep(250);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void start() {
         System.out.println(getTimestampFull() + " Starting " +  this.getClass().getName() + "!");
         if (thread == null) {
             thread = new Thread (this, "TimedEventsHandlerRunnable");
