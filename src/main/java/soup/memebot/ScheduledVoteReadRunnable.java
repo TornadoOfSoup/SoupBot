@@ -17,15 +17,16 @@ public class ScheduledVoteReadRunnable implements Runnable {
     String threadName;
     long timerLength;
     private Thread thread;
-    private boolean finished;
+    String question;
     private Message message;
     private DiscordAPI api;
 
-    public ScheduledVoteReadRunnable(String threadName, double timerLengthInMinutes, Message message, DiscordAPI api) {
+    public ScheduledVoteReadRunnable(String threadName, double timerLengthInMinutes, String question, Message message, DiscordAPI api) {
         this.threadName = threadName;
         this.timerLength = Math.round(timerLengthInMinutes * 1000 * 60);
         this.message = message;
         this.api = api;
+        this.question = question;
         System.out.println(getTimestampFull() + " Creating " + this.getClass().getName() + " thread called " + threadName);
     }
 
@@ -57,8 +58,8 @@ public class ScheduledVoteReadRunnable implements Runnable {
 
             int i = 0;
             for (Reaction reaction : reactions) {
-                System.out.println(reaction.getUnicodeEmoji() + ": " + (double) reaction.getCount() / totalAmountOfReactions * 100 + "%");
-                builder.append(reaction.getUnicodeEmoji() + ": " + (double) reaction.getCount() / totalAmountOfReactions * 100 + "    ");
+                System.out.println(reaction.getUnicodeEmoji() + ": " + (double) Math.round((double) reaction.getCount() / totalAmountOfReactions * 10000) / 100 + "%");
+                builder.append(reaction.getUnicodeEmoji() + ": " + (double) Math.round((double) reaction.getCount() / totalAmountOfReactions * 10000) / 100 + "%    ");
                 if (i == 5) {
                     builder.append("\n");
                     i = 0;
@@ -68,6 +69,7 @@ public class ScheduledVoteReadRunnable implements Runnable {
             }
 
             message.reply("```\n" +
+                    "\"" + question + "\"\n\n" +
                     builder.toString() +
                     "```");
         } catch (InterruptedException e) {

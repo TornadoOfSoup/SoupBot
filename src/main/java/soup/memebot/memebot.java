@@ -472,7 +472,6 @@ public class memebot {
                                 String[] parts = message.getContent().split(" ");
 
 
-
                                 if (parts.length > 2) {
                                     message.reply("Error: The given command contains **" + parts.length + "** parts instead of the necessary 2.");
                                 } else {
@@ -546,7 +545,7 @@ public class memebot {
                                 return;
                             } else if (message.getContent().startsWith("$vote readID ")) {
                                 String id = message.getContent().replace("$vote readID ", "");
-                                new ScheduledVoteReadRunnable("Vote ReadID", 0.01, api.getMessageById(id), api).start();
+                                new ScheduledVoteReadRunnable("Vote ReadID", 0.01, "PLACEHOLDER QUESTION", api.getMessageById(id), api).start();
                             } else {
                                     String msg = message.getContent().replace("$vote ", "");
                                     String[] parts = msg.split(" \\| ");
@@ -586,7 +585,7 @@ public class memebot {
                                             String[] reactions = parts[2].split(" ");
 
                                             new ReactionAddingWithSimulatedRateLimitRunnable(voteMessage, reactions).start();
-                                            ScheduledVoteReadRunnable vote = new ScheduledVoteReadRunnable("Vote", Double.parseDouble(parts[1]), voteMessage, api);
+                                            ScheduledVoteReadRunnable vote = new ScheduledVoteReadRunnable("Vote", Double.parseDouble(parts[1]), parts[0], voteMessage, api);
                                             vote.start();
                                         } catch (InterruptedException e) {
                                             e.printStackTrace();
