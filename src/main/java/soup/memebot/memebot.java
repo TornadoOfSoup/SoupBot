@@ -104,8 +104,8 @@ public class memebot {
         DiscordAPI api = Javacord.getApi(token, true);
         final int numOfCommands = 50;
         final int numOfSubCommands = 18;
-        final String version = "1.6.5";
-        final String complieDate = "9/15/17 01:05 EST";
+        final String version = "1.6.7";
+        final String complieDate = "9/15/17 23:26 EST";
         final String chatFilterVersion = "1.6";
         final boolean[] censor = {false};
         final long[] cooldown = {0, 0};
@@ -537,10 +537,11 @@ public class memebot {
                                 message.reply("```\n" +
                                         "Conducts a vote based on reactions.\n" +
                                         "Syntax: \"$vote [question] | [time in minutes] | [reaction 1] [reaction 2] ...\"\n" +
-                                        "Example: \"$vote Happy, sad, or mad? | 60 | :smile: :frowning: :angry:\"" +
+                                        "Example: \"$vote Happy, sad, or mad? | 60 | :smile: :frowning: :angry:\"\n" +
                                         "Note that you can have as many reactions as you want.\n" +
+                                        "Also note that custom emotes are currently not supported.\n" +
                                         "```");
-                            } else if (!isOnList(message.getAuthor().getName(), whitelist) || isOnList(message.getAuthor().getName(), promotedList)) {
+                            } else if (!isOnList(message.getAuthor().getName(), whitelist) && !isOnList(message.getAuthor().getName(), promotedList)) {
                                 message.reply("This command is only usable by whitelisted or promoted members.");
                                 return;
                             } else if (message.getContent().startsWith("$vote readID ")) {
