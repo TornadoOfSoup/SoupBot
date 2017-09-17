@@ -59,7 +59,7 @@ public class memebot {
     static TimedEventRunnable checkOnline = new TimedEventRunnable("CheckOnline", 60);
 
     static final ArrayList<String> whitelist = new ArrayList<String>(Arrays.asList("TornadoOfSoup", "Kotamonn", "SoupBot"));
-    static final ArrayList<String> promotedList = new ArrayList<>(Arrays.asList("Butterwhales, Almurray155, Meme"));
+    static final ArrayList<String> promotedList = new ArrayList<String>(Arrays.asList("Butterwhales", "Almurray155", "Meme"));
     static final ArrayList<String> unitTypeList = new ArrayList<String>(Arrays.asList("temp", "weight", "length", "angle"));
     static final ArrayList<String> unitTempList = new ArrayList<String>(Arrays.asList("C", "F", "K"));
     static final ArrayList<String> unitAngleList = new ArrayList<String>(Arrays.asList("D", "R", "deg", "rad"));
@@ -104,8 +104,8 @@ public class memebot {
         DiscordAPI api = Javacord.getApi(token, true);
         final int numOfCommands = 50;
         final int numOfSubCommands = 18;
-        final String version = "1.6.7";
-        final String complieDate = "9/15/17 23:26 EST";
+        final String version = "1.6.8";
+        final String complieDate = "9/16/17 20:08 EST";
         final String chatFilterVersion = "1.6";
         final boolean[] censor = {false};
         final long[] cooldown = {0, 0};
@@ -2159,6 +2159,15 @@ public class memebot {
                             } else {
                                 message.reply("An error occurred.");
                             }
+                        } else if (message.getContent().startsWith("$whatlist")) {
+                            String user = message.getContent().replace("$whatlist ", "");
+                            if (isOnList(user, whitelist)) {
+                                message.reply(user + " is on the whitelist.");
+                            } else if (isOnList(user, promotedList)) {
+                                message.reply(user + " is on the promoted list.");
+                            } else {
+                                message.reply(user + " is not on any lists.");
+                            }
                         }
 
                     }
@@ -2185,10 +2194,10 @@ public class memebot {
         }, "Shutdown-thread"));
     }
 
-    public static boolean isOnList(String item, ArrayList<String> list) {
+    public static boolean isOnList(String item, ArrayList<?> list) {
 
-        for (String listName : list){
-            if (item.equalsIgnoreCase(listName)) {
+        for (Object listName : list){
+            if (item.equalsIgnoreCase(listName.toString())) {
                 return true;
             }
         }

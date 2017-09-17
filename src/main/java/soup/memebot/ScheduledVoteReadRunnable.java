@@ -39,7 +39,7 @@ public class ScheduledVoteReadRunnable implements Runnable {
 
             int totalAmountOfReactions = 0;
             for (Reaction reaction : reactions) {
-                totalAmountOfReactions += reaction.getCount();
+                totalAmountOfReactions += reaction.getCount() - 1; // -1 to ignore soupbot's initial vote
             }
 
             reactions.sort(new Comparator<Reaction>() {
@@ -58,8 +58,8 @@ public class ScheduledVoteReadRunnable implements Runnable {
 
             int i = 0;
             for (Reaction reaction : reactions) {
-                System.out.println(reaction.getUnicodeEmoji() + ": " + (double) Math.round((double) reaction.getCount() / totalAmountOfReactions * 10000) / 100 + "%");
-                builder.append(reaction.getUnicodeEmoji() + ": " + (double) Math.round((double) reaction.getCount() / totalAmountOfReactions * 10000) / 100 + "%    ");
+                System.out.println(reaction.getUnicodeEmoji() + ": " + (double) Math.round((double) (reaction.getCount() - 1) / totalAmountOfReactions * 10000) / 100 + "%");
+                builder.append(reaction.getUnicodeEmoji() + ": " + (double) Math.round((double) (reaction.getCount() - 1) / totalAmountOfReactions * 10000) / 100 + "%    ");
                 if (i == 5) {
                     builder.append("\n");
                     i = 0;
