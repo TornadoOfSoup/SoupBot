@@ -2,8 +2,10 @@ package soup.memebot;
 
 import com.google.common.util.concurrent.FutureCallback;
 import de.btobastian.javacord.entities.Channel;
+import de.btobastian.javacord.entities.CustomEmoji;
 import de.btobastian.javacord.entities.User;
 import de.btobastian.javacord.entities.UserStatus;
+import de.btobastian.javacord.entities.impl.ImplCustomEmoji;
 import de.btobastian.javacord.entities.message.Message;
 import de.btobastian.javacord.entities.message.MessageAttachment;
 import de.btobastian.javacord.entities.message.MessageHistory;
@@ -2979,6 +2981,7 @@ class ReactionAddingWithSimulatedRateLimitRunnable implements Runnable {
         try {
             for (String reaction : reactions) {
                 Future<Void> future = message.addUnicodeReaction(reaction);
+                //Future<Void> futureCustom = message.addCustomEmojiReaction();
                 System.out.println("Adding reaction " + reaction);
                 while (!future.isDone()) {}
                 Thread.sleep(250);
