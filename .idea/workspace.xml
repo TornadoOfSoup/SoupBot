@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0ea4e70f-1515-453f-a887-74c5aba0549c" name="Default" comment="">
+    <list default="true" id="0ea4e70f-1515-453f-a887-74c5aba0549c" name="Default" comment="$implemented a working $vote system (it's really awesome)&#10;&#10;Made many changes to $vote, it's pretty much done now&#10;TODO: support for custom emoji and reloading&#10;&#10;Updated Apache Commons Math&#10;&#10;Implemented binary methods&#10;Added $tobinary and $frombinary">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/commons-lang3-3.5.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/commons-math-2.2.jar" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1$1.class" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1$2.class" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1.class" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$2.class" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot.class" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/soup/memebot/ScheduledVoteReadRunnable.java" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/ScheduledVoteReadRunnable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SoupMemeBot.iml" afterPath="$PROJECT_DIR$/SoupMemeBot.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java" />
     </list>
     <ignored path="SoupMemeBot.iws" />
@@ -24,6 +29,10 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
+  <component name="ErrorTreeViewConfiguration">
+    <option name="autoscrollToSource" value="true" />
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="true" />
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="SoupMemeBot" />
@@ -33,37 +42,38 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="28" column="21" selection-start-line="23" selection-start-column="8" selection-end-line="28" selection-end-column="21" />
+            <state relative-caret-position="629">
+              <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="memebot.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="memebot.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="107" column="49" selection-start-line="107" selection-start-column="49" selection-end-line="107" selection-end-column="49" />
+            <state relative-caret-position="284">
+              <caret line="2225" column="142" selection-start-line="2225" selection-start-column="142" selection-end-line="2225" selection-end-column="142" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2085#2093#0" expanded="true" />
-                <element signature="e#2213#2221#0" expanded="true" />
-                <element signature="e#172123#172142#0" expanded="true" />
-                <marker date="1505606939635" expanded="false" signature="8669:8811" ph="(MessageCreateListener) (api, message) → {" />
+                <element signature="e#5998#8530#0" expanded="true" />
+                <element signature="e#8529#8530#0" expanded="true" />
+                <element signature="e#8571#152417#0" expanded="true" />
+                <element signature="e#152416#152417#0" expanded="true" />
+                <element signature="e#152677#153135#0" expanded="true" />
+                <element signature="e#153134#153135#0" expanded="true" />
+                <element signature="e#156048#156057#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ScheduledVoteReadRunnable.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ScheduledVoteReadRunnable.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/ScheduledVoteReadRunnable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="61" column="97" selection-start-line="61" selection-start-column="97" selection-end-line="61" selection-end-column="97" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="385">
+              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -71,12 +81,10 @@
       <file leaf-file-name="Utils.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/Utils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
+            <state relative-caret-position="1139">
               <caret line="76" column="28" selection-start-line="76" selection-start-column="28" selection-end-line="76" selection-end-column="28" />
               <folding>
-                <marker date="1505276904572" expanded="false" signature="30:339" ph="..." />
-                <marker date="1505276904572" expanded="true" signature="2893:3088" ph="{...}" />
-                <marker date="1505276904572" expanded="true" signature="3134:3270" ph="{...}" />
+                <element signature="imports" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -85,9 +93,14 @@
       <file leaf-file-name="TimedEventRunnable.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/TimedEventRunnable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
+            <state relative-caret-position="340">
               <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-              <folding />
+              <folding>
+                <element signature="e#1327#1328#0" expanded="false" />
+                <element signature="e#1369#1370#0" expanded="false" />
+                <element signature="e#1406#1407#0" expanded="false" />
+                <element signature="e#1443#1444#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -107,7 +120,7 @@
       <file leaf-file-name="LoadUserStats.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/LoadUserStats.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
+            <state relative-caret-position="408">
               <caret line="29" column="30" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="false" />
@@ -121,16 +134,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin.pass" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/admin.pass">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="59" selection-start-line="0" selection-start-column="59" selection-end-line="0" selection-end-column="59" />
               <folding />
             </state>
           </provider>
@@ -260,12 +263,18 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="SoupMemeBot" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -361,14 +370,6 @@
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="memebot" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="memebot.java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -380,22 +381,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
+              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
       <pane id="AndroidView" />
     </panes>
@@ -417,123 +408,6 @@
       <recent name="C:\Users\RPGenius\IdeaProjects\SoupMemeBot\src\main\resources" />
       <recent name="C:\Users\RPGenius\IdeaProjects\SoupMemeBot\src\main\java\soup\memebot\hangman" />
     </key>
-  </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/soup/memebot/ScheduledVoteReadRunnable.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/soup/memebot/memebot$1$2.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/soup/memebot/memebot$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/soup/memebot/memebot$2.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/soup/memebot/memebot.class</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/stats/189357141599977473.json</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -1082,7 +956,21 @@
       <option name="project" value="LOCAL" />
       <updated>1505532674513</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Fixed promotedList not properly storing its data&#10;SoupBot will now ignore its initial votes in $vote&#10;Added $whatlist for debug purposes&#10;Made isOnList(String item, ArrayList&lt;&gt; list) work for different types of ArrayLists by changing the type of ArrayList it takes from ArrayList&lt;String&gt; to ArrayList&lt;?&gt;&#10;">
+      <created>1505607351462</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1505607351462</updated>
+    </task>
+    <task id="LOCAL-00034" summary="3 0 0 0   l i n e s   wooooooooooooooooooooo&#10;&#10;negligible changes, some imports and a commented out line">
+      <created>1505611503030</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1505611503030</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1095,15 +983,14 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30795074" sideWeight="0.502445" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294621" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21577017" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27659574" sideWeight="0.47310513" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28555432" sideWeight="0.49755502" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2743561" sideWeight="0.47310513" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917964" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20904645" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30795074" sideWeight="0.49755502" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30795074" sideWeight="0.49755502" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1112,6 +999,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32922733" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="SLIDING" type="FLOATING" visible="false" show_stripe_button="true" weight="0.3294621" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="92" y="92" width="1496" height="826" />
@@ -1184,8 +1072,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added a *very* rough google search thing&#10;added a less rough cat thing&#10;everyone have fun with cat thing&#10;added JSoup" />
-    <MESSAGE value="updated censor&#10;censor should no longer have problems with capitalization" />
     <MESSAGE value="Added $onlineusers&#10;Also added more methods for displaying ArrayLists&#10;Fixed a capitalization error in the Hitlerman losing message" />
     <MESSAGE value="Fixed bug where list was sorted before anything was put in the list, causing the list to not be sorted" />
     <MESSAGE value="Made column length dynamic&#10;Column length is equal to the longest displayed name + 10&#10;Column length caps at 36&#10;&#10;Changed name of &quot;FormatListsAsColumnsForUserList&quot; to &quot;FormatListsAsColumns&quot;&#10;Added a parameter to the method for column width&#10;" />
@@ -1209,7 +1095,9 @@
     <MESSAGE value="Added some runnables&#10;&#10;Prepared for implementation of graphing user activity&#10;Moved much of $onlineusers functionality to a method&#10;" />
     <MESSAGE value="Implemented $vote&#10;&#10;Added ScheduledVoteReadRunnable, ReactionAddingWithSimulatedRateLimitRunnable&#10;Added secondary, less powerful whitelist called promotedList&#10;Redid $vote help message&#10;Renamed TimedEventsRunnable to TimedEventRunnable&#10;" />
     <MESSAGE value="Fixed $vote not working for people on the promoted list&#10;&#10;Fixed $vote help message not doing newlines properly&#10;Mentioned lack of custom emoji support in votes in $vote help message&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed $vote not working for people on the promoted list&#10;&#10;Fixed $vote help message not doing newlines properly&#10;Mentioned lack of custom emoji support in votes in $vote help message&#10;" />
+    <MESSAGE value="Fixed promotedList not properly storing its data&#10;SoupBot will now ignore its initial votes in $vote&#10;Added $whatlist for debug purposes&#10;Made isOnList(String item, ArrayList&lt;&gt; list) work for different types of ArrayLists by changing the type of ArrayList it takes from ArrayList&lt;String&gt; to ArrayList&lt;?&gt;&#10;" />
+    <MESSAGE value="3 0 0 0   l i n e s   wooooooooooooooooooooo&#10;&#10;negligible changes, some imports and a commented out line" />
+    <option name="LAST_COMMIT_MESSAGE" value="3 0 0 0   l i n e s   wooooooooooooooooooooo&#10;&#10;negligible changes, some imports and a commented out line" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1230,24 +1118,19 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2085#2093#0" expanded="true" />
-            <element signature="e#2213#2221#0" expanded="true" />
-            <element signature="e#172123#172142#0" expanded="true" />
-            <marker date="1505606939635" expanded="false" signature="8669:8811" ph="(MessageCreateListener) (api, message) → {" />
+            <element signature="e#5998#8530#0" expanded="true" />
+            <element signature="e#8529#8530#0" expanded="true" />
+            <element signature="e#8571#152417#0" expanded="true" />
+            <element signature="e#152416#152417#0" expanded="true" />
+            <element signature="e#152677#153135#0" expanded="true" />
+            <element signature="e#153134#153135#0" expanded="true" />
+            <element signature="e#156048#156057#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1266,10 +1149,13 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2085#2093#0" expanded="true" />
-            <element signature="e#2213#2221#0" expanded="true" />
-            <element signature="e#172123#172142#0" expanded="true" />
-            <marker date="1505606939635" expanded="false" signature="8669:8811" ph="(MessageCreateListener) (api, message) → {" />
+            <element signature="e#5998#8530#0" expanded="true" />
+            <element signature="e#8529#8530#0" expanded="true" />
+            <element signature="e#8571#152417#0" expanded="true" />
+            <element signature="e#152416#152417#0" expanded="true" />
+            <element signature="e#152677#153135#0" expanded="true" />
+            <element signature="e#153134#153135#0" expanded="true" />
+            <element signature="e#156048#156057#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1288,10 +1174,13 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2085#2093#0" expanded="true" />
-            <element signature="e#2213#2221#0" expanded="true" />
-            <element signature="e#172123#172142#0" expanded="true" />
-            <marker date="1505606939635" expanded="false" signature="8669:8811" ph="(MessageCreateListener) (api, message) → {" />
+            <element signature="e#5998#8530#0" expanded="true" />
+            <element signature="e#8529#8530#0" expanded="true" />
+            <element signature="e#8571#152417#0" expanded="true" />
+            <element signature="e#152416#152417#0" expanded="true" />
+            <element signature="e#152677#153135#0" expanded="true" />
+            <element signature="e#153134#153135#0" expanded="true" />
+            <element signature="e#156048#156057#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1310,32 +1199,13 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2085#2093#0" expanded="true" />
-            <element signature="e#2213#2221#0" expanded="true" />
-            <element signature="e#172123#172142#0" expanded="true" />
-            <marker date="1505606939635" expanded="false" signature="8669:8811" ph="(MessageCreateListener) (api, message) → {" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="40" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2085#2093#0" expanded="true" />
-            <element signature="e#2213#2221#0" expanded="true" />
-            <element signature="e#172123#172142#0" expanded="true" />
-            <marker date="1505606939635" expanded="false" signature="8669:8811" ph="(MessageCreateListener) (api, message) → {" />
+            <element signature="e#5998#8530#0" expanded="true" />
+            <element signature="e#8529#8530#0" expanded="true" />
+            <element signature="e#8571#152417#0" expanded="true" />
+            <element signature="e#152416#152417#0" expanded="true" />
+            <element signature="e#152677#153135#0" expanded="true" />
+            <element signature="e#153134#153135#0" expanded="true" />
+            <element signature="e#156048#156057#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1354,10 +1224,13 @@
           <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2085#2093#0" expanded="true" />
-            <element signature="e#2213#2221#0" expanded="true" />
-            <element signature="e#172123#172142#0" expanded="true" />
-            <marker date="1505606939635" expanded="false" signature="8669:8811" ph="(MessageCreateListener) (api, message) → {" />
+            <element signature="e#5998#8530#0" expanded="true" />
+            <element signature="e#8529#8530#0" expanded="true" />
+            <element signature="e#8571#152417#0" expanded="true" />
+            <element signature="e#152416#152417#0" expanded="true" />
+            <element signature="e#152677#153135#0" expanded="true" />
+            <element signature="e#153134#153135#0" expanded="true" />
+            <element signature="e#156048#156057#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1376,10 +1249,13 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2085#2093#0" expanded="true" />
-            <element signature="e#2213#2221#0" expanded="true" />
-            <element signature="e#172123#172142#0" expanded="true" />
-            <marker date="1505606939635" expanded="false" signature="8669:8811" ph="(MessageCreateListener) (api, message) → {" />
+            <element signature="e#5998#8530#0" expanded="true" />
+            <element signature="e#8529#8530#0" expanded="true" />
+            <element signature="e#8571#152417#0" expanded="true" />
+            <element signature="e#152416#152417#0" expanded="true" />
+            <element signature="e#152677#153135#0" expanded="true" />
+            <element signature="e#153134#153135#0" expanded="true" />
+            <element signature="e#156048#156057#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1398,10 +1274,13 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2085#2093#0" expanded="true" />
-            <element signature="e#2213#2221#0" expanded="true" />
-            <element signature="e#172123#172142#0" expanded="true" />
-            <marker date="1505606939635" expanded="false" signature="8669:8811" ph="(MessageCreateListener) (api, message) → {" />
+            <element signature="e#5998#8530#0" expanded="true" />
+            <element signature="e#8529#8530#0" expanded="true" />
+            <element signature="e#8571#152417#0" expanded="true" />
+            <element signature="e#152416#152417#0" expanded="true" />
+            <element signature="e#152677#153135#0" expanded="true" />
+            <element signature="e#153134#153135#0" expanded="true" />
+            <element signature="e#156048#156057#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1420,10 +1299,13 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2085#2093#0" expanded="true" />
-            <element signature="e#2213#2221#0" expanded="true" />
-            <element signature="e#172123#172142#0" expanded="true" />
-            <marker date="1505606939635" expanded="false" signature="8669:8811" ph="(MessageCreateListener) (api, message) → {" />
+            <element signature="e#5998#8530#0" expanded="true" />
+            <element signature="e#8529#8530#0" expanded="true" />
+            <element signature="e#8571#152417#0" expanded="true" />
+            <element signature="e#152416#152417#0" expanded="true" />
+            <element signature="e#152677#153135#0" expanded="true" />
+            <element signature="e#153134#153135#0" expanded="true" />
+            <element signature="e#156048#156057#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1442,10 +1324,13 @@
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2085#2093#0" expanded="true" />
-            <element signature="e#2213#2221#0" expanded="true" />
-            <element signature="e#172123#172142#0" expanded="true" />
-            <marker date="1505606939635" expanded="false" signature="8669:8811" ph="(MessageCreateListener) (api, message) → {" />
+            <element signature="e#5998#8530#0" expanded="true" />
+            <element signature="e#8529#8530#0" expanded="true" />
+            <element signature="e#8571#152417#0" expanded="true" />
+            <element signature="e#152416#152417#0" expanded="true" />
+            <element signature="e#152677#153135#0" expanded="true" />
+            <element signature="e#153134#153135#0" expanded="true" />
+            <element signature="e#156048#156057#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1461,7 +1346,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8228">
           <caret line="484" column="9" selection-start-line="484" selection-start-column="9" selection-end-line="484" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1469,19 +1353,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2805">
           <caret line="165" column="6" selection-start-line="165" selection-start-column="6" selection-end-line="165" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_05/src.zip!/java/lang/String.java" />
     <entry file="jar://$PROJECT_DIR$/lib/javacord-2.0.14-shaded.jar!/de/btobastian/javacord/entities/UserStatus.class" />
-    <entry file="file://$PROJECT_DIR$/target/classes/stats/189357141599977473.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="13" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/target/classes/stats/189357141599977473.json" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -1588,14 +1465,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="28" column="21" selection-start-line="23" selection-start-column="8" selection-end-line="28" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/hangman/hangman_default.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1616,7 +1485,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/LoadUserStats.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
+        <state relative-caret-position="408">
           <caret line="29" column="30" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="false" />
@@ -1634,44 +1503,79 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/Utils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
+        <state relative-caret-position="1139">
           <caret line="76" column="28" selection-start-line="76" selection-start-column="28" selection-end-line="76" selection-end-column="28" />
           <folding>
-            <marker date="1505276904572" expanded="false" signature="30:339" ph="..." />
-            <marker date="1505276904572" expanded="true" signature="2893:3088" ph="{...}" />
-            <marker date="1505276904572" expanded="true" signature="3134:3270" ph="{...}" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/TimedEventRunnable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
+        <state relative-caret-position="340">
           <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding>
+            <element signature="e#1327#1328#0" expanded="false" />
+            <element signature="e#1369#1370#0" expanded="false" />
+            <element signature="e#1406#1407#0" expanded="false" />
+            <element signature="e#1443#1444#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_05/src.zip!/java/nio/file/Path.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="97" column="17" selection-start-line="97" selection-start-column="17" selection-end-line="97" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/ScheduledVoteReadRunnable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_05/src.zip!/java/util/concurrent/FutureTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="265" column="33" selection-start-line="265" selection-start-column="33" selection-end-line="265" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/javacord-2.0.15-shaded.jar!/de/btobastian/javacord/utils/handler/message/MessageCreateHandler.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="107" column="49" selection-start-line="107" selection-start-column="49" selection-end-line="107" selection-end-column="49" />
+        <state relative-caret-position="284">
+          <caret line="2225" column="142" selection-start-line="2225" selection-start-column="142" selection-end-line="2225" selection-end-column="142" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2085#2093#0" expanded="true" />
-            <element signature="e#2213#2221#0" expanded="true" />
-            <element signature="e#172123#172142#0" expanded="true" />
-            <marker date="1505606939635" expanded="false" signature="8669:8811" ph="(MessageCreateListener) (api, message) → {" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/ScheduledVoteReadRunnable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="61" column="97" selection-start-line="61" selection-start-column="97" selection-end-line="61" selection-end-column="97" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#5998#8530#0" expanded="true" />
+            <element signature="e#8529#8530#0" expanded="true" />
+            <element signature="e#8571#152417#0" expanded="true" />
+            <element signature="e#152416#152417#0" expanded="true" />
+            <element signature="e#152677#153135#0" expanded="true" />
+            <element signature="e#153134#153135#0" expanded="true" />
+            <element signature="e#156048#156057#0" expanded="true" />
           </folding>
         </state>
       </provider>

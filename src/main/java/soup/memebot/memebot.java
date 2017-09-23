@@ -25,6 +25,7 @@ import clarifai2.dto.prediction.Concept;
 import java.awt.*;
 import java.awt.image.*;
 import java.io.*;
+import java.math.BigInteger;
 import java.net.*;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -45,8 +46,7 @@ import de.btobastian.javacord.listener.user.UserChangeStatusListener;
 import okhttp3.OkHttpClient;
 import org.apache.commons.lang3.StringUtils;
 
-
-import org.apache.commons.math.util.MathUtils;
+import org.apache.commons.math3.util.ArithmeticUtils;
 import org.apache.commons.validator.routines.UrlValidator;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -104,10 +104,10 @@ public class memebot {
         }
 
         DiscordAPI api = Javacord.getApi(token, true);
-        final int numOfCommands = 50;
-        final int numOfSubCommands = 18;
-        final String version = "1.6.8";
-        final String complieDate = "9/16/17 20:08 EST";
+        final int numOfCommands = 52;
+        final int numOfSubCommands = 20;
+        final String version = "1.6.11";
+        final String complieDate = "9/23/17 01:44 EST";
         final String chatFilterVersion = "1.6";
         final boolean[] censor = {false};
         final long[] cooldown = {0, 0};
@@ -139,9 +139,7 @@ public class memebot {
                 TimedEventHandlerRunnable timedEventHandlerRunnable = new TimedEventHandlerRunnable(api, api.getChannelById("189359733377990656")); //general in ddc;
                 timedEventHandlerRunnable.start();
 
-                final ClarifaiClient client = new ClarifaiBuilder("a12e63a5994d4261a02d42c8640b20ad")
-                        .client(new OkHttpClient()) // OPTIONAL. Allows customization of OkHttp by the user
-                        .buildSync();
+
 
                 api.registerListener(new UserChangeStatusListener() { //user status changes
                     @Override
@@ -180,6 +178,7 @@ public class memebot {
                 api.registerListener(new MessageCreateListener() {
                     @Override
                     public void onMessageCreate(DiscordAPI api, Message message) {
+                        //System.out.println("Message received: \"" + message.getContent() + "\"");
                         // check the content of the message
 
                         // censorship below
@@ -366,7 +365,7 @@ public class memebot {
                         if (message.getContent().equalsIgnoreCase("$help")) {
                             // reply to the message
                             message.reply("Hello! I am primarily a meme bot, but I might do other things too. \n" +
-                                    "Currently, I have **" + numOfCommands + "** command(s), **" + numOfSubCommands + "** subcommand(s), and **1** hidden command.\n" +
+                                    "Currently, I have **" + numOfCommands + "** command(s), **" + numOfSubCommands + "** subcommand(s), and **2** hidden command.\n" +
                                     "Commands only usable by whitelisted members are marked with an ^.\n" +
                                     "Commands partially usable by non-whitelisted members are marked with a ^^.\n" +
                                     "The command list is as follows:\n" +
@@ -416,6 +415,8 @@ public class memebot {
                                     "$clearpets\n" +
                                     "$addlogo\n" +
                                     "$identify\n" +
+                                    "$tobinary\n" +
+                                    "$frombinary\n" +
                                     "```");
                         } else if (message.getContent().equalsIgnoreCase("$info")) {
                             message.reply("```\n" +
@@ -516,17 +517,31 @@ public class memebot {
                                     if (message.getContent().equalsIgnoreCase("$getavatar")) {
                                         message.reply("```\n" +
                                                 "Returns the profile picture of the given user.\n" +
-                                                "Syntax: \"$getavatar [user]\"\n" +
+                                                "Syntax: \"$getavatar [user / id]\"\n" +
                                                 "Example: \"$getavatar @iamadog$1234\"\n" +
                                                 "```");
                                     } else {
                                         List<User> mentions = message.getMentions();
-                                        if (mentions.size() != 1) {
-                                            message.reply("Error: The given command contains **" + mentions.size() + "** mentions instead of the necessary 1.\n" +
-                                                    "Syntax: \"$getavatar [user]\"\n" +
+                                        String[] parts = message.getContent().split(" ");
+                                        if (mentions.size() != 1 && parts.length < 2) {
+                                            message.reply("Error: The given command does not fit the requirements.\n" +
+                                                    "Syntax: \"$getavatar [user / id]\"\n" +
                                                     "Example: \"$getavatar @iamadog#1234\"");
                                         } else if (mentions.size() == 1) {
                                             message.reply("Profile picture of **" + mentions.get(0) + "**: " + mentions.get(0).getAvatarUrl().toString());
+                                        } else {
+                                            /*try {
+                                                User user = api.getUserById(parts[1]).get();
+                                                System.out.println(user.getName());
+                                                System.out.println(user.getAvatarId());
+                                                System.out.println(user.getAvatarUrl().toString());
+                                                message.reply("Profile picture of **" + user.getName() + "**: " + user.getAvatarUrl().toString());
+                                            } catch (Exception e) {
+                                                message.reply(e.getMessage());
+                                                e.printStackTrace();
+                                            }
+                                            */
+                                            message.reply("This functionality is currently not supported.");
                                         }
                             }
                         } else if (message.getContent().equalsIgnoreCase("$silverTime")) {
@@ -538,9 +553,11 @@ public class memebot {
                             if (message.getContent().equalsIgnoreCase("$vote")) {
                                 message.reply("```\n" +
                                         "Conducts a vote based on reactions.\n" +
-                                        "Syntax: \"$vote [question] | [time in minutes] | [reaction 1] [reaction 2] ...\"\n" +
+                                        "Syntax: \"$vote [question] | [time in minutes] | [reaction 1] [reaction 2] ... | [optional tag everyone]\"\n" +
                                         "Example: \"$vote Happy, sad, or mad? | 60 | :smile: :frowning: :angry:\"\n" +
+                                        "Example: \"$vote Yes or no? | 90 | :thumbsup: :thumbsdown: | 1\"\n" +
                                         "Note that you can have as many reactions as you want.\n" +
+                                        "For the last part, use 0 to tag everyone and 1 to tag here.\n" +
                                         "Also note that custom emotes are currently not supported.\n" +
                                         "```");
                             } else if (!isOnList(message.getAuthor().getName(), whitelist) && !isOnList(message.getAuthor().getName(), promotedList)) {
@@ -552,35 +569,43 @@ public class memebot {
                             } else {
                                     String msg = message.getContent().replace("$vote ", "");
                                     String[] parts = msg.split(" \\| ");
-                                    if (parts.length != 3) {
-                                        message.reply("Error: The command must have exactly 3 parts separated by vertical bars. (\"|\")");
+                                    if (parts.length != 3 && parts.length != 4) {
+                                        message.reply("Error: The command must have exactly 3 or 4 parts separated by vertical bars. (\" | \")");
                                         //System.out.println(parts.length);
                                     } else {
                                         try {
                                             Future<Message> voteFutureMessage;
+                                            StringBuilder builder = new StringBuilder();
+                                            if (parts.length < 4) {
+                                            } else if (parts[3].equals("0")) {
+                                                builder.append("@everyone\n");
+                                            } else if (parts[3].equals("1")) {
+                                                builder.append("@here\n");
+                                            }
                                             if (Double.parseDouble(parts[1]) > 60) {
                                                 int hours = (int) Math.floor(Double.parseDouble(parts[1]) / 60);
                                                 if (hours > 24) {
                                                     int days = (int) Math.floor(hours / 24);
-                                                    voteFutureMessage = message.reply("```\n\"" + parts[0] + "\"\n" +
+                                                    builder.append("```\n\"" + parts[0] + "\"\n" +
                                                             "\n" +
                                                             "The voting period will end in " + days + " days, " + hours % 24 + " hours, and " + Double.parseDouble(parts[1]) % 60 + " minutes.\n" +
                                                             "Vote!\n" +
                                                             "```");
                                                 } else {
-                                                    voteFutureMessage = message.reply("```\n\"" + parts[0] + "\"\n" +
+                                                    builder.append("```\n\"" + parts[0] + "\"\n" +
                                                             "\n" +
                                                             "The voting period will end in " + hours + " hours and " + Double.parseDouble(parts[1]) % 60 + " minutes.\n" +
                                                             "Vote!\n" +
                                                             "```");
                                                 }
                                             } else {
-                                                voteFutureMessage = message.reply("```\n\"" + parts[0] + "\"\n" +
+                                                builder.append("```\n\"" + parts[0] + "\"\n" +
                                                         "\n" +
                                                         "The voting period will end in " + parts[1] + " minutes.\n" +
                                                         "Vote!\n" +
                                                         "```");
                                             }
+                                            voteFutureMessage = message.reply(builder.toString());
                                             while (!voteFutureMessage.isDone()) {}
 
                                             Message voteMessage = voteFutureMessage.get();
@@ -2108,6 +2133,11 @@ public class memebot {
                                         "```");
                                 return;
                             }
+
+                            final ClarifaiClient client = new ClarifaiBuilder("a12e63a5994d4261a02d42c8640b20ad")
+                                    .client(new OkHttpClient()) // OPTIONAL. Allows customization of OkHttp by the user
+                                    .buildSync();
+
                             String link = "link";
                             if (message.getContent().equalsIgnoreCase("$identify") && message.getAttachments().size() > 0) {
                                 for (MessageAttachment attachment : message.getAttachments()) {
@@ -2169,6 +2199,63 @@ public class memebot {
                                 message.reply(user + " is on the promoted list.");
                             } else {
                                 message.reply(user + " is not on any lists.");
+                            }
+                        } else if (message.getContent().startsWith("$tobinary")) {
+                            if (message.getContent().equalsIgnoreCase("$tobinary")) {
+                                message.reply("```\n" +
+                                        "Converts a number or string to binary.\n" +
+                                        "Syntax: \"$tobinary [number or string]\"\n" +
+                                        "Example: \"$tobinary 225\"\n" +
+                                        "Note: Anything that isn't entirely a number will be handled as a string.\n" +
+                                        "```");
+                                return;
+                            } else {
+                                String msg = message.getContent().replace("$tobinary ", "");
+                                String reply;
+                                if (msg.matches("(?:\\d*)?\\d+")) {
+                                    reply = toBinary(new BigInteger(msg));
+                                } else {
+                                    reply = asciiToBinary(msg);
+                                }
+                                if (msg.length() < 1990) {
+                                    message.reply("```\n" +
+                                            reply + "\n" +
+                                            "```");
+                                } else {
+                                    message.reply("The resulting message was longer than 2000 characters and therefore cannot be sent. " +
+                                            "Proper handling is planned for this, but has not yet been implemented."); //TODO implement it lol
+                                }
+                            }
+                        } else if (message.getContent().startsWith("$frombinary")) {
+                            if (message.getContent().equalsIgnoreCase("$frombinary")) {
+                                message.reply("```\n" +
+                                        "Converts a binary string to a number or string.\n" +
+                                        "Syntax: \"$frombinary [\"num\" or \"string\"] [binary]\"\n" +
+                                        "Example: \"$frombinary num 1000101\"\n" +
+                                        "Note: If the first argument is left out, it is assumed to be a string.\n" +
+                                        "```");
+                                return;
+                            } else {
+                                String msg = message.getContent().replace("$frombinary ", "");
+                                if (msg.startsWith("num ")) {
+                                    msg = msg.replace("num ", "");
+                                    if (msg.contains(" ")) {
+                                        message.reply("Numbers cannot contain spaces.");
+                                        return;
+                                    }
+                                    message.reply("```\n" +
+                                            binaryToDecimal(msg).toString() +
+                                            "\n" +
+                                            "```");
+                                } else {
+                                    if (msg.startsWith("string ")) {
+                                        msg.replace("string ", "");
+                                    }
+                                    message.reply("```\n" +
+                                            binaryToAscii(msg) +
+                                            "\n" +
+                                            "```");
+                                }
                             }
                         }
 
@@ -2367,7 +2454,7 @@ public class memebot {
     }
 
     public static double factorial(int x) {
-        return MathUtils.factorialDouble(x);
+        return ArithmeticUtils.factorialDouble(x);
     }
 
     public static int rng(int max) {
@@ -2895,6 +2982,73 @@ public class memebot {
         return arrayLists;
     }
 
+    private static String toBinary(BigInteger x) {
+        boolean converted = false;
+        StringBuilder builder = new StringBuilder();
+
+        BigInteger[] nums = new BigInteger[2];
+
+        while (converted == false) {
+            nums = x.divideAndRemainder(new BigInteger("2"));
+            if (x.equals(new BigInteger("0"))) {
+                converted = true;
+            }
+            x = nums[0];
+            builder.append(nums[1]);
+        }
+        builder.deleteCharAt(builder.length() - 1);
+        builder.reverse();
+        return builder.toString();
+    }
+
+    public static String asciiToBinary(String string) {
+        char[] chars = string.toCharArray();
+        StringBuilder builder = new StringBuilder();
+
+        for (char c : chars) {
+            builder.append(toBinary(BigInteger.valueOf((long) c))); //if this doesn't work, cast c to int first
+            builder.append(" ");
+        }
+        return builder.toString();
+    }
+
+    public static BigInteger binaryToDecimal(String binary) {
+        binary = new StringBuilder(binary).reverse().toString(); //reverses binary string
+        BigInteger decimalNumber =  BigInteger.valueOf(0);
+        BigInteger valueOfBit = BigInteger.valueOf(1);
+
+        for (char c : binary.toCharArray()) {
+            if (c == '1') {
+                decimalNumber = decimalNumber.add(valueOfBit);
+            }
+            valueOfBit = valueOfBit.multiply(BigInteger.valueOf(2));
+        }
+        return decimalNumber;
+    }
+
+    public static char binaryToChar(String binary) {
+        binary = new StringBuilder(binary).reverse().toString(); //reverses binary string
+        int decimalNumber = 0;
+        int valueOfBit = 1;
+
+        for (char c : binary.toCharArray()) {
+            if (c == '1') {
+                decimalNumber += valueOfBit;
+            }
+            valueOfBit *= 2;
+        }
+        return (char) decimalNumber;
+    }
+
+    public static String binaryToAscii(String binary) {
+        String[] binaryStrings = binary.split(" ");
+        String returnString = "";
+        for (String binaryString : binaryStrings) {
+            returnString += binaryToChar(binaryString);
+        }
+        return returnString;
+    }
+
     }
 
 class TimedEventHandlerRunnable implements Runnable {
@@ -2972,7 +3126,7 @@ class ReactionAddingWithSimulatedRateLimitRunnable implements Runnable {
 
     public ReactionAddingWithSimulatedRateLimitRunnable (Message message, String[] reactions) {
         this.message = message;
-        this.reactions = reactions;
+        this.reactions = reactions; //TODO make custom emojis work
         System.out.println(getTimestampFull() + " Creating " + this.getClass().getName() + " thread");
     }
 
