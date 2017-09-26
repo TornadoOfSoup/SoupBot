@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0ea4e70f-1515-453f-a887-74c5aba0549c" name="Default" comment="$implemented a working $vote system (it's really awesome)&#10;&#10;Made many changes to $vote, it's pretty much done now&#10;TODO: support for custom emoji and reloading&#10;&#10;Updated Apache Commons Math&#10;&#10;Implemented binary methods&#10;Added $tobinary and $frombinary">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/commons-lang3-3.5.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/commons-math-2.2.jar" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1$1.class" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1$1.class" />
+    <list default="true" id="0ea4e70f-1515-453f-a887-74c5aba0549c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1$2.class" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1.class" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$2.class" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot.class" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SoupMemeBot.iml" afterPath="$PROJECT_DIR$/SoupMemeBot.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java" />
     </list>
     <ignored path="SoupMemeBot.iws" />
@@ -52,17 +45,17 @@
       <file leaf-file-name="memebot.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="2225" column="142" selection-start-line="2225" selection-start-column="142" selection-end-line="2225" selection-end-column="142" />
+            <state relative-caret-position="228">
+              <caret line="2775" column="4" selection-start-line="2775" selection-start-column="4" selection-end-line="2844" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#5998#8530#0" expanded="true" />
                 <element signature="e#8529#8530#0" expanded="true" />
-                <element signature="e#8571#152417#0" expanded="true" />
-                <element signature="e#152416#152417#0" expanded="true" />
-                <element signature="e#152677#153135#0" expanded="true" />
-                <element signature="e#153134#153135#0" expanded="true" />
-                <element signature="e#156048#156057#0" expanded="true" />
+                <element signature="e#8571#152869#0" expanded="true" />
+                <element signature="e#152868#152869#0" expanded="true" />
+                <element signature="e#153129#153587#0" expanded="true" />
+                <element signature="e#153586#153587#0" expanded="true" />
+                <element signature="e#156500#156509#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -81,11 +74,9 @@
       <file leaf-file-name="Utils.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/Utils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1139">
-              <caret line="76" column="28" selection-start-line="76" selection-start-column="28" selection-end-line="76" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+            <state relative-caret-position="476">
+              <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -185,12 +176,12 @@
         <option value="$PROJECT_DIR$/src/main/resources/admin.pass" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/soup/memebot/TimedEvents.java" />
-        <option value="$PROJECT_DIR$/src/main/java/soup/memebot/Utils.java" />
         <option value="$PROJECT_DIR$/src/main/java/soup/memebot/TimedEventsRunnable.java" />
         <option value="$PROJECT_DIR$/src/main/java/soup/memebot/TimedEventRunnable.java" />
         <option value="$PROJECT_DIR$/src/main/java/soup/memebot/VoteRunnable.java" />
         <option value="$PROJECT_DIR$/src/main/java/soup/memebot/ScheduledEventRunnable.java" />
         <option value="$PROJECT_DIR$/src/main/java/soup/memebot/ScheduledVoteReadRunnable.java" />
+        <option value="$PROJECT_DIR$/src/main/java/soup/memebot/Utils.java" />
         <option value="$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java" />
       </list>
     </option>
@@ -970,7 +961,14 @@
       <option name="project" value="LOCAL" />
       <updated>1505611503030</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="$implemented a working $vote system (it's really awesome)&#10;&#10;Made many changes to $vote, it's pretty much done now&#10;TODO: support for custom emoji and reloading&#10;&#10;Updated Apache Commons Math&#10;&#10;Implemented binary methods&#10;Added $tobinary and $frombinary">
+      <created>1506146311215</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1506146311216</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -984,13 +982,13 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30795074" sideWeight="0.502445" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21577017" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27659574" sideWeight="0.47310513" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27659574" sideWeight="0.47310513" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28555432" sideWeight="0.49755502" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917964" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20904645" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30795074" sideWeight="0.49755502" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30795074" sideWeight="0.49755502" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1072,7 +1070,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added $onlineusers&#10;Also added more methods for displaying ArrayLists&#10;Fixed a capitalization error in the Hitlerman losing message" />
     <MESSAGE value="Fixed bug where list was sorted before anything was put in the list, causing the list to not be sorted" />
     <MESSAGE value="Made column length dynamic&#10;Column length is equal to the longest displayed name + 10&#10;Column length caps at 36&#10;&#10;Changed name of &quot;FormatListsAsColumnsForUserList&quot; to &quot;FormatListsAsColumns&quot;&#10;Added a parameter to the method for column width&#10;" />
     <MESSAGE value="removed out folder" />
@@ -1097,7 +1094,8 @@
     <MESSAGE value="Fixed $vote not working for people on the promoted list&#10;&#10;Fixed $vote help message not doing newlines properly&#10;Mentioned lack of custom emoji support in votes in $vote help message&#10;" />
     <MESSAGE value="Fixed promotedList not properly storing its data&#10;SoupBot will now ignore its initial votes in $vote&#10;Added $whatlist for debug purposes&#10;Made isOnList(String item, ArrayList&lt;&gt; list) work for different types of ArrayLists by changing the type of ArrayList it takes from ArrayList&lt;String&gt; to ArrayList&lt;?&gt;&#10;" />
     <MESSAGE value="3 0 0 0   l i n e s   wooooooooooooooooooooo&#10;&#10;negligible changes, some imports and a commented out line" />
-    <option name="LAST_COMMIT_MESSAGE" value="3 0 0 0   l i n e s   wooooooooooooooooooooo&#10;&#10;negligible changes, some imports and a commented out line" />
+    <MESSAGE value="$implemented a working $vote system (it's really awesome)&#10;&#10;Made many changes to $vote, it's pretty much done now&#10;TODO: support for custom emoji and reloading&#10;&#10;Updated Apache Commons Math&#10;&#10;Implemented binary methods&#10;Added $tobinary and $frombinary" />
+    <option name="LAST_COMMIT_MESSAGE" value="$implemented a working $vote system (it's really awesome)&#10;&#10;Made many changes to $vote, it's pretty much done now&#10;TODO: support for custom emoji and reloading&#10;&#10;Updated Apache Commons Math&#10;&#10;Implemented binary methods&#10;Added $tobinary and $frombinary" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1126,11 +1124,11 @@
             <element signature="imports" expanded="true" />
             <element signature="e#5998#8530#0" expanded="true" />
             <element signature="e#8529#8530#0" expanded="true" />
-            <element signature="e#8571#152417#0" expanded="true" />
-            <element signature="e#152416#152417#0" expanded="true" />
-            <element signature="e#152677#153135#0" expanded="true" />
-            <element signature="e#153134#153135#0" expanded="true" />
-            <element signature="e#156048#156057#0" expanded="true" />
+            <element signature="e#8571#152869#0" expanded="true" />
+            <element signature="e#152868#152869#0" expanded="true" />
+            <element signature="e#153129#153587#0" expanded="true" />
+            <element signature="e#153586#153587#0" expanded="true" />
+            <element signature="e#156500#156509#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1151,11 +1149,11 @@
             <element signature="imports" expanded="true" />
             <element signature="e#5998#8530#0" expanded="true" />
             <element signature="e#8529#8530#0" expanded="true" />
-            <element signature="e#8571#152417#0" expanded="true" />
-            <element signature="e#152416#152417#0" expanded="true" />
-            <element signature="e#152677#153135#0" expanded="true" />
-            <element signature="e#153134#153135#0" expanded="true" />
-            <element signature="e#156048#156057#0" expanded="true" />
+            <element signature="e#8571#152869#0" expanded="true" />
+            <element signature="e#152868#152869#0" expanded="true" />
+            <element signature="e#153129#153587#0" expanded="true" />
+            <element signature="e#153586#153587#0" expanded="true" />
+            <element signature="e#156500#156509#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1176,11 +1174,11 @@
             <element signature="imports" expanded="true" />
             <element signature="e#5998#8530#0" expanded="true" />
             <element signature="e#8529#8530#0" expanded="true" />
-            <element signature="e#8571#152417#0" expanded="true" />
-            <element signature="e#152416#152417#0" expanded="true" />
-            <element signature="e#152677#153135#0" expanded="true" />
-            <element signature="e#153134#153135#0" expanded="true" />
-            <element signature="e#156048#156057#0" expanded="true" />
+            <element signature="e#8571#152869#0" expanded="true" />
+            <element signature="e#152868#152869#0" expanded="true" />
+            <element signature="e#153129#153587#0" expanded="true" />
+            <element signature="e#153586#153587#0" expanded="true" />
+            <element signature="e#156500#156509#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1201,11 +1199,11 @@
             <element signature="imports" expanded="true" />
             <element signature="e#5998#8530#0" expanded="true" />
             <element signature="e#8529#8530#0" expanded="true" />
-            <element signature="e#8571#152417#0" expanded="true" />
-            <element signature="e#152416#152417#0" expanded="true" />
-            <element signature="e#152677#153135#0" expanded="true" />
-            <element signature="e#153134#153135#0" expanded="true" />
-            <element signature="e#156048#156057#0" expanded="true" />
+            <element signature="e#8571#152869#0" expanded="true" />
+            <element signature="e#152868#152869#0" expanded="true" />
+            <element signature="e#153129#153587#0" expanded="true" />
+            <element signature="e#153586#153587#0" expanded="true" />
+            <element signature="e#156500#156509#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1226,11 +1224,11 @@
             <element signature="imports" expanded="true" />
             <element signature="e#5998#8530#0" expanded="true" />
             <element signature="e#8529#8530#0" expanded="true" />
-            <element signature="e#8571#152417#0" expanded="true" />
-            <element signature="e#152416#152417#0" expanded="true" />
-            <element signature="e#152677#153135#0" expanded="true" />
-            <element signature="e#153134#153135#0" expanded="true" />
-            <element signature="e#156048#156057#0" expanded="true" />
+            <element signature="e#8571#152869#0" expanded="true" />
+            <element signature="e#152868#152869#0" expanded="true" />
+            <element signature="e#153129#153587#0" expanded="true" />
+            <element signature="e#153586#153587#0" expanded="true" />
+            <element signature="e#156500#156509#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1251,11 +1249,11 @@
             <element signature="imports" expanded="true" />
             <element signature="e#5998#8530#0" expanded="true" />
             <element signature="e#8529#8530#0" expanded="true" />
-            <element signature="e#8571#152417#0" expanded="true" />
-            <element signature="e#152416#152417#0" expanded="true" />
-            <element signature="e#152677#153135#0" expanded="true" />
-            <element signature="e#153134#153135#0" expanded="true" />
-            <element signature="e#156048#156057#0" expanded="true" />
+            <element signature="e#8571#152869#0" expanded="true" />
+            <element signature="e#152868#152869#0" expanded="true" />
+            <element signature="e#153129#153587#0" expanded="true" />
+            <element signature="e#153586#153587#0" expanded="true" />
+            <element signature="e#156500#156509#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1276,11 +1274,11 @@
             <element signature="imports" expanded="true" />
             <element signature="e#5998#8530#0" expanded="true" />
             <element signature="e#8529#8530#0" expanded="true" />
-            <element signature="e#8571#152417#0" expanded="true" />
-            <element signature="e#152416#152417#0" expanded="true" />
-            <element signature="e#152677#153135#0" expanded="true" />
-            <element signature="e#153134#153135#0" expanded="true" />
-            <element signature="e#156048#156057#0" expanded="true" />
+            <element signature="e#8571#152869#0" expanded="true" />
+            <element signature="e#152868#152869#0" expanded="true" />
+            <element signature="e#153129#153587#0" expanded="true" />
+            <element signature="e#153586#153587#0" expanded="true" />
+            <element signature="e#156500#156509#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1301,11 +1299,11 @@
             <element signature="imports" expanded="true" />
             <element signature="e#5998#8530#0" expanded="true" />
             <element signature="e#8529#8530#0" expanded="true" />
-            <element signature="e#8571#152417#0" expanded="true" />
-            <element signature="e#152416#152417#0" expanded="true" />
-            <element signature="e#152677#153135#0" expanded="true" />
-            <element signature="e#153134#153135#0" expanded="true" />
-            <element signature="e#156048#156057#0" expanded="true" />
+            <element signature="e#8571#152869#0" expanded="true" />
+            <element signature="e#152868#152869#0" expanded="true" />
+            <element signature="e#153129#153587#0" expanded="true" />
+            <element signature="e#153586#153587#0" expanded="true" />
+            <element signature="e#156500#156509#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1326,11 +1324,11 @@
             <element signature="imports" expanded="true" />
             <element signature="e#5998#8530#0" expanded="true" />
             <element signature="e#8529#8530#0" expanded="true" />
-            <element signature="e#8571#152417#0" expanded="true" />
-            <element signature="e#152416#152417#0" expanded="true" />
-            <element signature="e#152677#153135#0" expanded="true" />
-            <element signature="e#153134#153135#0" expanded="true" />
-            <element signature="e#156048#156057#0" expanded="true" />
+            <element signature="e#8571#152869#0" expanded="true" />
+            <element signature="e#152868#152869#0" expanded="true" />
+            <element signature="e#153129#153587#0" expanded="true" />
+            <element signature="e#153586#153587#0" expanded="true" />
+            <element signature="e#156500#156509#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1501,16 +1499,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1139">
-          <caret line="76" column="28" selection-start-line="76" selection-start-column="28" selection-end-line="76" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/TimedEventRunnable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -1563,19 +1551,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="2225" column="142" selection-start-line="2225" selection-start-column="142" selection-end-line="2225" selection-end-column="142" />
+        <state relative-caret-position="228">
+          <caret line="2775" column="4" selection-start-line="2775" selection-start-column="4" selection-end-line="2844" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#5998#8530#0" expanded="true" />
             <element signature="e#8529#8530#0" expanded="true" />
-            <element signature="e#8571#152417#0" expanded="true" />
-            <element signature="e#152416#152417#0" expanded="true" />
-            <element signature="e#152677#153135#0" expanded="true" />
-            <element signature="e#153134#153135#0" expanded="true" />
-            <element signature="e#156048#156057#0" expanded="true" />
+            <element signature="e#8571#152869#0" expanded="true" />
+            <element signature="e#152868#152869#0" expanded="true" />
+            <element signature="e#153129#153587#0" expanded="true" />
+            <element signature="e#153586#153587#0" expanded="true" />
+            <element signature="e#156500#156509#0" expanded="true" />
           </folding>
         </state>
       </provider>

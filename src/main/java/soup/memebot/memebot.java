@@ -106,8 +106,8 @@ public class memebot {
         DiscordAPI api = Javacord.getApi(token, true);
         final int numOfCommands = 52;
         final int numOfSubCommands = 20;
-        final String version = "1.6.11";
-        final String complieDate = "9/23/17 01:44 EST";
+        final String version = "1.6.12";
+        final String complieDate = "9/26/17 01:24 EST";
         final String chatFilterVersion = "1.6";
         final boolean[] censor = {false};
         final long[] cooldown = {0, 0};
@@ -632,39 +632,39 @@ public class memebot {
                                     "   Implement picture reformatter.\n" +
                                     "   ```");
                         } else if (message.getContent().equalsIgnoreCase("$hypixel")) {
-
+                            long cooldownLengthInMinutes = 15;  //15 minutes
+                            long cooldownLength = cooldownLengthInMinutes * 1000 * 60;
                             System.out.println("hypixel: " + message.getAuthor().getName() + " | " + message.getAuthor().getId());
                             if (message.getAuthor().getId().equals("190519404780322818")) { //if the message author is nick | 190519404780322818
                                 System.out.println("it's a nick");
-                                if (System.currentTimeMillis() < (cooldown[0] + 3600000) && System.currentTimeMillis() != 0) { //sextuple the cooldown
+                                if (System.currentTimeMillis() < (cooldown[0] + (cooldownLength * 12)) && System.currentTimeMillis() != 0) { //multiply cooldown by 12;
                                     message.reply("Because you're Nick, this command is on cooldown for another " + Math.abs(((System.currentTimeMillis() - cooldown[0]) / 1000) - 3600) + " seconds.");
-                                    return;
                                 }
-                            }
-
-                            if (System.currentTimeMillis() > (cooldown[0] + 600000)) {
-
-                                cooldown[0] = System.currentTimeMillis();
-
-                                try {
-                                    message.reply("GoldfishClancy: @everyone hypixel?\n");
-                                    Thread.sleep(2000);
-                                    message.reply("we should all play later");
-                                    Thread.sleep(1000);
-                                    message.reply("@here we should all go on hypixel");
-                                    Thread.sleep(500);
-                                    message.reply("https://cdn.discordapp.com/attachments/189359733377990656/311631065112641537/unknown.png");
-                                    message.reply("anyjuan?");
-                                    Thread.sleep(2000);
-                                    message.reply("https://cdn.discordapp.com/attachments/189359733377990656/311631154904301569/unknown.png");
-                                    Thread.sleep(1000);
-                                    message.reply("hypixel?");
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }
-
                             } else {
-                                message.reply("This command is on cooldown for another " + Math.abs(((System.currentTimeMillis() - cooldown[0]) / 1000) - 600) + " seconds.");
+                                if (System.currentTimeMillis() > (cooldown[0] + cooldownLength)) {
+
+                                    cooldown[0] = System.currentTimeMillis();
+
+                                    try {
+                                        message.reply("GoldfishClancy: @everyone hypixel?\n");
+                                        Thread.sleep(2000);
+                                        message.reply("we should all play later");
+                                        Thread.sleep(1000);
+                                        message.reply("@here we should all go on hypixel");
+                                        Thread.sleep(500);
+                                        message.reply("https://cdn.discordapp.com/attachments/189359733377990656/311631065112641537/unknown.png");
+                                        message.reply("anyjuan?");
+                                        Thread.sleep(2000);
+                                        message.reply("https://cdn.discordapp.com/attachments/189359733377990656/311631154904301569/unknown.png");
+                                        Thread.sleep(1000);
+                                        message.reply("hypixel?");
+                                    } catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                    }
+
+                                } else {
+                                    message.reply("This command is on cooldown for another " + Math.abs(((System.currentTimeMillis() - cooldown[0]) / 1000) - 600) + " seconds.");
+                                }
                             }
                         } else if (message.getContent().equalsIgnoreCase("$censor")) {
                             if (isOnList(message.getAuthor().getName(), whitelist)) {
@@ -2035,10 +2035,12 @@ public class memebot {
                                         "```");
                             }
                         } else if (message.getContent().equalsIgnoreCase("$tos")) {
+                            long cooldownLengthInMinutes = 15;  //15 minutes
+                            long cooldownLength = cooldownLengthInMinutes * 1000 * 60;
                             System.out.println("tos: " + message.getAuthor().getName() + " | " + message.getAuthor().getId());
                             if (message.getAuthor().getId().equals("190519404780322818")) { //if the message author is nick | 190519404780322818
                                 System.out.println("it's a nick");
-                                if (System.currentTimeMillis() < (cooldown[1] + 3600000) && System.currentTimeMillis() != 0) { //sextuple the cooldown
+                                if (System.currentTimeMillis() < (cooldown[1] + (cooldownLength * 12)) && System.currentTimeMillis() != 0) { //multiply cooldown by 12
                                     message.reply("Because you're Nick, this command is on cooldown for another " + Math.abs(((System.currentTimeMillis() - cooldown[1]) / 1000) - 3600) + " seconds.");
                                     return;
                                 }
@@ -2051,7 +2053,7 @@ public class memebot {
                                     "https://cdn.discordapp.com/attachments/189359733377990656/350088852389625856/unknown.png"
                             ));
 
-                            if (System.currentTimeMillis() > (cooldown[1] + 600000)) {
+                            if (System.currentTimeMillis() > (cooldown[1] + cooldownLength)) {
                                 cooldown[1] = System.currentTimeMillis();
 
                                 try {
