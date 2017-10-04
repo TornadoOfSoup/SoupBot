@@ -2790,8 +2790,10 @@ public class memebot {
 
         xp = xp / xpDistribution;
 
-        if (xp > 150) { //lazy capping mechanism that pushes the number towards 150 if it's above it, TODO add better curving levels
-            xp = (xp + 150) / 2;
+        if (xp > 150) { //better curving mechanism
+            System.out.print(xp);
+            xp = (10 * (Math.sqrt(xp - 150)) + 150);
+            System.out.println(" → " + xp);
         }
 
         int intXp = (int)Math.round(xp);
@@ -2800,7 +2802,7 @@ public class memebot {
             if (statsFileExists(id)) {
                 try {
                     UserStats userStats = loadStats(id);
-                    userStats.addExp(intXp);
+                    userStats.addExp(intXp); //gives xp to players involved
 
                     while (userStats.canLevelUp()) {
                         userStats.levelUpIfPossible();
@@ -2841,7 +2843,7 @@ public class memebot {
             }
         }
 
-        return intXp;
+        return intXp; //return xp value for processing and stuff
     }
 
     public static int guessNumberVictory(String id, int turns, DiscordAPI api, Channel channel) {
