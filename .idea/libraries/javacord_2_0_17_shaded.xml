@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="javacord-2.0.15-shaded">
+  <library name="javacord-2.0.17-shaded">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/javacord-2.0.15-shaded.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javacord-2.0.17-shaded.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

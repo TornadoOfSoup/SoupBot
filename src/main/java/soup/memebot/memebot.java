@@ -2,15 +2,12 @@ package soup.memebot;
 
 import com.google.common.util.concurrent.FutureCallback;
 import de.btobastian.javacord.entities.Channel;
-import de.btobastian.javacord.entities.CustomEmoji;
 import de.btobastian.javacord.entities.User;
 import de.btobastian.javacord.entities.UserStatus;
-import de.btobastian.javacord.entities.impl.ImplCustomEmoji;
 import de.btobastian.javacord.entities.message.Message;
 import de.btobastian.javacord.entities.message.MessageAttachment;
 import de.btobastian.javacord.entities.message.MessageHistory;
 import de.btobastian.javacord.entities.message.MessageReceiver;
-import de.btobastian.javacord.entities.permissions.Permissions;
 import de.btobastian.javacord.entities.permissions.Role;
 import de.btobastian.javacord.listener.message.MessageCreateListener;
 import de.btobastian.javacord.*;
@@ -29,6 +26,8 @@ import java.math.BigInteger;
 import java.net.*;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.*;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -81,6 +80,9 @@ public class memebot {
     static ArrayList<String> game1HelpfulUsers = new ArrayList<String>();
     static ArrayList<Character> game1UnusedChars = new ArrayList<Character>();
 
+    static ArrayList<String> storyGameChannelIDs = new ArrayList<>();
+    static HashMap<String, StringBuilder> storyGameStories = new HashMap<>();
+
     public static void main(String[] args) {
         String token = "";
         String password = "";
@@ -104,11 +106,11 @@ public class memebot {
         }
 
         DiscordAPI api = Javacord.getApi(token, true);
-        final int numOfCommands = 52;
+        final int numOfCommands = 56;
         final int numOfSubCommands = 20;
-        final String version = "1.6.12";
-        final String complieDate = "9/26/17 01:24 EST";
-        final String chatFilterVersion = "1.6";
+        final String version = "1.7.2";
+        final String complieDate = "10/16/17 01:06 EST";
+        final String chatFilterVersion = "1.7";
         final boolean[] censor = {false};
         final long[] cooldown = {0, 0};
         final boolean[] modes = {false, false}; //0 = fastPictures, 1 = restricted
@@ -197,6 +199,9 @@ public class memebot {
                             editedMessage = StringUtils.replaceIgnoreCase(editedMessage, "bastard", "baguette");
                             editedMessage = StringUtils.replaceIgnoreCase(editedMessage, "or does it", "I'm a frog");
 
+                            if (message.getAuthor().getName().equals("Rickl")) {
+                                editedMessage = StringUtils.replaceIgnoreCase(editedMessage, "oof", "I should quit overwatch");
+                            }
                             if (!message.getContent().equals(editedMessage)) {
                                 message.delete();
                                 message.reply(String.valueOf("**" + message.getAuthor()) + "**: \n" + editedMessage);
@@ -360,6 +365,9 @@ public class memebot {
                             }
                         }
 
+
+                        //story game handling is after all the commands
+
                         //end of games
 
                         if (message.getContent().equalsIgnoreCase("$help")) {
@@ -417,6 +425,10 @@ public class memebot {
                                     "$identify\n" +
                                     "$tobinary\n" +
                                     "$frombinary\n" +
+                                    "$makestorychannel^\n" +
+                                    "$printstory\n" +
+                                    "$viewstorylist\n" +
+                                    "$finishstory^\n" +
                                     "```");
                         } else if (message.getContent().equalsIgnoreCase("$info")) {
                             message.reply("```\n" +
@@ -2259,7 +2271,90 @@ public class memebot {
                                             "```");
                                 }
                             }
+                        } else if (message.getContent().equalsIgnoreCase("$makeStoryChannel")) {
+                            if (!isOnList(message.getAuthor().getName(), whitelist) && !isOnList(message.getAuthor().getName(), promotedList)) {
+                                message.reply("Error: You don't have the necessary permissions to run this command.");
+                                return;
+                            }
+                            if (!isOnList(message.getChannelReceiver().getId(), storyGameChannelIDs)) {
+                                storyGameChannelIDs.add(message.getChannelReceiver().getId());
+                                message.reply("Channel `" + message.getChannelReceiver().getName() + "` has been added to the list of story channels.");
+                            } else {
+                                message.reply("Error: Channel `" + message.getChannelReceiver().getName() + "` is already on the list of story channels.");
+                            }
+                        } else if (message.getContent().equalsIgnoreCase("$printStory")) {
+                            if (isOnList(message.getChannelReceiver().getId(), storyGameChannelIDs)) {
+                                if (storyGameStories.containsKey(message.getChannelReceiver().getId())) {
+                                    StringBuilder story = storyGameStories.get(message.getChannelReceiver().getId());
+                                    message.reply("Story from `" + message.getChannelReceiver().getName() + "` as of on " + LocalDate.now() + " at " + LocalTime.now() + ": \n" +
+                                            "```\n" +
+                                            story.toString() + "\n" +
+                                            "```");
+                                } else {
+                                    message.reply("Error: The story in channel `" + message.getChannelReceiver().getName() + "` is empty!");
+                                }
+                            } else {
+                                message.reply("Error: The channel `" + message.getChannelReceiver().getName() + "` isn't in the story channel list!");
+                            }
+                        } else if (message.getContent().equalsIgnoreCase("$viewStoryList")) {
+                            if (!isOnList(message.getAuthor().getName(), whitelist) && !isOnList(message.getAuthor().getName(), promotedList)) {
+                                message.reply("Error: You don't have the necessary permissions to run this command.");
+                                return;
+                            }
+                            StringBuilder channels = new StringBuilder("");
+                            for (String id : storyGameChannelIDs) {
+                                channels.append(api.getChannelById(id).getName() + " | " + id + "\n");
+                            }
+                            message.reply("Channels that are considered \"story channels:\"\n" +
+                                    "```\n" +
+                                    channels.toString() +
+                                    "```");
+                        } else if (message.getContent().equalsIgnoreCase("$finishStory")) {
+                            if (isOnList(message.getChannelReceiver().getId(), storyGameChannelIDs)) {
+                                if (storyGameStories.containsKey(message.getChannelReceiver().getId())) {
+                                    StringBuilder story = storyGameStories.get(message.getChannelReceiver().getId());
+                                    message.reply("Story from `" + message.getChannelReceiver().getName() + "`, completed on " + LocalDate.now() + " at " + LocalTime.now() + ": \n" +
+                                            "```\n" +
+                                            story.toString() + "\n" +
+                                            "```");
+
+                                    storyGameChannelIDs.remove(message.getChannelReceiver().getId());
+                                    storyGameStories.put(message.getChannelReceiver().getId(), null);
+                                } else {
+                                    message.reply("Error: The story in channel `" + message.getChannelReceiver().getName() + "` is empty!");
+                                }
+                            } else {
+                                message.reply("Error: The channel `" + message.getChannelReceiver().getName() + "` isn't in the story channel list!");
+                            }
+
+
                         }
+
+                        //ALL COMMANDS GO ABOVE HERE FOR CLARITY PURPOSES
+
+                        //story game handling
+
+                        else if (isOnList(message.getChannelReceiver().getId(), storyGameChannelIDs)) {
+                            if (message.getContent().startsWith("$ignore") || message.getAuthor().isYourself()) {
+                                System.out.println("Message \"" + message.getContent() + "\" has been ignored");
+                            } else {
+                                if (storyGameStories.containsKey(message.getChannelReceiver().getId())) {
+                                    StringBuilder story = storyGameStories.get(message.getChannelReceiver().getId());
+
+                                    story.append(getFirstWordInString(message.getContent()) + " ");
+                                    storyGameStories.put(message.getChannelReceiver().getId(), story);
+
+                                    //System.out.println(story.toString());
+                                } else {
+                                    StringBuilder story = new StringBuilder(getFirstWordInString(message.getContent()) + " ");
+                                    storyGameStories.put(message.getChannelReceiver().getId(), story);
+                                    System.out.println("[STORY START] " + story);
+                                }
+                            }
+
+                        }
+
+                        //NO COMMANDS BELOW HERE FOR CLARITY PURPOSES
 
                     }
                 }); //end of listener
@@ -2289,6 +2384,16 @@ public class memebot {
 
         for (Object listName : list){
             if (item.equalsIgnoreCase(listName.toString())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean isOnList(Object item, ArrayList<?> list) {
+
+        for (Object listItem : list){
+            if (item.equals(listItem)) {
                 return true;
             }
         }
@@ -3049,6 +3154,23 @@ public class memebot {
             returnString += binaryToChar(binaryString);
         }
         return returnString;
+    }
+
+    public static String getFirstWordInString(String string) {
+        if (string.split(" ").length != 0) {
+            return string.split(" ")[0];
+        } else {
+            return string;
+        }
+    }
+
+    public static boolean indexOfArrayListExists(ArrayList<?> arrayList, int index) {
+        try {
+            arrayList.get(index);
+        } catch (IndexOutOfBoundsException e) {
+            return false;
+        }
+        return true;
     }
 
     }
