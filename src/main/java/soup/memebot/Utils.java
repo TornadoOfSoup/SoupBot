@@ -84,6 +84,12 @@ public class Utils {
         return timeStamp;
     }
 
+    public static String getTimestampForFileName() {
+        Date date = new Date();
+        String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(date);
+        return timeStamp;
+    }
+
     public static String getTimestampTime() {
         Date date = new Date();
         String timeStamp = new SimpleDateFormat("HH:mm").format(date);
