@@ -106,10 +106,10 @@ public class memebot {
         }
 
         final DiscordAPI api = Javacord.getApi(token, true);
-        final int numOfCommands = 56;
+        final int numOfCommands = 58;
         final int numOfSubCommands = 20;
-        final String version = "1.7.6";
-        final String complieDate = "10/20/17 19:25 EST";
+        final String version = "1.7.9";
+        final String complieDate = "10/21/17 00:31 EST";
         final String chatFilterVersion = "1.7";
         final boolean[] censor = {false};
         final long[] cooldown = {0, 0};
@@ -424,6 +424,8 @@ public class memebot {
                                 "$printstory\n" +
                                 "$viewstorylist\n" +
                                 "$finishstory^\n" +
+                                "$deleteword\n" +
+                                "$viewrecentwords\n" +
                                 "```");
                     } else if (message.getContent().equalsIgnoreCase("$info")) {
                         message.reply("```\n" +
@@ -2339,6 +2341,41 @@ public class memebot {
                         }
 
 
+                    } else if (message.getContent().equalsIgnoreCase("$deleteWord")) {
+                        if (isOnList(message.getChannelReceiver().getId(), storyGameChannelIDs)) {
+                            StringBuilder story = storyGameStories.get(message.getChannelReceiver().getId());
+                            int indexOfLastSpace = story.lastIndexOf(" ");
+                            if (indexOfLastSpace == -1) {
+                                message.reply("There are no words to delete in `" + message.getChannelReceiver().getName() + "`!");
+                            } else {
+                                story.delete(indexOfLastSpace, story.length());
+                                message.reply("Deleted word!");
+                            }
+                        } else {
+                            message.reply("`" + message.getChannelReceiver().getName() + "` is not currently a story channel!");
+                        }
+                    } else if (message.getContent().equalsIgnoreCase("$viewRecentWords")) {
+                        try {
+                            if (isOnList(message.getChannelReceiver().getId(), storyGameChannelIDs)) {
+                                StringBuilder story = storyGameStories.get(message.getChannelReceiver().getId());
+                                int numOfSpaces = StringUtils.countMatches(story.toString(), " ");
+
+                                if (numOfSpaces >= 10) {
+                                    int indexOfTenthSpace = story.toString().lastIndexOf(" ", 9);
+                                    message.reply("```\n" +
+                                            ". . ." + story.toString().substring(indexOfTenthSpace, story.length()) + "\n" +
+                                            "```");
+                                } else {
+                                    message.reply("```\n" +
+                                            story.toString() + "\n" +
+                                            "```");
+                                }
+                            } else {
+                                message.reply("`" + message.getChannelReceiver().getName() + "` is not currently a story channel!");
+                            }
+                        } catch (NullPointerException e) {
+                            message.reply("Error: " + e.getMessage() + "\nIs the story empty?");
+                        }
                     }
 
                     //ALL COMMANDS GO ABOVE HERE FOR CLARITY PURPOSES
@@ -2357,6 +2394,12 @@ public class memebot {
                                     System.out.println("Punctuation detected");
                                 } else if (message.getContent().equalsIgnoreCase("-")) {
                                     story.append("-");
+                                } else if (message.getContent().equalsIgnoreCase("[n]")) { //newline
+                                    story.append("\n");
+                                    message.reply("Added newline.");
+                                } else if (message.getContent().equalsIgnoreCase("[t]")) { //tab
+                                    story.append("\t");
+                                    message.reply("Added indent.");
                                 } else {
                                     if (story.charAt(story.length() - 1) == '-') {
                                         story.append(getFirstWordInString(message.getContent()));
