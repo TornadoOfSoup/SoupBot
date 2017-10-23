@@ -131,7 +131,7 @@ public class Breed {
         @SerializedName("PUG") PUG,
         @SerializedName("SHEPHERD") SHEPHERD,
         @SerializedName("SHIBA") SHIBA,
-        @SerializedName("CHIHUAHUA") CHIHUAHUA;
+        @SerializedName("CHIHUAHUA") CHIHUAHUA
     }
 
     enum CatBreeds {
@@ -139,7 +139,7 @@ public class Breed {
         @SerializedName("PERSIAN") PERSIAN,
         @SerializedName("SPHYNX") SPHYNX,
         @SerializedName("SHORTHAIR") SHORTHAIR,
-        @SerializedName("NYAN") NYAN;
+        @SerializedName("NYAN") NYAN
     }
 
     enum SnakeBreeds {
@@ -147,7 +147,7 @@ public class Breed {
         COBRA,
         GARTER,
         PYTHON,
-        DANGER;
+        DANGER
     }
 
     enum MouseBreeds {
@@ -155,7 +155,7 @@ public class Breed {
         WOOD,
         DEER,
         WHITE,
-        MICKEY;
+        MICKEY
     }
 
     enum DragonBreeds {
@@ -163,7 +163,7 @@ public class Breed {
         BLACK_WYVERN,
         SILVER_WYVERN,
         GOLD_WYVERN,
-        WORLD_EATER;
+        WORLD_EATER
     }
 
     enum WhaleBreeds {
@@ -171,7 +171,7 @@ public class Breed {
         ORCA,
         SPERM,
         BLUE,
-        BUTTERWHALE;
+        BUTTERWHALE
     }
 
     enum TurtleBreeds {
@@ -179,7 +179,7 @@ public class Breed {
         SNAPPING,
         SPOTTED,
         NINJA,
-        KOOPA;
+        KOOPA
     }
 
     enum FishBreeds {
@@ -187,11 +187,11 @@ public class Breed {
         CLOWN,
         SALMON,
         TUNA,
-        KOI;
+        KOI
     }
 
     enum Unknown {
-        UNKNOWN;
+        UNKNOWN
     }
 }
 

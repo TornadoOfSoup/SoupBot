@@ -16,7 +16,7 @@ public enum Species {
     @SerializedName("DRAGON") DRAGON,
     @SerializedName("WHALE") WHALE,
     @SerializedName("TURTLE") TURTLE,
-    @SerializedName("FISH") FISH;
+    @SerializedName("FISH") FISH
 
 }
 

@@ -26,11 +26,7 @@ public class Utils {
         File file = new File(path + "/stats/" + playerID + ".json");
         System.out.println("File path: " + file.getAbsolutePath());
 
-        if (file.exists()) {
-            return true;
-        } else {
-            return false;
-        }
+        return file.exists();
     }
 
     public static void levelUpDialog(Channel channel, User user, UserStats userStats) {
