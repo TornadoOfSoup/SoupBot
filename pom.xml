@@ -20,6 +20,15 @@
         </plugins>
     </build>
 
+    <repositories>
+
+        <repository>
+            <id>javacord-repo</id>
+            <url>http://repo.bastian-oppermann.de</url>
+        </repository>
+
+    </repositories>
+
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-math3 -->
         <dependency>
@@ -46,6 +55,14 @@
             <groupId>com.clarifai.clarifai-api2</groupId>
             <artifactId>core</artifactId>
             <version>2.2.12</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.btobastian.javacord</groupId>
+            <artifactId>javacord</artifactId>
+            <version>2.0.17</version>
+            <!-- This will use the shaded javacord which contains all required dependencies -->
+            <classifier>shaded</classifier>
         </dependency>
     </dependencies>
 

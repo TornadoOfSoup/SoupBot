@@ -23,7 +23,6 @@ import java.awt.image.*;
 import java.io.*;
 import java.math.BigInteger;
 import java.net.*;
-import java.sql.Array;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -116,8 +115,8 @@ public class memebot {
         final DiscordAPI api = Javacord.getApi(token, true);
         final int numOfCommands = 58;
         final int numOfSubCommands = 20;
-        final String version = "1.7.9.2";
-        final String complieDate = "10/22/17 20:24 EST";
+        final String version = "1.7.9.3";
+        final String complieDate = "10/25/17 19:14 EST";
         final String chatFilterVersion = "1.7";
         final boolean[] censor = {false};
         final long[] cooldown = {0, 0};
@@ -417,7 +416,7 @@ public class memebot {
 
                             File folder = new File("C:\\Users\\RPGenius\\Desktop\\memes\\pics");
                             File[] listOfFiles = folder.listFiles();
-                            ArrayList<String> arrayListOfFiles = new ArrayList<String>();
+                            ArrayList<String> arrayListOfFiles = new ArrayList<>();
                             String displayList = "";
 
                             for (int i = 0; i < listOfFiles.length; i++) {
@@ -444,7 +443,7 @@ public class memebot {
                             if (message.getContent().equalsIgnoreCase("$meme random")) {
                                 File folder = new File("C:\\Users\\RPGenius\\Desktop\\memes\\pics\\");
                                 File[] listOfFiles = folder.listFiles();
-                                ArrayList<String> arrayListOfFiles = new ArrayList<String>();
+                                ArrayList<String> arrayListOfFiles = new ArrayList<>();
 
                                 for (int i = 0; i < listOfFiles.length; i++) {
                                     if (listOfFiles[i].getName().endsWith(".png") || listOfFiles[i].getName().endsWith(".jpg")) { //will only look for .png or .jpg
@@ -734,7 +733,7 @@ public class memebot {
                                     message.reply("Error: The given command contains **" + parts.length + "** parts of the necessary 2 or 3.");
                                 } else {
                                     try {
-                                        int numOfMessages = Integer.parseInt(parts[1]);
+                                        int numOfMessages = Integer.parseInt(parts[1]); //TODO maybe replaces this with an instanceof operator
                                     } catch (NumberFormatException e) {
                                         e.printStackTrace();
                                         message.reply("The given number must be an integer.");
@@ -912,7 +911,7 @@ public class memebot {
                                 message.reply("Error: The given command contains **" + parts.length + "** choices instead of the necessary 2 or more.");
                                 return;
                             }
-                            ArrayList<String> choices = new ArrayList<String>();
+                            ArrayList<String> choices = new ArrayList<>();
                             for (String part : parts) {
                                 choices.add(part);
                             }
@@ -934,7 +933,7 @@ public class memebot {
                             //message.reply("This command is currently under maintenance.");
                             String msg = message.getContent().replace("$bubblesort ", "");
                             String[] array = msg.split(" ");
-                            ArrayList<Integer> elements = new ArrayList<Integer>();
+                            ArrayList<Integer> elements = new ArrayList<>();
                             for (String element : array) {
                                 try {
                                     if ((element.equals(null) || element.equals("")) == false) {
