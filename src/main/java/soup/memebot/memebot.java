@@ -61,7 +61,7 @@ public class memebot {
             "$math", "$mute^", "$unmute^", "$supermute^", "$quadratic", "$primeFactors", "$string", "$simplify", "$ascii", "$rng", "$factors", "$leetspeak",
             "$game", "$google", "$cat", "$onlineusers", "$addxp", "$setxp", "$addlevel", "$setlevel", "$getstats", "$setpotentiorbs", "$newpet", "$getpets",
             "$clearpets", "$addlogo", "$identify", "$tobinary", "$frombinary", "$makestorychannel^", "$printstory", "$viewstorylist", "$finishstory^",
-            "$deleteword", "$viewrecentwords"));
+            "$deleteword", "$viewrecentwords", "$clnew", "$cltoggle"));
 
     static TimedEventRunnable checkOnline = new TimedEventRunnable("CheckOnline", 60);
 
@@ -113,10 +113,10 @@ public class memebot {
         }
 
         final DiscordAPI api = Javacord.getApi(token, true);
-        final int numOfCommands = 58;
+        final int numOfCommands = 60;
         final int numOfSubCommands = 20;
-        final String version = "1.7.9.3";
-        final String complieDate = "10/25/17 19:14 EST";
+        final String version = "1.8";
+        final String complieDate = "12/01/17 19:17 EST";
         final String chatFilterVersion = "1.7";
         final boolean[] censor = {false};
         final long[] cooldown = {0, 0};
@@ -134,6 +134,7 @@ public class memebot {
                     System.out.println("Successful login");
                     final MessageReceiver receiver = api.getChannelById("189359733377990656"); //general in ddc
                     receiver.sendMessage("Hello everyone! SoupBot v" + version + " here!");   //that thing travis and nick dislike
+                    //receiver.sendMessage("***H a i l   t h e   c o m i n g   o f   y o u r   d o o m,   T r a v i s.***");
                     api.setAutoReconnect(true);
 
                     final Collection users = api.getUsers();
@@ -145,8 +146,8 @@ public class memebot {
 
                     api.setGame("$help");
 
-                    TimedEventHandlerRunnable timedEventHandlerRunnable = new TimedEventHandlerRunnable(api, api.getChannelById("189359733377990656")); //general in ddc;
-                    timedEventHandlerRunnable.start();
+//                    TimedEventHandlerRunnable timedEventHandlerRunnable = new TimedEventHandlerRunnable(api, api.getChannelById("189359733377990656")); //general in ddc;
+//                    timedEventHandlerRunnable.start();
 
 
                     //user status changes
@@ -2360,6 +2361,78 @@ public class memebot {
                             } catch (NullPointerException e) {
                                 message.reply("Error: " + e.getMessage() + "\nIs the story empty?");
                             }
+                        } else if (message.getContent().startsWith("$edit")) {
+                            if (!isOnList(message.getAuthor().getName(), whitelist)) {
+                                message.reply("Error: command only usable by whitelisted members.");
+                                return;
+                            }
+
+                            if (message.getContent().equalsIgnoreCase("$edit")) return;
+                            String[] parts = message.getContent().replace("$edit ", "").split(" ");
+                            if (parts.length < 2) {
+                                message.reply("Error: command must contain a valid ID and edit message.");
+                                return;
+                            }
+
+                            if (!parts[0].matches("[0-9]+")) { //check if the string contains only numbers
+                                message.reply("Error: invalid message ID.");
+                                return;
+                            }
+
+                            try {
+                                Message messageToEdit = message.getChannelReceiver().getMessageById(parts[0]).get();
+                                messageToEdit.edit(message.getContent().replace("$edit ", "").replace(parts[0], ""));
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            } catch (ExecutionException e) {
+                                e.printStackTrace();
+                            }
+                        } else if (message.getContent().startsWith("$clnew")) {
+                            if (message.getContent().equalsIgnoreCase("$clNew")) {
+                                message.reply("```\n" +
+                                        "Creates new checklist item.\n" +
+                                        "Syntax: \"$clnew [string]\"\n" +
+                                        "Example: \"$clnew Create new GUI\"" +
+                                        "```");
+                                return;
+                            }
+
+                            String msg = message.getContent().replace("$clnew ", "");
+                            message.reply(":x: " + msg);
+                            message.delete();
+                        } else if (message.getContent().startsWith("$cltoggle")) {
+                            if (message.getContent().equalsIgnoreCase("$clToggle")) {
+                                message.reply("```\n" +
+                                        "Toggles existing checklist item.\n" +
+                                        "Syntax: \"$cltoggle [id]\"\n" +
+                                        "Example: \"$cltoggle 386297000041119754\"\n" +
+                                        "Note: command must be run in the same channel as the checklist item being toggled.\n" +
+                                        "```");
+                                return;
+                            }
+
+                            String id = message.getContent().replace("$cltoggle ", "");
+                            if (!id.matches("[0-9]+")) {
+                                message.reply("Error: invalid message ID.");
+                                return;
+                            }
+                            try {
+                                Message messageToToggle = message.getChannelReceiver().getMessageById(id).get();
+                                if (messageToToggle.getContent().startsWith(":x:")) {
+                                    messageToToggle.edit(messageToToggle.getContent().replaceFirst(":x:", ":white_check_mark:"));
+                                    message.delete();
+                                } else if (messageToToggle.getContent().startsWith(":white_check_mark")) {
+                                    messageToToggle.edit(messageToToggle.getContent().replaceFirst(":white_check_mark:", ":x:"));
+                                    message.delete();
+                                } else {
+                                    message.reply("Error: invalid checklist item.");
+                                }
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            } catch (ExecutionException e) {
+                                e.printStackTrace();
+                            }
+
                         }
 
                         //ALL COMMANDS GO ABOVE HERE FOR CLARITY PURPOSES
@@ -3268,7 +3341,7 @@ class TimedEventHandlerRunnable implements Runnable {
 
     @Override
     public void run() {
-        memebot.checkOnline.start();
+        //memebot.checkOnline.start();
         try {
 
             while (true) {
