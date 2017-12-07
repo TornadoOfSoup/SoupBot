@@ -115,8 +115,8 @@ public class memebot {
         final DiscordAPI api = Javacord.getApi(token, true);
         final int numOfCommands = 60;
         final int numOfSubCommands = 20;
-        final String version = "1.8";
-        final String complieDate = "12/01/17 19:17 EST";
+        final String version = "1.8.1";
+        final String complieDate = "12/06/17 22:12 EST";
         final String chatFilterVersion = "1.7";
         final boolean[] censor = {false};
         final long[] cooldown = {0, 0};
@@ -2433,6 +2433,45 @@ public class memebot {
                                 e.printStackTrace();
                             }
 
+                        } else if (message.getContent().startsWith("$roll")) {
+                            if (message.getContent().equalsIgnoreCase("$roll")) {
+                                message.reply("```\n" +
+                                        "Rolls a die.\n" +
+                                        "Syntax: \"$roll [amount]d[type of die]\"\n" +
+                                        "Example: \"$roll 2d10\"\n" +
+                                        "```");
+                                return;
+                            }
+                            String dice = message.getContent().replace("$roll ", "");
+                            int amount = Integer.parseInt(dice.split("d")[0]);
+                            int numberOfSides = Integer.parseInt(dice.split("d")[1]);
+
+                            if (amount <= 0) {
+                                message.reply("Error: make sure you're rolling at least 1 die.");
+                                return;
+                            }
+
+                            if (numberOfSides <= 0) {
+                                message.reply("Error: make sure you're rolling dice with at least 1 side.");
+                                return;
+                            }
+
+                            if (message.getAuthor().getName().equalsIgnoreCase("Arsenol0105") || message.getAuthor().getName().equalsIgnoreCase("zarmo")) {
+                                int riggingFactor = rng(10);
+                                if (riggingFactor <= 3) { //30%
+                                    amount = (int) (amount * 0.8);
+                                } else if (riggingFactor <= 6) { //30%
+                                    amount = (int) (amount * 0.6);
+                                } else {} //don't do anything, 40%
+                            }
+
+                            ArrayList<Integer> numbers = rng(numberOfSides, amount);
+                            String output = "`";
+                            for (int number : numbers) {
+                                output += number + " ";
+                            }
+                            output += "`";
+                            message.reply(output);
                         }
 
                         //ALL COMMANDS GO ABOVE HERE FOR CLARITY PURPOSES
