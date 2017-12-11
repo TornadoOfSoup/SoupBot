@@ -61,7 +61,7 @@ public class memebot {
             "$math", "$mute^", "$unmute^", "$supermute^", "$quadratic", "$primeFactors", "$string", "$simplify", "$ascii", "$rng", "$factors", "$leetspeak",
             "$game", "$google", "$cat", "$onlineusers", "$addxp", "$setxp", "$addlevel", "$setlevel", "$getstats", "$setpotentiorbs", "$newpet", "$getpets",
             "$clearpets", "$addlogo", "$identify", "$tobinary", "$frombinary", "$makestorychannel^", "$printstory", "$viewstorylist", "$finishstory^",
-            "$deleteword", "$viewrecentwords", "$clnew", "$cltoggle"));
+            "$deleteword", "$viewrecentwords", "$clnew", "$cltoggle", "$roll"));
 
     static TimedEventRunnable checkOnline = new TimedEventRunnable("CheckOnline", 60);
 
@@ -113,10 +113,10 @@ public class memebot {
         }
 
         final DiscordAPI api = Javacord.getApi(token, true);
-        final int numOfCommands = 60;
+        final int numOfCommands = 61;
         final int numOfSubCommands = 20;
-        final String version = "1.8.1";
-        final String complieDate = "12/06/17 22:12 EST";
+        final String version = "1.8.3";
+        final String complieDate = "12/10/17 14:10 EST";
         final String chatFilterVersion = "1.7";
         final boolean[] censor = {false};
         final long[] cooldown = {0, 0};
@@ -2443,8 +2443,13 @@ public class memebot {
                                 return;
                             }
                             String dice = message.getContent().replace("$roll ", "");
-                            int amount = Integer.parseInt(dice.split("d")[0]);
+                            int amount = 1;
                             int numberOfSides = Integer.parseInt(dice.split("d")[1]);
+                            boolean buff = false;
+
+                            if (!dice.startsWith("d")) { //allows you to forgo the first number to roll one die
+                                amount = Integer.parseInt(dice.split("d")[0]);
+                            }
 
                             if (amount <= 0) {
                                 message.reply("Error: make sure you're rolling at least 1 die.");
@@ -2456,18 +2461,28 @@ public class memebot {
                                 return;
                             }
 
+
                             if (message.getAuthor().getName().equalsIgnoreCase("Arsenol0105") || message.getAuthor().getName().equalsIgnoreCase("zarmo")) {
-                                int riggingFactor = rng(10);
+                                /*int riggingFactor = rng(10);
                                 if (riggingFactor <= 3) { //30%
-                                    amount = (int) (amount * 0.8);
+                                    amount = (int) ((double)amount * 0.8);
                                 } else if (riggingFactor <= 6) { //30%
-                                    amount = (int) (amount * 0.6);
-                                } else {} //don't do anything, 40%
+                                    amount = (int) ((double)amount * 0.6);
+                                } else {} //don't do anything, 40%*/
+                            } else {
+                                buff = true;
                             }
 
                             ArrayList<Integer> numbers = rng(numberOfSides, amount);
                             String output = "`";
                             for (int number : numbers) {
+                                if (buff) {
+                                    if (number <  ((double)numberOfSides * 0.8)) { //20% ish buff to non dungeon masters
+                                        System.out.print(number + " → ");
+                                        number = (int)((double)number / 0.8);
+                                        System.out.println(number);
+                                    }
+                                }
                                 output += number + " ";
                             }
                             output += "`";
