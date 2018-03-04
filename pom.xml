@@ -27,6 +27,11 @@
             <url>http://repo.bastian-oppermann.de</url>
         </repository>
 
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+
     </repositories>
 
     <dependencies>
@@ -64,6 +69,13 @@
             <!-- This will use the shaded javacord which contains all required dependencies -->
             <classifier>shaded</classifier>
         </dependency>
+
+        <dependency>
+            <groupId>com.github.Samuel-Maddock</groupId>
+            <artifactId>StrawPoll-Java-API</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+
     </dependencies>
 
 

@@ -1,6 +1,7 @@
 package soup.memebot;
 
 import com.google.common.util.concurrent.FutureCallback;
+import com.samuelmaddock.strawpollwrapper.StrawPoll;
 import de.btobastian.javacord.entities.Channel;
 import de.btobastian.javacord.entities.User;
 import de.btobastian.javacord.entities.message.Message;
@@ -61,7 +62,7 @@ public class memebot {
             "$math", "$mute^", "$unmute^", "$supermute^", "$quadratic", "$primeFactors", "$string", "$simplify", "$ascii", "$rng", "$factors", "$leetspeak",
             "$game", "$google", "$cat", "$onlineusers", "$addxp", "$setxp", "$addlevel", "$setlevel", "$getstats", "$setpotentiorbs", "$newpet", "$getpets",
             "$clearpets", "$addlogo", "$identify", "$tobinary", "$frombinary", "$makestorychannel^", "$printstory", "$viewstorylist", "$finishstory^",
-            "$deleteword", "$viewrecentwords", "$clnew", "$cltoggle", "$roll"));
+            "$deleteword", "$viewrecentwords", "$clnew", "$cltoggle", "$roll", "$strawpoll", "$checkstrawpoll"));
 
     static TimedEventRunnable checkOnline = new TimedEventRunnable("CheckOnline", 60);
 
@@ -89,6 +90,7 @@ public class memebot {
 
     static ArrayList<String> storyGameChannelIDs = new ArrayList<>();
     static HashMap<String, StringBuilder> storyGameStories = new HashMap<>();
+    static HashMap<String, String> strawpolls = new HashMap<>();
 
     public static void main(String[] args) {
         String token = "";
@@ -398,7 +400,7 @@ public class memebot {
                             int columnLength = longestLength + 8;
 
                             message.reply("Hello! I am primarily a meme bot, but I might do other things too. \n" +
-                                    "Currently, I have **" + numOfCommands + "** command(s), **" + numOfSubCommands + "** subcommand(s), and **2** hidden command.\n" +
+                                    "Currently, I have **" + commandList.size() + "** command(s), **" + numOfSubCommands + "** subcommand(s), and **2** hidden command(s).\n" +
                                     "Commands only usable by whitelisted members are marked with an ^.\n" +
                                     "Commands partially usable by non-whitelisted members are marked with a ^^.\n" +
                                     "The command list is as follows:\n" +
@@ -2487,6 +2489,72 @@ public class memebot {
                             }
                             output += "`";
                             message.reply(output);
+                        } else if (message.getContent().startsWith("$strawpoll")) {
+                            if (message.getContent().equalsIgnoreCase("$strawpoll")) {
+                                message.reply("```\n" +
+                                        "Starts a strawpoll with the given title and options.\n" +
+                                        "Syntax: \"$strawpoll [title] | [option 1] | [option 2] | ... [option x]\"\n" +
+                                        "Example: \"$strawpoll Do you like the changes? | Yes, I do | No, I don't | I'm indifferent\"\n" +
+                                        "Note: up to 100 polls per hour can be created and with up to 30 options each.\n" +
+                                        "```");
+                                return;
+                            }
+
+                            List<String> parts = Arrays.asList(message.getContent().replace("$strawpoll ", "").split("\\|"));
+                            String title = parts.get(0);
+
+                            List<String> options = parts.subList(1, parts.size());
+
+                            StrawPoll poll = new StrawPoll(title, options);
+                            poll.create();
+
+                            String id = poll.getId();
+                            String url = poll.getPollURL();
+
+                            message.reply(url + "\n" +
+                                    "```\n" +
+                                    title + "\n\n" +
+                                    listAsNumberedVerticalList(options) +
+                                    "```");
+
+                            strawpolls.put(title, id);
+                        } else if (message.getContent().startsWith("$checkstrawpoll")) {
+                            if (message.getContent().equalsIgnoreCase("$checkstrawpoll")) {
+                                message.reply("```\n" +
+                                        "Checks a strawpoll given the poll's id, or title if the strawpoll is cached in SoupBot.\n" +
+                                        "Syntax: \"$checkstrawpoll [id/title]\"\n" +
+                                        "Example: \"$checkstrawpoll 69\"\n" +
+                                        "Note: Strawpolls are cached in SoupBot if they were created by SoupBot during its current session.\n" +
+                                        "```");
+                                return;
+                            }
+                            String id = message.getContent().replace("$checkstrawpoll ", "");
+                            StrawPoll poll = new StrawPoll();
+                            if (strawpolls.containsKey(id)) {
+                                poll.retrieve(strawpolls.get(id));
+                            } else {
+                                poll.retrieve(id);
+                            }
+
+                            String title = poll.getTitle();
+                            String url = poll.getPollURL();
+                            List<String> options = poll.getOptions();
+                            List<Integer> votes = poll.getVotes();
+
+                            StringBuilder builder = new StringBuilder();
+
+                            builder.append("QUESTION" + multiplyString(" ", 50 - "QUESSTION".length()) + "VOTES");
+
+                            for (int i = 0; i < options.size(); i++) {
+                                builder.append("\"" + options.get(i) + "\"" +
+                                        multiplyString(" ", options.get(i).length() + 2) + votes.get(i) + "\n");
+                            }
+
+                            message.reply(url + "\n" +
+                                    "```\n" +
+                                    "\"" + title + "\"\n\n" +
+                                    builder.toString() + "\n" +
+                                    "```");
                         }
 
                         //ALL COMMANDS GO ABOVE HERE FOR CLARITY PURPOSES
@@ -2965,11 +3033,19 @@ public class memebot {
     }
 
     public static String listAsVerticalList(List<String> list) {
-        String returnString = "";
+        StringBuilder builder = new StringBuilder();
         for (String string : list) {
-            returnString += string + "\n";
+            builder.append(string + "\n");
         }
-        return returnString;
+        return builder.toString();
+    }
+
+    public static String listAsNumberedVerticalList(List<String> list) {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < list.size(); i++) {
+            builder.append((i + 1) + ". " + list.get(i) + "\n");
+        }
+        return builder.toString();
     }
 
     public static String formatListsAsColumns(List<String>[] lists, int columnWidth) {
