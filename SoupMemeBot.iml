@@ -38,6 +38,6 @@
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpmime:4.5.2" level="project" />
     <orderEntry type="library" name="Maven: com.neovisionaries:nv-websocket-client:1.31" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.22" level="project" />
-    <orderEntry type="library" name="Maven: com.github.Samuel-Maddock:StrawPoll-Java-API:1.0.1" level="project" />
+    <orderEntry type="library" name="Maven: com.github.Samuel-Maddock:StrawPoll-Java-API:1.0.2" level="project" />
   </component>
 </module>

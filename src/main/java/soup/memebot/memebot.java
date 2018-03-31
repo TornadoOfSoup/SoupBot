@@ -117,8 +117,8 @@ public class memebot {
         final DiscordAPI api = Javacord.getApi(token, true);
         final int numOfCommands = 61;
         final int numOfSubCommands = 20;
-        final String version = "1.8.3";
-        final String complieDate = "12/10/17 14:10 EST";
+        final String version = "1.8.4";
+        final String complieDate = "3/31/18 14:44 EST";
         final String chatFilterVersion = "1.7";
         final boolean[] censor = {false};
         final long[] cooldown = {0, 0};
@@ -2529,12 +2529,9 @@ public class memebot {
                                 return;
                             }
                             String id = message.getContent().replace("$checkstrawpoll ", "");
+                            System.out.println(id);
                             StrawPoll poll = new StrawPoll();
-                            if (strawpolls.containsKey(id)) {
-                                poll.retrieve(strawpolls.get(id));
-                            } else {
-                                poll.retrieve(id);
-                            }
+                            poll = poll.retrieve(Integer.parseInt(id));
 
                             String title = poll.getTitle();
                             String url = poll.getPollURL();
@@ -2543,11 +2540,11 @@ public class memebot {
 
                             StringBuilder builder = new StringBuilder();
 
-                            builder.append("QUESTION" + multiplyString(" ", 50 - "QUESSTION".length()) + "VOTES");
+                            builder.append("ANSWER" + multiplyString(" ", 50 - "ANSWER".length()) + "VOTES\n");
 
                             for (int i = 0; i < options.size(); i++) {
                                 builder.append("\"" + options.get(i) + "\"" +
-                                        multiplyString(" ", options.get(i).length() + 2) + votes.get(i) + "\n");
+                                        multiplyString(" ", 48 - options.get(i).length()) + votes.get(i) + "\n");
                             }
 
                             message.reply(url + "\n" +
@@ -3083,7 +3080,7 @@ public class memebot {
         return listAsVerticalList(lines);
     }
 
-    public static String formatListAsColumns(ArrayList<String> arrayList, int numOfColumns, int columnWidth) {
+    public static String formatListAsColumns(ArrayList<String> arrayList, int numOfColumns, int columnWidth) { //TODO this sometimes cuts off a few elements
         int numOfItemsPerColumn = arrayList.size() / numOfColumns;
         List<String> list = arrayList;
         List<String>[] lists = new List[numOfColumns];
