@@ -62,7 +62,7 @@ public class memebot {
             "$math", "$mute^", "$unmute^", "$supermute^", "$quadratic", "$primeFactors", "$string", "$simplify", "$ascii", "$rng", "$factors", "$leetspeak",
             "$game", "$google", "$cat", "$onlineusers", "$addxp", "$setxp", "$addlevel", "$setlevel", "$getstats", "$setpotentiorbs", "$newpet", "$getpets",
             "$clearpets", "$addlogo", "$identify", "$tobinary", "$frombinary", "$makestorychannel^", "$printstory", "$viewstorylist", "$finishstory^",
-            "$deleteword", "$viewrecentwords", "$clnew", "$cltoggle", "$roll", "$strawpoll", "$checkstrawpoll"));
+            "$deleteword", "$viewrecentwords", "$clnew", "$cltoggle", "$roll", "$strawpoll", "$checkstrawpoll", "$crab"));
 
     static TimedEventRunnable checkOnline = new TimedEventRunnable("CheckOnline", 60);
 
@@ -115,10 +115,10 @@ public class memebot {
         }
 
         final DiscordAPI api = Javacord.getApi(token, true);
-        final int numOfCommands = 61;
+        final int numOfCommands = 62;
         final int numOfSubCommands = 20;
-        final String version = "1.8.5";
-        final String complieDate = "5/6/18 21:45 EST";
+        final String version = "1.8.6";
+        final String complieDate = "5/6/18 22:02 EST";
         final String chatFilterVersion = "1.7";
         final boolean[] censor = {false};
         final long[] cooldown = {0, 0};
@@ -2552,6 +2552,9 @@ public class memebot {
                                     "\"" + title + "\"\n\n" +
                                     builder.toString() + "\n" +
                                     "```");
+                        } else if (message.getContent().equalsIgnoreCase("$crab")) {
+                            message.reply("<:timeforcrab:292796338645630978>");
+                            message.delete();
                         }
 
                         //ALL COMMANDS GO ABOVE HERE FOR CLARITY PURPOSES

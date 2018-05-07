@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ea4e70f-1515-453f-a887-74c5aba0549c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1.class" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$2.class" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot.class" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java" />
     </list>
@@ -44,11 +41,11 @@
       <file leaf-file-name="memebot.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="120" column="54" lean-forward="true" selection-start-line="120" selection-start-column="54" selection-end-line="120" selection-end-column="54" />
+            <state relative-caret-position="204">
+              <caret line="120" column="45" lean-forward="true" selection-start-line="120" selection-start-column="45" selection-end-line="120" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#7217#9565#0" expanded="false" />
+                <element signature="e#7226#9574#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -911,7 +908,14 @@
       <option name="project" value="LOCAL" />
       <updated>1522522549192</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Slightly updated roll method&#10;Rolls now include the name of the user who rolled">
+      <created>1525657989953</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1525657989953</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1021,7 +1025,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added pets!&#10;8 different species, 5 different breeds each&#10;pets have five base stats:&#10;STRength, VITality, CHaRisma, AGIlity, INTelligence&#10;&#10;stats are determined by breed, as well as a slight factor of randomness&#10;added $newpet, note that this does not actually give you a pet, it only generates one for testing purposes&#10;&#10;added formatPetStats to display pet stats in a friendly manner&#10;&#10;planned:&#10;base stats can be levelled through training minigames&#10;actual stats can be levelled through levelling up and increasing base stats&#10;pets can compete and play in games&#10;more pet slots can be purchased with currency of some sort" />
     <MESSAGE value="Tried to add pets&#10;Kinda failed &#10;Some stuff is still there&#10;Pet commands dont' work right now&#10;&#10;--actual things--&#10;&#10;fixed help message for $ascii" />
     <MESSAGE value="made $cat less network intensive" />
     <MESSAGE value="added $tos&#10;fixed $hypixel nick cooldown" />
@@ -1046,7 +1049,8 @@
     <MESSAGE value="minor adjustments" />
     <MESSAGE value="Added non-working strawpoll integration&#10;  It would be cool but the library is broken, rip&#10;  &#10;Changed $help to read actual number of commands in the list&#10;Added $strawpoll and $checkstrawpoll, but they don't work yet&#10;Added listasNumberedVerticalList(), used in $strawpoll" />
     <MESSAGE value="Fixed StrawPoll integration&#10;Thanks to Samuel Maddock for fixing his API, updated it to version 1.0.2&#10;&#10;Fixed an error in the $checkstrawpoll command in which I was passing the API the poll id in a String form, when it wanted it as either an integer id or String url &#10;&#10;Fixed some formatting problems in the display of the $checkstrawpoll command" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed StrawPoll integration&#10;Thanks to Samuel Maddock for fixing his API, updated it to version 1.0.2&#10;&#10;Fixed an error in the $checkstrawpoll command in which I was passing the API the poll id in a String form, when it wanted it as either an integer id or String url &#10;&#10;Fixed some formatting problems in the display of the $checkstrawpoll command" />
+    <MESSAGE value="Slightly updated roll method&#10;Rolls now include the name of the user who rolled" />
+    <option name="LAST_COMMIT_MESSAGE" value="Slightly updated roll method&#10;Rolls now include the name of the user who rolled" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1081,7 +1085,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7217#9565#0" expanded="false" />
+            <element signature="e#7226#9574#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1100,7 +1104,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7217#9565#0" expanded="false" />
+            <element signature="e#7226#9574#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1119,7 +1123,7 @@
           <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7217#9565#0" expanded="false" />
+            <element signature="e#7226#9574#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1138,7 +1142,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7217#9565#0" expanded="false" />
+            <element signature="e#7226#9574#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1157,7 +1161,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7217#9565#0" expanded="false" />
+            <element signature="e#7226#9574#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1176,7 +1180,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7217#9565#0" expanded="false" />
+            <element signature="e#7226#9574#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1195,7 +1199,7 @@
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7217#9565#0" expanded="false" />
+            <element signature="e#7226#9574#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1381,11 +1385,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="120" column="54" lean-forward="true" selection-start-line="120" selection-start-column="54" selection-end-line="120" selection-end-column="54" />
+        <state relative-caret-position="204">
+          <caret line="120" column="45" lean-forward="true" selection-start-line="120" selection-start-column="45" selection-end-line="120" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7217#9565#0" expanded="false" />
+            <element signature="e#7226#9574#0" expanded="false" />
           </folding>
         </state>
       </provider>
