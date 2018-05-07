@@ -117,8 +117,8 @@ public class memebot {
         final DiscordAPI api = Javacord.getApi(token, true);
         final int numOfCommands = 61;
         final int numOfSubCommands = 20;
-        final String version = "1.8.4";
-        final String complieDate = "3/31/18 14:44 EST";
+        final String version = "1.8.5";
+        final String complieDate = "5/6/18 21:45 EST";
         final String chatFilterVersion = "1.7";
         final boolean[] censor = {false};
         final long[] cooldown = {0, 0};
@@ -2476,7 +2476,7 @@ public class memebot {
                             }
 
                             ArrayList<Integer> numbers = rng(numberOfSides, amount);
-                            String output = "`";
+                            String output = "`" + message.getAuthor().getNickname(message.getChannelReceiver().getServer()) + " rolled a ";
                             for (int number : numbers) {
                                 if (buff) {
                                     if (number <  ((double)numberOfSides * 0.8)) { //20% ish buff to non dungeon masters

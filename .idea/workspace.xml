@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ea4e70f-1515-453f-a887-74c5aba0549c" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_Samuel_Maddock_StrawPoll_Java_API_1_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_Samuel_Maddock_StrawPoll_Java_API_1_0_2.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1.class" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$2.class" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot.class" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SoupMemeBot.iml" afterPath="$PROJECT_DIR$/SoupMemeBot.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java" />
     </list>
     <ignored path="SoupMemeBot.iws" />
@@ -37,8 +34,8 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="72" column="8" lean-forward="true" selection-start-line="72" selection-start-column="8" selection-end-line="76" selection-end-column="21" />
+            <state relative-caret-position="1224">
+              <caret line="72" column="8" lean-forward="false" selection-start-line="72" selection-start-column="8" selection-end-line="76" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -47,11 +44,11 @@
       <file leaf-file-name="memebot.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="2526" column="144" lean-forward="false" selection-start-line="2526" selection-start-column="144" selection-end-line="2526" selection-end-column="144" />
+            <state relative-caret-position="153">
+              <caret line="120" column="54" lean-forward="true" selection-start-line="120" selection-start-column="54" selection-end-line="120" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#7218#9566#0" expanded="false" />
+                <element signature="e#7217#9565#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -60,8 +57,8 @@
       <file leaf-file-name="admin.pass" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/admin.pass">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="59" lean-forward="false" selection-start-line="0" selection-start-column="59" selection-end-line="0" selection-end-column="59" />
+            <state relative-caret-position="17">
+              <caret line="1" column="14" lean-forward="true" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -140,8 +137,8 @@
         <option value="$PROJECT_DIR$/src/main/java/soup/memebot/ScheduledVoteReadRunnable.java" />
         <option value="$PROJECT_DIR$/src/main/java/soup/memebot/Utils.java" />
         <option value="$PROJECT_DIR$/src/main/java/soup/memebot/UserStats.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/admin.pass" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/admin.pass" />
         <option value="$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java" />
       </list>
     </option>
@@ -203,8 +200,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -249,8 +246,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -907,7 +904,14 @@
       <option name="project" value="LOCAL" />
       <updated>1520129588249</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Fixed StrawPoll integration&#10;Thanks to Samuel Maddock for fixing his API, updated it to version 1.0.2&#10;&#10;Fixed an error in the $checkstrawpoll command in which I was passing the API the poll id in a String form, when it wanted it as either an integer id or String url &#10;&#10;Fixed some formatting problems in the display of the $checkstrawpoll command">
+      <created>1522522549188</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1522522549192</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -916,18 +920,18 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32022473" sideWeight="0.45782396" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32022473" sideWeight="0.45537898" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28202248" sideWeight="0.5440098" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28202248" sideWeight="0.54889977" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21577017" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28539327" sideWeight="0.49755502" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28202248" sideWeight="0.45599023" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28202248" sideWeight="0.45110023" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917964" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2891198" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30378973" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30786517" sideWeight="0.49511003" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1077,7 +1081,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7218#9566#0" expanded="false" />
+            <element signature="e#7217#9565#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1096,7 +1100,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7218#9566#0" expanded="false" />
+            <element signature="e#7217#9565#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1115,7 +1119,7 @@
           <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7218#9566#0" expanded="false" />
+            <element signature="e#7217#9565#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1134,7 +1138,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7218#9566#0" expanded="false" />
+            <element signature="e#7217#9565#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1153,7 +1157,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7218#9566#0" expanded="false" />
+            <element signature="e#7217#9565#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1172,7 +1176,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7218#9566#0" expanded="false" />
+            <element signature="e#7217#9565#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1191,7 +1195,7 @@
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7218#9566#0" expanded="false" />
+            <element signature="e#7217#9565#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1361,27 +1365,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="72" column="8" lean-forward="true" selection-start-line="72" selection-start-column="8" selection-end-line="76" selection-end-column="21" />
+        <state relative-caret-position="1224">
+          <caret line="72" column="8" lean-forward="false" selection-start-line="72" selection-start-column="8" selection-end-line="76" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/admin.pass">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="59" lean-forward="false" selection-start-line="0" selection-start-column="59" selection-end-line="0" selection-end-column="59" />
+        <state relative-caret-position="17">
+          <caret line="1" column="14" lean-forward="true" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="2526" column="144" lean-forward="false" selection-start-line="2526" selection-start-column="144" selection-end-line="2526" selection-end-column="144" />
+        <state relative-caret-position="153">
+          <caret line="120" column="54" lean-forward="true" selection-start-line="120" selection-start-column="54" selection-end-line="120" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7218#9566#0" expanded="false" />
+            <element signature="e#7217#9565#0" expanded="false" />
           </folding>
         </state>
       </provider>
