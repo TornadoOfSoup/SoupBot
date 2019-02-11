@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ea4e70f-1515-453f-a887-74c5aba0549c" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/MorseCode.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/SoupMemeBot.iml" afterPath="$PROJECT_DIR$/SoupMemeBot.iml" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/soup/memebot/LoadUserStats.java" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/LoadUserStats.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java" />
-      <change beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$2.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1.class" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$2.class" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$2.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot.class" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot.class" />
     </list>
     <ignored path="SoupMemeBot.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -89,8 +84,8 @@
       <file leaf-file-name="memebot.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-119">
-              <caret line="2578" column="105" lean-forward="false" selection-start-line="2578" selection-start-column="105" selection-end-line="2578" selection-end-column="105" />
+            <state relative-caret-position="357">
+              <caret line="140" column="22" lean-forward="false" selection-start-line="140" selection-start-column="22" selection-end-line="140" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -633,13 +628,6 @@
       <option name="presentableId" value="Default" />
       <updated>1494220923854</updated>
     </task>
-    <task id="LOCAL-00001" summary="Added an ArrayList&lt;String&gt; to String method&#10;The method lists them with commas and &quot;and&quot;s as necessary&#10;Fixed some messages">
-      <created>1501490965137</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1501490965137</updated>
-    </task>
     <task id="LOCAL-00002" summary="fixed more messages&#10;added $resend to Hitlerman&#10;maybe some other things idk">
       <created>1501552796863</created>
       <option name="number" value="00002" />
@@ -976,7 +964,14 @@
       <option name="project" value="LOCAL" />
       <updated>1526908992796</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Added $frommorse and $tomorse&#10;Updated codebase to use Java 9&#10;Added a MorseCode class to contain the translation maps for the morse code commands">
+      <created>1549844266873</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1549844266880</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1087,8 +1082,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="made $cat less network intensive" />
-    <MESSAGE value="added $tos&#10;fixed $hypixel nick cooldown" />
     <MESSAGE value="added possibly working addLogoToImage method" />
     <MESSAGE value="added working $addlogo" />
     <MESSAGE value="changed $addlogo, added auto resizing when the logo is more than 1/6 the width of the picture&#10;&#10;changed $getAvatar, now requires no capital letter, maybe add a startsWithIgnoreCase?&#10;cleaned up $help a bit&#10;added public static BufferedImage resizeBufferedImage(BufferedImage image, double scaleFactor)" />
@@ -1112,7 +1105,9 @@
     <MESSAGE value="Fixed StrawPoll integration&#10;Thanks to Samuel Maddock for fixing his API, updated it to version 1.0.2&#10;&#10;Fixed an error in the $checkstrawpoll command in which I was passing the API the poll id in a String form, when it wanted it as either an integer id or String url &#10;&#10;Fixed some formatting problems in the display of the $checkstrawpoll command" />
     <MESSAGE value="Slightly updated roll method&#10;Rolls now include the name of the user who rolled" />
     <MESSAGE value="Fixed a small bug in the $roll method where it would use &quot;null&quot; for your name if you didn't have a nickname (thanks Autumn)&#10;&#10;Added EvalEx library, might use it later" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed a small bug in the $roll method where it would use &quot;null&quot; for your name if you didn't have a nickname (thanks Autumn)&#10;&#10;Added EvalEx library, might use it later" />
+    <MESSAGE value="Added $frommorse and $tomorse" />
+    <MESSAGE value="Added $frommorse and $tomorse&#10;Updated codebase to use Java 9&#10;Added a MorseCode class to contain the translation maps for the morse code commands" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added $frommorse and $tomorse&#10;Updated codebase to use Java 9&#10;Added a MorseCode class to contain the translation maps for the morse code commands" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1395,8 +1390,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-119">
-          <caret line="2578" column="105" lean-forward="false" selection-start-line="2578" selection-start-column="105" selection-end-line="2578" selection-end-column="105" />
+        <state relative-caret-position="357">
+          <caret line="140" column="22" lean-forward="false" selection-start-line="140" selection-start-column="22" selection-end-line="140" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

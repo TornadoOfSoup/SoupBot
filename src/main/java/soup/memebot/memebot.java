@@ -76,6 +76,7 @@ public class memebot {
 
     static boolean[] games = new boolean[] {false, false}; //0 = guessnumber, 1 = hangman
     static boolean failed = false;
+    static boolean notifications = false;
 
     static int game0Num = 0;
     static int game0Turns = 0;
@@ -119,8 +120,8 @@ public class memebot {
         final DiscordAPI api = Javacord.getApi(token, true);
         final int numOfCommands = 64;
         final int numOfSubCommands = 20;
-        final String version = "1.8.9";
-        final String complieDate = "2/10/19 19:11 EST";
+        final String version = "1.9.0";
+        final String complieDate = "2/10/19 19:28 EST";
         final String chatFilterVersion = "1.7";
         final boolean[] censor = {false};
         final long[] cooldown = {0, 0};
@@ -137,7 +138,7 @@ public class memebot {
                 public void onSuccess(final DiscordAPI api) {
                     System.out.println("Successful login");
                     final MessageReceiver receiver = api.getChannelById("189359733377990656"); //general in ddc
-                    receiver.sendMessage("Hello everyone! SoupBot v" + version + " here!");   //that thing travis and nick dislike
+                    //receiver.sendMessage("Hello everyone! SoupBot v" + version + " here!");   //that thing travis and nick dislike
                     //receiver.sendMessage("***H a i l   t h e   c o m i n g   o f   y o u r   d o o m,   T r a v i s.***");
                     api.setAutoReconnect(true);
 
@@ -148,7 +149,7 @@ public class memebot {
                     }
                     System.out.println();
 
-                    api.setGame("$help");
+                    api.setGame("v" + version + " | $help");
 
 //                    TimedEventHandlerRunnable timedEventHandlerRunnable = new TimedEventHandlerRunnable(api, api.getChannelById("189359733377990656")); //general in ddc;
 //                    timedEventHandlerRunnable.start();
@@ -170,7 +171,7 @@ public class memebot {
                                 JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), user.getName() + "'s status has changed from " + oldStatus.toString() + " to " + user.getStatus().toString());
                             } else {
                                 System.out.println("Uninterruptible programs are open, displaying notification in system tray");
-                                if (SystemTray.isSupported()) {
+                                if (SystemTray.isSupported() && notifications) {
                                     memebot td = new memebot();
                                     try {
                                         td.displayTray(user.getName(), oldStatus.toString() + " → " + user.getStatus().toString());
@@ -2609,6 +2610,11 @@ public class memebot {
                             message.reply("```\n" +
                                     messageBuilder.toString() + "\n" +
                                     "```");
+                        } else if (message.getContent().equalsIgnoreCase("$togglenotifications")) {
+                            if (message.getAuthor().getId().equals("189357141599977473")) {
+                                notifications = !notifications;
+                                message.reply("System tray notifications boolean now set to " + notifications);
+                            }
                         }
 
                         //ALL COMMANDS GO ABOVE HERE FOR CLARITY PURPOSES
