@@ -1,10 +1,8 @@
 package soup.memebot;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import de.btobastian.javacord.entities.User;
 
-import javax.jws.soap.SOAPBinding;
 import java.io.*;
 
 

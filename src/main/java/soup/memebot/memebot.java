@@ -54,6 +54,8 @@ import org.jsoup.select.Elements;
 
 import static soup.memebot.LoadUserStats.loadStats;
 import static soup.memebot.Utils.*;
+import static soup.memebot.MorseCode.MORSE_FROM_MAP;
+import static soup.memebot.MorseCode.MORSE_TO_MAP;
 
 public class memebot {
 
@@ -62,7 +64,7 @@ public class memebot {
             "$math", "$mute^", "$unmute^", "$supermute^", "$quadratic", "$primeFactors", "$string", "$simplify", "$ascii", "$rng", "$factors", "$leetspeak",
             "$game", "$google", "$cat", "$onlineusers", "$addxp", "$setxp", "$addlevel", "$setlevel", "$getstats", "$setpotentiorbs", "$newpet", "$getpets",
             "$clearpets", "$addlogo", "$identify", "$tobinary", "$frombinary", "$makestorychannel^", "$printstory", "$viewstorylist", "$finishstory^",
-            "$deleteword", "$viewrecentwords", "$clnew", "$cltoggle", "$roll", "$strawpoll", "$checkstrawpoll", "$crab"));
+            "$deleteword", "$viewrecentwords", "$clnew", "$cltoggle", "$roll", "$strawpoll", "$checkstrawpoll", "$crab", "$tomorse", "$frommorse"));
 
     static TimedEventRunnable checkOnline = new TimedEventRunnable("CheckOnline", 60);
 
@@ -115,10 +117,10 @@ public class memebot {
         }
 
         final DiscordAPI api = Javacord.getApi(token, true);
-        final int numOfCommands = 62;
+        final int numOfCommands = 64;
         final int numOfSubCommands = 20;
-        final String version = "1.8.7";
-        final String complieDate = "5/21/18 09:22 EST";
+        final String version = "1.8.9";
+        final String complieDate = "2/10/19 19:11 EST";
         final String chatFilterVersion = "1.7";
         final boolean[] censor = {false};
         final long[] cooldown = {0, 0};
@@ -2447,6 +2449,16 @@ public class memebot {
                             String dice = message.getContent().replace("$roll ", "");
                             int amount = 1;
                             int numberOfSides = Integer.parseInt(dice.split("d")[1]);
+
+                            /*
+                            if (message.getAuthor().getName().equalsIgnoreCase("Almurray155")) {
+                                numberOfSides = numberOfSides * 16;
+                            }
+                            if (message.getAuthor().getName().equalsIgnoreCase("TornadoOfSoup")) {
+                                numberOfSides = numberOfSides * 119 + rng(250);
+                            }
+                            */
+
                             boolean buff = false;
 
                             if (!dice.startsWith("d")) { //allows you to forgo the first number to roll one die
@@ -2558,6 +2570,45 @@ public class memebot {
                         } else if (message.getContent().equalsIgnoreCase("$crab")) {
                             message.reply("<:timeforcrab:292796338645630978>");
                             message.delete();
+                        } else if (message.getContent().startsWith("$tomorse")) {
+                            if (message.getContent().equalsIgnoreCase("$tomorse")) {
+                                message.reply("```\n" +
+                                        "Translates a message to morse code from plaintext English.\n" +
+                                        "Syntax: \"$tomorse [plain text]\"\n" +
+                                        "Example: \"$tomorse lol\"\n" +
+                                        "Note: any unsupported character will be translated to a \"�.\"\n" +
+                                        "```");
+                                return;
+                            }
+
+                            char[] morse = message.getContent().replace("$tomorse ", "").toCharArray();
+                            StringBuilder messageBuilder = new StringBuilder();
+                            for(char c : morse) {
+                                messageBuilder.append(MORSE_TO_MAP.getOrDefault(c, "�") + " ");
+                            }
+                            message.reply("```\n" +
+                                    messageBuilder.toString() + "\n" +
+                                    "```");
+                        } else if (message.getContent().startsWith("$frommorse")) {
+                            if (message.getContent().equalsIgnoreCase("$frommorse")) {
+                                message.reply("```\n" +
+                                        "Translates a message from morse code to plaintext English.\n" +
+                                        "Syntax: \"$frommorse [morse code]\"\n" +
+                                        "Example: \"$frommorse .-.. --- .-..\"\n" +
+                                        "Note: any unrecognized string will be translated to a \"�.\"\n" +
+                                        "```");
+                                return;
+                            }
+
+                            String[] morse = message.getContent().replace("$frommorse ", "").split(" ");
+                            StringBuilder messageBuilder = new StringBuilder();
+
+                            for(String s : morse) {
+                                messageBuilder.append(MORSE_FROM_MAP.getOrDefault(s, '�') + "");
+                            }
+                            message.reply("```\n" +
+                                    messageBuilder.toString() + "\n" +
+                                    "```");
                         }
 
                         //ALL COMMANDS GO ABOVE HERE FOR CLARITY PURPOSES
