@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0ea4e70f-1515-453f-a887-74c5aba0549c" name="Default" comment="">
+    <list default="true" id="0ea4e70f-1515-453f-a887-74c5aba0549c" name="Default" comment="Updated to v1.9.2.3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/soup/memebot/Utils.java" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/Utils.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java" />
-      <change beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1.class" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$2.class" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$2.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot.class" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$2.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot.class" afterPath="" />
     </list>
     <ignored path="SoupMemeBot.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,8 +35,8 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="530">
-              <caret line="82" column="21" lean-forward="false" selection-start-line="82" selection-start-column="21" selection-end-line="82" selection-end-column="21" />
+            <state relative-caret-position="504">
+              <caret line="24" column="8" lean-forward="false" selection-start-line="24" selection-start-column="8" selection-end-line="32" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -44,7 +45,7 @@
       <file leaf-file-name="ScheduledVoteReadRunnable.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/ScheduledVoteReadRunnable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="609">
+            <state relative-caret-position="462">
               <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding />
             </state>
@@ -54,8 +55,8 @@
       <file leaf-file-name="Utils.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/Utils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="530">
-              <caret line="42" column="49" lean-forward="false" selection-start-line="42" selection-start-column="49" selection-end-line="42" selection-end-column="49" />
+            <state relative-caret-position="799">
+              <caret line="128" column="34" lean-forward="false" selection-start-line="128" selection-start-column="34" selection-end-line="128" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -84,10 +85,16 @@
       <file leaf-file-name="memebot.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="140" column="22" lean-forward="false" selection-start-line="140" selection-start-column="22" selection-end-line="140" selection-end-column="22" />
+            <state relative-caret-position="273">
+              <caret line="124" column="38" lean-forward="false" selection-start-line="124" selection-start-column="38" selection-end-line="124" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#180445#180860#0" expanded="true" />
+                <element signature="e#180859#180860#0" expanded="true" />
+                <element signature="e#188899#188900#0" expanded="true" />
+                <element signature="e#188952#188953#0" expanded="true" />
+                <element signature="e#191063#191064#0" expanded="true" />
+                <element signature="e#191120#191121#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -106,7 +113,7 @@
       <file leaf-file-name="MorseCode.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/MorseCode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
+            <state relative-caret-position="1197">
               <caret line="60" column="27" lean-forward="false" selection-start-line="60" selection-start-column="27" selection-end-line="60" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -144,6 +151,15 @@
       <find>'\w</find>
       <find>$</find>
       <find>\)</find>
+      <find>vot</find>
+      <find>vote</find>
+      <find>ScheduledVote</find>
+      <find>TimedEvent</find>
+      <find>hypixel</find>
+      <find>info</find>
+      <find>boolean</find>
+      <find>|</find>
+      <find>$shutdown</find>
     </findStrings>
     <replaceStrings>
       <replace>,</replace>
@@ -185,12 +201,12 @@
         <option value="$PROJECT_DIR$/src/main/java/soup/memebot/VoteRunnable.java" />
         <option value="$PROJECT_DIR$/src/main/java/soup/memebot/ScheduledEventRunnable.java" />
         <option value="$PROJECT_DIR$/src/main/java/soup/memebot/ScheduledVoteReadRunnable.java" />
-        <option value="$PROJECT_DIR$/src/main/java/soup/memebot/Utils.java" />
         <option value="$PROJECT_DIR$/src/main/java/soup/memebot/UserStats.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/admin.pass" />
         <option value="$PROJECT_DIR$/src/main/java/soup/memebot/LoadUserStats.java" />
         <option value="$PROJECT_DIR$/src/main/java/soup/memebot/MorseCode.java" />
+        <option value="$PROJECT_DIR$/src/main/java/soup/memebot/Utils.java" />
         <option value="$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java" />
       </list>
     </option>
@@ -209,8 +225,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="978" />
-    <option name="y" value="95" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
     <option name="width" value="1696" />
     <option name="height" value="1026" />
   </component>
@@ -252,8 +268,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
@@ -628,13 +644,6 @@
       <option name="presentableId" value="Default" />
       <updated>1494220923854</updated>
     </task>
-    <task id="LOCAL-00002" summary="fixed more messages&#10;added $resend to Hitlerman&#10;maybe some other things idk">
-      <created>1501552796863</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1501552796863</updated>
-    </task>
     <task id="LOCAL-00003" summary="changed hangman_videogames.txt&#10;added a word&#10;fixed a word">
       <created>1501552917562</created>
       <option name="number" value="00003" />
@@ -971,7 +980,14 @@
       <option name="project" value="LOCAL" />
       <updated>1549844266880</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Turned off join message&#10;Added ability to turn off system tray notifications for the host computer with $togglenotifications, only works if you are me&#10;Added version number to Soupbot's game">
+      <created>1549845351599</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1549845351599</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -984,26 +1000,27 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28164196" sideWeight="0.566058" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3915525" sideWeight="0.4473684" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21577017" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28539327" sideWeight="0.49755502" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28164196" sideWeight="0.433942" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28082192" sideWeight="0.42964554" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917964" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24865736" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27121374" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30707762" sideWeight="0.49301827" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.331813" sideWeight="0.5547798" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3915525" sideWeight="0.55263156" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30786517" sideWeight="0.49511003" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922733" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="SLIDING" type="FLOATING" visible="false" show_stripe_button="true" weight="0.3294621" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="92" y="92" width="1496" height="826" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1082,7 +1099,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added possibly working addLogoToImage method" />
     <MESSAGE value="added working $addlogo" />
     <MESSAGE value="changed $addlogo, added auto resizing when the logo is more than 1/6 the width of the picture&#10;&#10;changed $getAvatar, now requires no capital letter, maybe add a startsWithIgnoreCase?&#10;cleaned up $help a bit&#10;added public static BufferedImage resizeBufferedImage(BufferedImage image, double scaleFactor)" />
     <MESSAGE value="added $identify, uses Clarifai API for image recognition&#10;&#10;added a method to truncate ArrayLists&#10;added a method to format decimals in percent form&#10;added a method to get name and value out of a Clarifai concept&#10;&#10;added Apache Commons Validator&#10;" />
@@ -1107,14 +1123,15 @@
     <MESSAGE value="Fixed a small bug in the $roll method where it would use &quot;null&quot; for your name if you didn't have a nickname (thanks Autumn)&#10;&#10;Added EvalEx library, might use it later" />
     <MESSAGE value="Added $frommorse and $tomorse" />
     <MESSAGE value="Added $frommorse and $tomorse&#10;Updated codebase to use Java 9&#10;Added a MorseCode class to contain the translation maps for the morse code commands" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added $frommorse and $tomorse&#10;Updated codebase to use Java 9&#10;Added a MorseCode class to contain the translation maps for the morse code commands" />
+    <MESSAGE value="Turned off join message&#10;Added ability to turn off system tray notifications for the host computer with $togglenotifications, only works if you are me&#10;Added version number to Soupbot's game" />
+    <option name="LAST_COMMIT_MESSAGE" value="Turned off join message&#10;Added ability to turn off system tray notifications for the host computer with $togglenotifications, only works if you are me&#10;Added version number to Soupbot's game" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="84" />
+      <option name="time" value="86" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1134,6 +1151,12 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#180445#180860#0" expanded="true" />
+            <element signature="e#180859#180860#0" expanded="true" />
+            <element signature="e#188899#188900#0" expanded="true" />
+            <element signature="e#188952#188953#0" expanded="true" />
+            <element signature="e#191063#191064#0" expanded="true" />
+            <element signature="e#191120#191121#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1152,6 +1175,12 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#180445#180860#0" expanded="true" />
+            <element signature="e#180859#180860#0" expanded="true" />
+            <element signature="e#188899#188900#0" expanded="true" />
+            <element signature="e#188952#188953#0" expanded="true" />
+            <element signature="e#191063#191064#0" expanded="true" />
+            <element signature="e#191120#191121#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1170,6 +1199,12 @@
           <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#180445#180860#0" expanded="true" />
+            <element signature="e#180859#180860#0" expanded="true" />
+            <element signature="e#188899#188900#0" expanded="true" />
+            <element signature="e#188952#188953#0" expanded="true" />
+            <element signature="e#191063#191064#0" expanded="true" />
+            <element signature="e#191120#191121#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1188,6 +1223,12 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#180445#180860#0" expanded="true" />
+            <element signature="e#180859#180860#0" expanded="true" />
+            <element signature="e#188899#188900#0" expanded="true" />
+            <element signature="e#188952#188953#0" expanded="true" />
+            <element signature="e#191063#191064#0" expanded="true" />
+            <element signature="e#191120#191121#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1206,6 +1247,12 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#180445#180860#0" expanded="true" />
+            <element signature="e#180859#180860#0" expanded="true" />
+            <element signature="e#188899#188900#0" expanded="true" />
+            <element signature="e#188952#188953#0" expanded="true" />
+            <element signature="e#191063#191064#0" expanded="true" />
+            <element signature="e#191120#191121#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1224,6 +1271,12 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#180445#180860#0" expanded="true" />
+            <element signature="e#180859#180860#0" expanded="true" />
+            <element signature="e#188899#188900#0" expanded="true" />
+            <element signature="e#188952#188953#0" expanded="true" />
+            <element signature="e#191063#191064#0" expanded="true" />
+            <element signature="e#191120#191121#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1242,6 +1295,12 @@
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#180445#180860#0" expanded="true" />
+            <element signature="e#180859#180860#0" expanded="true" />
+            <element signature="e#188899#188900#0" expanded="true" />
+            <element signature="e#188952#188953#0" expanded="true" />
+            <element signature="e#191063#191064#0" expanded="true" />
+            <element signature="e#191120#191121#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1330,18 +1389,36 @@
     <entry file="file://$PROJECT_DIR$/rip 2017-10-20_19-43-33.txt" />
     <entry file="jar://$MAVEN_REPOSITORY$/com/github/Samuel-Maddock/StrawPoll-Java-API/1.0.1/StrawPoll-Java-API-1.0.1.jar!/com/samuelmaddock/strawpollwrapper/StrawPoll.class" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/admin.pass" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/ScheduledVoteReadRunnable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/UserStats.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3591">
           <caret line="175" column="8" lean-forward="false" selection-start-line="175" selection-start-column="8" selection-end-line="175" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/MorseCode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1197">
+          <caret line="60" column="27" lean-forward="false" selection-start-line="60" selection-start-column="27" selection-end-line="60" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="24" column="8" lean-forward="false" selection-start-line="24" selection-start-column="8" selection-end-line="32" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/ScheduledVoteReadRunnable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1364,36 +1441,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/Utils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="530">
-          <caret line="42" column="49" lean-forward="false" selection-start-line="42" selection-start-column="49" selection-end-line="42" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/MorseCode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="60" column="27" lean-forward="false" selection-start-line="60" selection-start-column="27" selection-end-line="60" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="530">
-          <caret line="82" column="21" lean-forward="false" selection-start-line="82" selection-start-column="21" selection-end-line="82" selection-end-column="21" />
+        <state relative-caret-position="799">
+          <caret line="128" column="34" lean-forward="false" selection-start-line="128" selection-start-column="34" selection-end-line="128" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="140" column="22" lean-forward="false" selection-start-line="140" selection-start-column="22" selection-end-line="140" selection-end-column="22" />
+        <state relative-caret-position="273">
+          <caret line="124" column="38" lean-forward="false" selection-start-line="124" selection-start-column="38" selection-end-line="124" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#180445#180860#0" expanded="true" />
+            <element signature="e#180859#180860#0" expanded="true" />
+            <element signature="e#188899#188900#0" expanded="true" />
+            <element signature="e#188952#188953#0" expanded="true" />
+            <element signature="e#191063#191064#0" expanded="true" />
+            <element signature="e#191120#191121#0" expanded="true" />
           </folding>
         </state>
       </provider>

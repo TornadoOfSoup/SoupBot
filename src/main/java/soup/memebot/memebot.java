@@ -30,10 +30,12 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
 import java.util.List;
+import java.util.Timer;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.Random;
 import java.awt.TrayIcon.MessageType;
+import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
 import javax.script.ScriptEngine;
@@ -61,10 +63,10 @@ public class memebot {
 
     static final ArrayList<String> commandList = new ArrayList<>(Arrays.asList("$help", "$memelist", "$meme", "$info", "$shutdown^", "$getavatar",
             "$silvertime", "$vote", "$upcoming", "$hypixel", "$tos", "$censor^", "$mode^", "$whitelist^^", "$prune^", "$convert", "$choose", "$bubblesort",
-            "$math", "$mute^", "$unmute^", "$supermute^", "$quadratic", "$primeFactors", "$string", "$simplify", "$ascii", "$rng", "$factors", "$leetspeak",
+            "$math", "$mute^", "$unmute^", "$supermute^", "$quadratic", "$primefactors", "$string", "$simplify", "$ascii", "$rng", "$factors", "$leetspeak",
             "$game", "$google", "$cat", "$onlineusers", "$addxp", "$setxp", "$addlevel", "$setlevel", "$getstats", "$setpotentiorbs", "$newpet", "$getpets",
             "$clearpets", "$addlogo", "$identify", "$tobinary", "$frombinary", "$makestorychannel^", "$printstory", "$viewstorylist", "$finishstory^",
-            "$deleteword", "$viewrecentwords", "$clnew", "$cltoggle", "$roll", "$strawpoll", "$checkstrawpoll", "$crab", "$tomorse", "$frommorse"));
+            "$deleteword", "$viewrecentwords", "$clnew", "$cltoggle", "$roll", "$strawpoll", "$checkstrawpoll", "$crab", "$tomorse", "$frommorse", "$reminder"));
 
     static TimedEventRunnable checkOnline = new TimedEventRunnable("CheckOnline", 60);
 
@@ -118,10 +120,10 @@ public class memebot {
         }
 
         final DiscordAPI api = Javacord.getApi(token, true);
-        final int numOfCommands = 64;
+        final int numOfCommands = 65;
         final int numOfSubCommands = 20;
-        final String version = "1.9.0";
-        final String complieDate = "2/10/19 19:28 EST";
+        final String version = "1.9.2.3";
+        final String compileDate = "6/21/19 06:15 EST";
         final String chatFilterVersion = "1.7";
         final boolean[] censor = {false};
         final long[] cooldown = {0, 0};
@@ -136,6 +138,7 @@ public class memebot {
             api.connect(new FutureCallback<DiscordAPI>() {
                 @Override
                 public void onSuccess(final DiscordAPI api) {
+                    long initTime = System.currentTimeMillis();
                     System.out.println("Successful login");
                     final MessageReceiver receiver = api.getChannelById("189359733377990656"); //general in ddc
                     //receiver.sendMessage("Hello everyone! SoupBot v" + version + " here!");   //that thing travis and nick dislike
@@ -412,11 +415,13 @@ public class memebot {
                                     "```");
 
                         } else if (message.getContent().equalsIgnoreCase("$info")) {
+
                             message.reply("```\n" +
                                     "Author: TornadoOfSoup\n" +
                                     "Version: " + version + "\n" +
-                                    "Date compiled: " + complieDate + "\n" +
+                                    "Date compiled: " + compileDate + "\n" +
                                     "Chat filter version: " + chatFilterVersion + "\n" +
+                                    "Uptime: " + formatMillisAsString(System.currentTimeMillis() - initTime) + "\n" +
                                     "```");
                         } else if (message.getContent().equalsIgnoreCase("$memelist")) {
 
@@ -644,11 +649,11 @@ public class memebot {
                                     cooldown[0] = System.currentTimeMillis();
 
                                     try {
-                                        message.reply("GoldfishClancy: @everyone hypixel?\n");
+                                        message.reply("GoldfishClancy: @everyoon hypixel?\n");
                                         Thread.sleep(2000);
                                         message.reply("we should all play later");
                                         Thread.sleep(1000);
-                                        message.reply("@here we should all go on hypixel");
+                                        message.reply("@heer we should all go on hypixel");
                                         Thread.sleep(500);
                                         message.reply("https://cdn.discordapp.com/attachments/189359733377990656/311631065112641537/unknown.png");
                                         message.reply("anyjuan?");
@@ -1182,13 +1187,13 @@ public class memebot {
                                     "The roots of quadratic equation " + parts[0] + "x² + " + parts[1] + "x + " + parts[2] + " are " + roots[0] + " and " + roots[1] + ".\n" +
                                     "The discriminant of the equation is " + discriminant + ".\n" +
                                     "```");
-                        } else if (message.getContent().startsWith("$primeFactors")) {
-                            if (message.getContent().equalsIgnoreCase("$primeFactors")) {
+                        } else if (message.getContent().startsWith("$primefactors")) {
+                            if (message.getContent().equalsIgnoreCase("$primefactors")) {
                                 message.reply("```\n" +
                                         "");
                                 return;
                             }
-                            String msg = message.getContent().replace("$primeFactors ", "");
+                            String msg = message.getContent().replace("$primefactors ", "");
                             String[] parts = msg.split(" ");
 
                             if (parts.length != 1) {
@@ -2055,7 +2060,7 @@ public class memebot {
                                 cooldown[1] = System.currentTimeMillis();
 
                                 try {
-                                    message.reply("Rickl: @here ToSOsotOSToSOToSToSOtoS");
+                                    message.reply("Rickl: @heer ToSOsotOSToSOToSToSOtoS");
                                     Thread.sleep(1000);
                                     message.reply(getRandomObjectFromArrayList(links).toString());
                                     Thread.sleep(1000);
@@ -2615,6 +2620,77 @@ public class memebot {
                                 notifications = !notifications;
                                 message.reply("System tray notifications boolean now set to " + notifications);
                             }
+                        } else if (message.getContent().startsWith("$reminder") || !message.getContent().contains("\\|")) {
+                            if (message.getContent().equalsIgnoreCase("$reminder")) {
+                                message.reply("```\n" +
+                                        "Sets a reminder a given time from now.\n" +
+                                        "Syntax: \"$reminder [reminder] | [number] [unit]\"\n" +
+                                        "Example: \"$reminder remind me not to be stupid | 30 minutes\"\n" +
+                                        "Note: all numbers must be valid 32-bit integers.\n" +
+                                        "```");
+                                return;
+                            }
+                            //↓ these are both stupid but they work ↓
+                            String reminderString = message.getContent().replace("$reminder ", "").split("\\|")[0]; //should get the reminder string
+                            String[] parts = message.getContent().replace("$reminder ", "").split("\\|")[1].trim().split(" "); //should get the rest of the parts, don't worry about it
+                            //↑ they're pretty stupid, right ↑
+
+                            if (parts.length < 2) {
+                                message.reply("Error: insufficient or incorrect parts. Make sure all numbers are valid 32-bit integers " +
+                                        "and that the \"\\|\" separator is correctly located.");
+                                return;
+                            }
+
+                            int num = Integer.parseInt(parts[0]);
+                            int unit = 0; //default to seconds
+
+                            if (parts.length > 1) {
+                                String unitString = parts[1].toLowerCase();
+                                if (arrayContains(new Object[] {"min", "mins", "minute", "minutes"}, unitString)) {
+                                    unit = 1; //minutes
+                                } else if (arrayContains(new Object[] {"hr", "hrs", "hour", "hours"}, unitString)) {
+                                    unit = 2; //hours
+                                } else if (arrayContains(new Object[] {"day", "days"}, unitString)) {
+                                    unit = 3; //days
+                                }
+                            }
+                            System.out.println("Reminder time interpreted as " + num + " unit" + unit);
+
+                            User sender = message.getAuthor();
+                            Channel responseChannel = message.getChannelReceiver();
+
+                            long delay = 0;
+                            String unitString;
+                            switch (unit) {
+                                case 1:
+                                    delay = TimeUnit.MINUTES.toMillis(num);
+                                    unitString = "minutes";
+                                    break;
+                                case 2:
+                                    delay = TimeUnit.HOURS.toMillis(num);
+                                    unitString = "hours";
+                                    break;
+                                case 3:
+                                    delay = TimeUnit.DAYS.toMillis(num);
+                                    unitString = "days";
+                                    break;
+                                default:
+                                    delay = TimeUnit.SECONDS.toMillis(num);
+                                    unitString = "seconds";
+                                    break;
+                            }
+
+                            Timer timer = new Timer();
+                            final String UNIT_STRING_FINAL = unitString; //literally just for the message
+
+                            timer.schedule(new TimerTask() {
+                                @Override
+                                public void run() {
+                                    responseChannel.sendMessage(sender.getMentionTag() + ":\nReminder to: " +
+                                            "\"" + reminderString.trim() + "\" from " + num + " " + UNIT_STRING_FINAL + " ago.");
+                                }
+                            }, delay);
+                            message.reply("Alright, I'll remind you in " + num + " " + UNIT_STRING_FINAL + ".");
                         }
 
                         //ALL COMMANDS GO ABOVE HERE FOR CLARITY PURPOSES
@@ -2673,8 +2749,6 @@ public class memebot {
             Runtime.getRuntime().addShutdownHook(new Thread(() -> {
                 System.out.println("Shutting down...");
                 final MessageReceiver receiver = api.getChannelById("189359733377990656");
-
-                receiver.sendMessage("Farewell. <:timeforcrab:292796338645630978>");
                 api.disconnect();
             }, "Shutdown-thread"));
 
@@ -2896,6 +2970,15 @@ public class memebot {
     public static boolean arrayListContainsIgnoreCase(ArrayList<String> list, String match) {
         for (String element : list) {
             if (element.equalsIgnoreCase(match)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean arrayContains(Object[] array, Object match) {
+        for (Object element : array) {
+            if (element.equals(match)) {
                 return true;
             }
         }

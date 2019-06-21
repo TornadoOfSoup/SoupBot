@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by RPGenius on 8/7/2017.
@@ -91,4 +92,50 @@ public class Utils {
         String timeStamp = new SimpleDateFormat("HH:mm").format(date);
         return timeStamp;
     }
+
+    public static String formatMillisAsString(long l)
+    {
+        long day = TimeUnit.MILLISECONDS.toDays(l);
+        long hr = TimeUnit.MILLISECONDS.toHours(l - TimeUnit.DAYS.toMillis(day));
+        long min = TimeUnit.MILLISECONDS.toMinutes(l - TimeUnit.DAYS.toMillis(day) - TimeUnit.HOURS.toMillis(hr));
+        long sec = TimeUnit.MILLISECONDS.toSeconds(l - TimeUnit.DAYS.toMillis(day) - TimeUnit.HOURS.toMillis(hr) - TimeUnit.MINUTES.toMillis(min));
+        long ms = TimeUnit.MILLISECONDS.toMillis(l - TimeUnit.DAYS.toMillis(day) - TimeUnit.HOURS.toMillis(hr) - TimeUnit.MINUTES.toMillis(min) - TimeUnit.SECONDS.toMillis(sec));
+
+        StringBuilder builder = new StringBuilder();
+        int nonsecondUnits = 0; //for incremental calculations
+        int nonzeroUnits = 0;
+
+        if (day > 0) nonzeroUnits++;
+        if (hr > 0) nonzeroUnits++;
+        if (min > 0) nonzeroUnits++;
+        if (sec > 0) nonzeroUnits++;
+
+        if (day > 0) {
+            builder.append(day + " days");
+            if (nonzeroUnits > 3) {
+                builder.append(", ");
+            }
+            nonsecondUnits++;
+        }
+        if (hr > 0) {
+            builder.append(hr + " hours");
+            if (nonzeroUnits > 1) builder.append(", "); else {
+                builder.append(" ");
+            }
+            nonsecondUnits++;
+        }
+        if (min > 0) {
+            builder.append(min + " minutes");
+            if (nonsecondUnits > 0) builder.append(", "); else {
+                builder.append(" ");
+            }
+            nonsecondUnits++;
+        }
+        if (nonsecondUnits > 1) builder.append("and ");
+        builder.append(sec + "." + ms + " seconds");
+
+
+        return builder.toString();
+    }
+
 }
