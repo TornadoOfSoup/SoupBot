@@ -22,10 +22,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0ea4e70f-1515-453f-a887-74c5aba0549c" name="Default" comment="Changed Maven version part 2, maybe this one will work">
-      <change afterPath="$PROJECT_DIR$/system.properties" afterDir="false" />
+    <list default="true" id="0ea4e70f-1515-453f-a887-74c5aba0549c" name="Default" comment="changed Maven target level again">
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SoupMemeBot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SoupMemeBot.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,43 +46,6 @@
         <option value="Class" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>cens</find>
-      <find>isOnL</find>
-      <find>\n&quot; +</find>
-      <find>onlineUsers</find>
-      <find>formatArrayList</find>
-      <find>new Timesta</find>
-      <find>multiply</find>
-      <find>multiplySt</find>
-      <find>if (</find>
-      <find>else if</find>
-      <find>$rng</find>
-      <find>roll</find>
-      <find>$roll</find>
-      <find>format</find>
-      <find>listAs</find>
-      <find>'\w</find>
-      <find>$</find>
-      <find>\)</find>
-      <find>vot</find>
-      <find>vote</find>
-      <find>ScheduledVote</find>
-      <find>TimedEvent</find>
-      <find>hypixel</find>
-      <find>info</find>
-      <find>boolean</find>
-      <find>|</find>
-      <find>$shutdown</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>,</replace>
-      <replace>&quot;,</replace>
-      <replace>formatList</replace>
-      <replace>),</replace>
-    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -337,21 +301,7 @@
       <updated>1494220923854</updated>
       <workItem from="1616224241463" duration="361000" />
       <workItem from="1616224611141" duration="458000" />
-      <workItem from="1616225096217" duration="3162000" />
-    </task>
-    <task id="LOCAL-00006" summary="added mechanism for seeing what letters have already been used in Hitlerman&#10;also won't let you guess a letter more than once&#10;increased distance between sperm and egg drastically">
-      <created>1501748764727</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1501748764727</updated>
-    </task>
-    <task id="LOCAL-00007" summary="added mechanism for seeing what letters have already been used in Hitlerman&#10;also won't let you guess a letter more than once&#10;increased distance between sperm and egg drastically">
-      <created>1501749233031</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1501749233031</updated>
+      <workItem from="1616225096217" duration="3504000" />
     </task>
     <task id="LOCAL-00008" summary="added a *very* rough google search thing&#10;added a less rough cat thing&#10;everyone have fun with cat thing&#10;added JSoup">
       <created>1501929367436</created>
@@ -682,7 +632,21 @@
       <option name="project" value="LOCAL" />
       <updated>1616229700160</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="added a system.properties file for heroku">
+      <created>1616230150849</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1616230150849</updated>
+    </task>
+    <task id="LOCAL-00056" summary="changed Maven target level again">
+      <created>1616230251530</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1616230251530</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -712,8 +676,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added some runnables&#10;&#10;Prepared for implementation of graphing user activity&#10;Moved much of $onlineusers functionality to a method&#10;" />
-    <MESSAGE value="Implemented $vote&#10;&#10;Added ScheduledVoteReadRunnable, ReactionAddingWithSimulatedRateLimitRunnable&#10;Added secondary, less powerful whitelist called promotedList&#10;Redid $vote help message&#10;Renamed TimedEventsRunnable to TimedEventRunnable&#10;" />
     <MESSAGE value="Fixed $vote not working for people on the promoted list&#10;&#10;Fixed $vote help message not doing newlines properly&#10;Mentioned lack of custom emoji support in votes in $vote help message&#10;" />
     <MESSAGE value="Fixed promotedList not properly storing its data&#10;SoupBot will now ignore its initial votes in $vote&#10;Added $whatlist for debug purposes&#10;Made isOnList(String item, ArrayList&lt;&gt; list) work for different types of ArrayLists by changing the type of ArrayList it takes from ArrayList&lt;String&gt; to ArrayList&lt;?&gt;&#10;" />
     <MESSAGE value="3 0 0 0   l i n e s   wooooooooooooooooooooo&#10;&#10;negligible changes, some imports and a commented out line" />
@@ -737,7 +699,9 @@
     <MESSAGE value="Small update, changed a few things to get it to run in modern times" />
     <MESSAGE value="Changed Maven target version to 12" />
     <MESSAGE value="Changed Maven version part 2, maybe this one will work" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed Maven version part 2, maybe this one will work" />
+    <MESSAGE value="added a system.properties file for heroku" />
+    <MESSAGE value="changed Maven target level again" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed Maven target level again" />
   </component>
   <component name="WindowStateProjectService">
     <state x="906" y="378" key="#Inspections" timestamp="1616224982680">
@@ -780,10 +744,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="781" y="344" key="SettingsEditor/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616229978495" />
-    <state x="872" y="432" key="Vcs.Push.Dialog.v2" timestamp="1616229701672">
+    <state x="872" y="432" key="Vcs.Push.Dialog.v2" timestamp="1616230255743">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="872" y="432" key="Vcs.Push.Dialog.v2/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616229701672" />
+    <state x="872" y="432" key="Vcs.Push.Dialog.v2/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616230255743" />
     <state x="662" y="320" key="new project wizard" timestamp="1616225061774">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

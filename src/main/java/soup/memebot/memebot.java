@@ -49,10 +49,13 @@ import org.apache.commons.lang3.StringUtils;
 
 import org.apache.commons.math3.util.ArithmeticUtils;
 import org.apache.commons.validator.routines.UrlValidator;
+
+/*
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+*/
 
 import static soup.memebot.LoadUserStats.loadStats;
 import static soup.memebot.Utils.*;
@@ -1623,10 +1626,12 @@ public class memebot {
                                 message.reply("```\n" +
                                         "Do a google search or something.\n" +
                                         "Syntax: \"$google [query]\"\n" +
-                                        "Example: \"$google cats\"" +
+                                        "Example: \"$google cats\"\n" +
+                                        "[TEMPORARILY REMOVED]" +
                                         "```");
                                 return;
                             }
+                            /*
                             String query = message.getContent().replace("$google ", "");
                             query = query.replace("+", "%2B");
                             query = query.replace(' ', '+'); //formatting for google search
@@ -1656,6 +1661,7 @@ public class memebot {
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
+                             */
                         } else if (message.getContent().startsWith("$cat")) {
                             String url = "";
                             int number = 0;
