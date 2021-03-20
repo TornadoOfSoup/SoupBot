@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
-      <module name="SoupMemeBot" target="14" />
+      <module name="SoupMemeBot" target="12" />
     </bytecodeTargetLevel>
   </component>
 </project>
