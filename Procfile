@@ -1,1 +1,1 @@
-web: java -jar .\out\artifacts\SoupMemeBot_jar\SoupMemeBot.jar
+web: java -jar ./out/artifacts/SoupMemeBot_jar/SoupMemeBot.jar
