@@ -22,11 +22,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0ea4e70f-1515-453f-a887-74c5aba0549c" name="Default" comment="Rewrote the startup sequence to check environment variables for a token, before defaulting to checking for an admin.pass value, and then just asking for the token through the UI if none exists">
-      <change afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
+    <list default="true" id="0ea4e70f-1515-453f-a887-74c5aba0549c" name="Default" comment="Added a Procfile for heroku">
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SoupMemeBot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SoupMemeBot.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -301,14 +301,7 @@
       <updated>1494220923854</updated>
       <workItem from="1616224241463" duration="361000" />
       <workItem from="1616224611141" duration="458000" />
-      <workItem from="1616225096217" duration="5066000" />
-    </task>
-    <task id="LOCAL-00010" summary="Added $onlineusers&#10;Also added more methods for displaying ArrayLists&#10;Fixed a capitalization error in the Hitlerman losing message">
-      <created>1502072359710</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1502072359710</updated>
+      <workItem from="1616225096217" duration="5806000" />
     </task>
     <task id="LOCAL-00011" summary="Fixed bug where list was sorted before anything was put in the list, causing the list to not be sorted">
       <created>1502078548463</created>
@@ -646,7 +639,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616231397687</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Added a Procfile for heroku">
+      <created>1616232074739</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1616232074739</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -676,7 +676,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="3 0 0 0   l i n e s   wooooooooooooooooooooo&#10;&#10;negligible changes, some imports and a commented out line" />
     <MESSAGE value="$implemented a working $vote system (it's really awesome)&#10;&#10;Made many changes to $vote, it's pretty much done now&#10;TODO: support for custom emoji and reloading&#10;&#10;Updated Apache Commons Math&#10;&#10;Implemented binary methods&#10;Added $tobinary and $frombinary" />
     <MESSAGE value="Slightly improved cooldown code for $hypixel and $tos" />
     <MESSAGE value="Added story building!&#10;&#10;Added censoring rickl when he says &quot;oof&quot;&#10;Added isOnList(Object item, Arraylist&lt;?&gt; list) method&#10;Added getFirstWordInString(String string) method&#10;&#10;Added $makestorychannel, $printstory, $viewstorylist, $finishstory" />
@@ -701,7 +700,8 @@
     <MESSAGE value="changed Maven target level again" />
     <MESSAGE value="Removed all instances of JSoup and disabled $google accordingly, as it was the only command that used the library to my knowledge" />
     <MESSAGE value="Rewrote the startup sequence to check environment variables for a token, before defaulting to checking for an admin.pass value, and then just asking for the token through the UI if none exists" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rewrote the startup sequence to check environment variables for a token, before defaulting to checking for an admin.pass value, and then just asking for the token through the UI if none exists" />
+    <MESSAGE value="Added a Procfile for heroku" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a Procfile for heroku" />
   </component>
   <component name="WindowStateProjectService">
     <state x="906" y="378" key="#Inspections" timestamp="1616224982680">
@@ -712,46 +712,46 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1045" y="501" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616232040437" />
-    <state width="2517" height="337" key="GridCell.Tab.0.bottom" timestamp="1616231265929">
+    <state width="2517" height="481" key="GridCell.Tab.0.bottom" timestamp="1616232531815">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="337" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616231265929" />
-    <state width="2517" height="337" key="GridCell.Tab.0.center" timestamp="1616231265929">
+    <state width="2517" height="481" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616232531815" />
+    <state width="2517" height="481" key="GridCell.Tab.0.center" timestamp="1616232531815">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="337" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616231265929" />
-    <state width="2517" height="337" key="GridCell.Tab.0.left" timestamp="1616231265929">
+    <state width="2517" height="481" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616232531815" />
+    <state width="2517" height="481" key="GridCell.Tab.0.left" timestamp="1616232531815">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="337" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616231265929" />
-    <state width="2517" height="337" key="GridCell.Tab.0.right" timestamp="1616231265929">
+    <state width="2517" height="481" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616232531815" />
+    <state width="2517" height="481" key="GridCell.Tab.0.right" timestamp="1616232531815">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="337" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616231265929" />
-    <state width="2517" height="481" key="GridCell.Tab.1.bottom" timestamp="1616227312094">
+    <state width="2517" height="481" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616232531815" />
+    <state width="2517" height="481" key="GridCell.Tab.1.bottom" timestamp="1616232531816">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="481" key="GridCell.Tab.1.bottom/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616227312094" />
-    <state width="2517" height="481" key="GridCell.Tab.1.center" timestamp="1616227312094">
+    <state width="2517" height="481" key="GridCell.Tab.1.bottom/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616232531816" />
+    <state width="2517" height="481" key="GridCell.Tab.1.center" timestamp="1616232531816">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="481" key="GridCell.Tab.1.center/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616227312094" />
-    <state width="2517" height="481" key="GridCell.Tab.1.left" timestamp="1616227312094">
+    <state width="2517" height="481" key="GridCell.Tab.1.center/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616232531816" />
+    <state width="2517" height="481" key="GridCell.Tab.1.left" timestamp="1616232531815">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="481" key="GridCell.Tab.1.left/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616227312094" />
-    <state width="2517" height="481" key="GridCell.Tab.1.right" timestamp="1616227312094">
+    <state width="2517" height="481" key="GridCell.Tab.1.left/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616232531815" />
+    <state width="2517" height="481" key="GridCell.Tab.1.right" timestamp="1616232531816">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="481" key="GridCell.Tab.1.right/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616227312094" />
+    <state width="2517" height="481" key="GridCell.Tab.1.right/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616232531816" />
     <state x="781" y="344" key="SettingsEditor" timestamp="1616229978495">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="781" y="344" key="SettingsEditor/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616229978495" />
-    <state x="872" y="432" key="Vcs.Push.Dialog.v2" timestamp="1616231400646">
+    <state x="872" y="432" key="Vcs.Push.Dialog.v2" timestamp="1616232076220">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="872" y="432" key="Vcs.Push.Dialog.v2/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616231400646" />
+    <state x="872" y="432" key="Vcs.Push.Dialog.v2/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616232076220" />
     <state x="662" y="320" key="new project wizard" timestamp="1616225061774">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
