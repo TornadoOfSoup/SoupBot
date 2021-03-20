@@ -2620,7 +2620,7 @@ public class memebot {
                                 notifications = !notifications;
                                 message.reply("System tray notifications boolean now set to " + notifications);
                             }
-                        } else if (message.getContent().startsWith("$reminder") || !message.getContent().contains("\\|")) {
+                        } else if (message.getContent().startsWith("$reminder") && !message.getContent().contains("\\|")) {
                             if (message.getContent().equalsIgnoreCase("$reminder")) {
                                 message.reply("```\n" +
                                         "Sets a reminder a given time from now.\n" +
