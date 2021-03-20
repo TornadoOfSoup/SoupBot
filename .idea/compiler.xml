@@ -9,7 +9,7 @@
         <module name="SoupMemeBot" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="1.8">
+    <bytecodeTargetLevel target="12">
       <module name="SoupMemeBot" target="14.0.2" />
     </bytecodeTargetLevel>
   </component>
