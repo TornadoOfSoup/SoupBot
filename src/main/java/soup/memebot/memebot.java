@@ -101,25 +101,20 @@ public class memebot {
     static HashMap<String, String> strawpolls = new HashMap<>();
 
     public static void main(String[] args) {
-        String token = "";
-        String password = "";
+        String token = System.getenv("BOT_TOKEN");
 
-        try {
-            ArrayList<String> admin = getArrayListOfLines("admin.pass");
-            token = admin.get(0);
-            password = admin.get(1);
-            while(true) {
-                String pass = JOptionPane.showInputDialog("Password:"); //checks for a password
-                if (pass.equals(password)) {
-                    break;
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("admin.pass not found, an admin.pass file should have two lines. " +
-                    "The first should contain a token, and the second should contain the bot password. It should be located in the resources folder.");
+        System.out.println("Token: " + token);
+        if (token == null) {
+            try {
+                ArrayList<String> admin = getArrayListOfLines("admin.pass");
+                token = admin.get(0);
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("admin.pass not found, an admin.pass file should have two lines. " +
+                        "The first should contain a token, and the second should contain the bot password. It should be located in the resources folder.");
                 token = JOptionPane.showInputDialog("Token:"); //takes token
 
+            }
         }
 
         final DiscordAPI api = Javacord.getApi(token, true);

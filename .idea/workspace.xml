@@ -22,11 +22,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0ea4e70f-1515-453f-a887-74c5aba0549c" name="Default" comment="changed Maven target level again">
+    <list default="true" id="0ea4e70f-1515-453f-a887-74c5aba0549c" name="Default" comment="Removed all instances of JSoup and disabled $google accordingly, as it was the only command that used the library to my knowledge">
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SoupMemeBot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SoupMemeBot.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/soup/memebot/memebot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/soup/memebot/memebot.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/soup/memebot/memebot.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -301,14 +304,7 @@
       <updated>1494220923854</updated>
       <workItem from="1616224241463" duration="361000" />
       <workItem from="1616224611141" duration="458000" />
-      <workItem from="1616225096217" duration="3504000" />
-    </task>
-    <task id="LOCAL-00008" summary="added a *very* rough google search thing&#10;added a less rough cat thing&#10;everyone have fun with cat thing&#10;added JSoup">
-      <created>1501929367436</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1501929367436</updated>
+      <workItem from="1616225096217" duration="4355000" />
     </task>
     <task id="LOCAL-00009" summary="updated censor&#10;censor should no longer have problems with capitalization">
       <created>1501967006121</created>
@@ -646,7 +642,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616230251530</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Removed all instances of JSoup and disabled $google accordingly, as it was the only command that used the library to my knowledge">
+      <created>1616230544628</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1616230544628</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -676,7 +679,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed $vote not working for people on the promoted list&#10;&#10;Fixed $vote help message not doing newlines properly&#10;Mentioned lack of custom emoji support in votes in $vote help message&#10;" />
     <MESSAGE value="Fixed promotedList not properly storing its data&#10;SoupBot will now ignore its initial votes in $vote&#10;Added $whatlist for debug purposes&#10;Made isOnList(String item, ArrayList&lt;&gt; list) work for different types of ArrayLists by changing the type of ArrayList it takes from ArrayList&lt;String&gt; to ArrayList&lt;?&gt;&#10;" />
     <MESSAGE value="3 0 0 0   l i n e s   wooooooooooooooooooooo&#10;&#10;negligible changes, some imports and a commented out line" />
     <MESSAGE value="$implemented a working $vote system (it's really awesome)&#10;&#10;Made many changes to $vote, it's pretty much done now&#10;TODO: support for custom emoji and reloading&#10;&#10;Updated Apache Commons Math&#10;&#10;Implemented binary methods&#10;Added $tobinary and $frombinary" />
@@ -701,29 +703,30 @@
     <MESSAGE value="Changed Maven version part 2, maybe this one will work" />
     <MESSAGE value="added a system.properties file for heroku" />
     <MESSAGE value="changed Maven target level again" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed Maven target level again" />
+    <MESSAGE value="Removed all instances of JSoup and disabled $google accordingly, as it was the only command that used the library to my knowledge" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed all instances of JSoup and disabled $google accordingly, as it was the only command that used the library to my knowledge" />
   </component>
   <component name="WindowStateProjectService">
     <state x="906" y="378" key="#Inspections" timestamp="1616224982680">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="906" y="378" key="#Inspections/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616224982680" />
-    <state width="2517" height="337" key="GridCell.Tab.0.bottom" timestamp="1616229664724">
+    <state width="2517" height="337" key="GridCell.Tab.0.bottom" timestamp="1616231265929">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="337" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616229664724" />
-    <state width="2517" height="337" key="GridCell.Tab.0.center" timestamp="1616229664724">
+    <state width="2517" height="337" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616231265929" />
+    <state width="2517" height="337" key="GridCell.Tab.0.center" timestamp="1616231265929">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="337" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616229664724" />
-    <state width="2517" height="337" key="GridCell.Tab.0.left" timestamp="1616229664724">
+    <state width="2517" height="337" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616231265929" />
+    <state width="2517" height="337" key="GridCell.Tab.0.left" timestamp="1616231265929">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="337" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616229664724" />
-    <state width="2517" height="337" key="GridCell.Tab.0.right" timestamp="1616229664724">
+    <state width="2517" height="337" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616231265929" />
+    <state width="2517" height="337" key="GridCell.Tab.0.right" timestamp="1616231265929">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="337" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616229664724" />
+    <state width="2517" height="337" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616231265929" />
     <state width="2517" height="481" key="GridCell.Tab.1.bottom" timestamp="1616227312094">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -744,10 +747,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="781" y="344" key="SettingsEditor/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616229978495" />
-    <state x="872" y="432" key="Vcs.Push.Dialog.v2" timestamp="1616230255743">
+    <state x="872" y="432" key="Vcs.Push.Dialog.v2" timestamp="1616230546567">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="872" y="432" key="Vcs.Push.Dialog.v2/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616230255743" />
+    <state x="872" y="432" key="Vcs.Push.Dialog.v2/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1616230546567" />
     <state x="662" y="320" key="new project wizard" timestamp="1616225061774">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
