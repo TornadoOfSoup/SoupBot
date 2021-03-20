@@ -1,1 +1,1 @@
-web: mvn exec:java -Dexec.mainClass=soup.memebot.memebot
+web: java -jar .\out\artifacts\SoupMemeBot_jar\SoupMemeBot.jar
